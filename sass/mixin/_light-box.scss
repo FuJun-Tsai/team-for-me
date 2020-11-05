@@ -1,0 +1,13 @@
+@mixin light-box-setting($width, $height, $position) {
+    top: 50%;
+    left: 50%;
+    width: $width;
+    height: $height;
+    width: $width - 30;
+    height: $height - 30;
+    // margin-left: ($width - 30)/2 * -1;
+    // margin-top: ($height - 30)/2 * -1;
+    position: $position;
+    transform: translate(-50%, -50%);
+}
+

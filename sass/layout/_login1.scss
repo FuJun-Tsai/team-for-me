@@ -1,0 +1,150 @@
+.section_res {
+    position: relative;
+    min-height: 100vh;
+    // background-image: url(.././image.svg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    .container_res {
+        position: relative;
+        width: 800px;
+        height: 500px;
+        background: #fff;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        .user {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            .img_res {
+                position: relative;
+                width: 50%;
+                height: 100%;
+                // background: #957e74;
+                transition: 0.5s;
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .form_res {
+                position: relative;
+                width: 50%;
+                height: 100%;
+                background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px;
+                transition: 0.5s;
+                form {
+                    h2 {
+                        font-size: 18px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        text-align: center;
+                        width: 100%;
+                        margin-bottom: 10px;
+                        color: #555;
+                    }
+                    input {
+                        position: relative;
+                        width: 100%;
+                        padding: 10px;
+                        background: #f5f5f5;
+                        color: #333;
+                        border: none;
+                        outline: none;
+                        box-shadow: none;
+                        margin: 8px 0;
+                        font-size: 14px;
+                        letter-spacing: 1px;
+                        font-weight: 300;
+                    }
+                    input[type="submit"] {
+                        max-width: 100px;
+                        // background: #677eff;
+                        // color: #FFF;
+                        cursor: pointer;
+                        font-size: 14px;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                        transition: 0.5s;
+                    }
+                    .learn {
+                        position: relative;
+                        margin-top: 20px;
+                        // font-size: 12px;
+                        letter-spacing: 1px;
+                        // color: #555;
+                        text-transform: uppercase;
+                        font-weight: 300;
+                        font-size: 16px;
+                        a {
+                            font-weight: 600;
+                            text-decoration: none;
+                            color: #677eff;
+                        }
+                    }
+                }
+            }
+        }
+        .singupBx {
+            pointer-events: none;
+            .form_res {
+                left: 100%;
+            }
+            .img_res {
+                left: -100%;
+            }
+        }
+        .singinBx {
+            .form_res {
+                left: 0;
+            }
+            .img_res {
+                left: 0;
+            }
+        }
+    }
+    .container_res.act {
+        .singupBx {
+            pointer-events: initial;
+            .form_res {
+                left: 0;
+            }
+            .img_res {
+                left: 0;
+            }
+        }
+        .singinBx {
+            .form_res {
+                left: 100%;
+            }
+            .img_res {
+                left: -100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .section_res .container_res {
+        max-width: 400px;
+    }
+    .section_res .container_res .img_res {
+        display: none;
+    }
+    .section_res .container_res .user .form_res {
+        width: 100%;
+    }
+}

@@ -1,0 +1,74 @@
+@import "../sass/base/reset";
+@import "../sass/base/var";
+@import "../sass/base/color";
+@import "../sass/base/font";
+@import "../sass/mixin/btn_style";
+@import "../sass/mixin/gradient";
+.testButton {
+    .test1 {
+        @include btnRed
+    }
+    .test2 {
+        @include btnBlue
+    }
+    .test3 {
+        @include btnYellowL
+    }
+    .test4 {
+        @include btnYellowS
+    }
+    .test5 {
+        @include btnOther
+    }
+}
+
+.test {
+    h1 {
+        padding: 15px;
+    }
+    h2 {
+        padding: 15px;
+    }
+    h3 {
+        padding: 15px;
+    }
+    h4 {
+        padding: 15px;
+    }
+    h5 {
+        padding: 15px;
+    }
+    h6 {
+        padding: 15px;
+    }
+}
+
+.background_test {
+    padding: 30px;
+    .testBg1 {
+        width: 200px;
+        height: 50px;
+        background: $bgColor-style1;
+    }
+    .testBg2 {
+        width: 200px;
+        height: 50px;
+        background: $bgColor-style2;
+    }
+    .testBg3 {
+        width: 200px;
+        height: 50px;
+        background: $bgColor-style3;
+    }
+    .testBg4 {
+        width: 200px;
+        height: 50px;
+        background: $bgColor-style4;
+    }
+}
+
+.backgroundGG {
+    width: 600px;
+    height: 80px;
+    @include lineGradient ('T', 90deg, red, green);
+}

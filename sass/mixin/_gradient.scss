@@ -1,0 +1,20 @@
+//    背景漸層
+// @mixin background-gradient($color-top, $color-stop) {
+//     background: ($color-top);
+//     background: -moz-linear-gradient(top, $color-top 0%, $color-stop 100%);
+//     background: -webkit-linear-gradient(top, $color-top 0%, $color-stop 100%);
+//     background: linear-gradient(to bottom, $color-top 0%, $color-stop 100%);
+//     // filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=$color-top, endColorstr=$color-stop, GradientType=0);
+// }
+@mixin lineGradient ($x, $direction, $c, $transparent) {
+    // X:漸層長度 | $direction:漸層方向 | $c:前顏色 | $transparent:後顏色
+    @if($direction=='T') {
+        background:linear-gradient(to bottom, #{$c} -100%+$x, $transparent 100%);
+    }
+    @else if($direction=='B') {
+        background:linear-gradient(to top, #{$c} -100%+$x, $transparent 100%);
+    }
+    @else {
+        background:linear-gradient($direction, #{$c} -100%+$x, $transparent 100%);
+    }
+}

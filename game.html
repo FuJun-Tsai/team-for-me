@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Get rich!</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+    <link rel="stylesheet" href="./sass/vender/other/monopoly.css">
+    <!-- <link rel="stylesheet" href="./css/head_footer_style.css"> -->
+    <link rel="stylesheet" href="./css/allstyle.css">
+    <link rel="stylesheet" href="./sass/vender/other/hover-min.css">
+    <link rel="stylesheet" href="./sass/vender/other/dice.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="./js/dice.js"></script>
+
+
+</head>
+
+<body>
+    <!-- 背景泡泡 -->
+    <div id="bubbles">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+    </div>
+    <header>
+        <section>
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./image/logoHeader.svg" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="hvr-pulse-grow">
+                        <a href="./game.html"> 吃吃配對</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./searchrestaurant.html">餐廳介紹</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./share.html">吃貨分享</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./about_us.html">關於我們</a>
+                    </li>
+                    <li>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button>揪團去!</button></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="member">
+                <div class="icon">
+                    <a href="./login.html">
+                        <img src="./image/icon.svg" alt="">
+                    </a>
+                </div>
+                <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+            </div>
+            <div id="menu-bar">
+                <div id="menu" onclick="onClickMenu()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <ul class="nav1" id="nav1">
+                    <div class="member">
+                        <div class="icon">
+                            <a href="./login.html">
+                                <img src="./image/icon.svg" alt="">
+                            </a>
+                        </div>
+                        <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                    </div>
+                    <li>
+                        <a href="./game.html">吃吃配對</a>
+                    </li>
+                    <li>
+                        <a href="./searchrestaurant.html">餐廳介紹</a>
+                    </li>
+                    <li>
+                        <a href="./share.html"> 吃貨分享</a>
+                    </li>
+                    <li>
+                        <a href="./about_us.html">關於我們</a>
+                    </li>
+                    <li>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button>揪團去!</button></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+        </section>
+    </header>
+
+    <div class="setting">
+        <div class="choosechr">
+            <h1>请选择 Player 4</h1>
+            <ul>
+                <li><img class="" src="img/batman.png" alt="">
+                    <h1>Batman</h1>
+                </li>
+                <li><img class="" src="img/superman.png" alt="">
+                    <h1>Superman</h1>
+                </li>
+                <li><img class="" src="img/green lantern.png" alt="">
+                    <h1>Green Lantern</h1>
+                </li>
+                <li><img class="" src="img/robin.png" alt="">
+                    <h1>Robin</h1>
+                </li>
+                <li><img class="" src="img/catwoman.png" alt="">
+                    <h1>Catwoman</h1>
+                </li>
+                <li><img class="" src="img/harley quinn.png" alt="">
+                    <h1>Harley Quinn</h1>
+                </li>
+                <li><img class="" src="img/joker.png" alt="">
+                    <h1>Joker</h1>
+                </li>
+            </ul>
+        </div>
+        <div class="choosechr">
+            <h1>请选择 Player 3</h1>
+            <ul>
+                <li><img class="" src="img/batman.png" alt="">
+                    <h1>Batman</h1>
+                </li>
+                <li><img class="" src="img/superman.png" alt="">
+                    <h1>Superman</h1>
+                </li>
+                <li><img class="" src="img/green lantern.png" alt="">
+                    <h1>Green Lantern</h1>
+                </li>
+                <li><img class="" src="img/robin.png" alt="">
+                    <h1>Robin</h1>
+                </li>
+                <li><img class="" src="img/catwoman.png" alt="">
+                    <h1>Catwoman</h1>
+                </li>
+                <li><img class="" src="img/harley quinn.png" alt="">
+                    <h1>Harley Quinn</h1>
+                </li>
+                <li><img class="" src="img/joker.png" alt="">
+                    <h1>Joker</h1>
+                </li>
+            </ul>
+        </div>
+        <div class="choosechr">
+            <h1>请选择 Player 2</h1>
+            <ul>
+                <li><img class="" src="img/batman.png" alt="">
+                    <h1>Batman</h1>
+                </li>
+                <li><img class="" src="img/superman.png" alt="">
+                    <h1>Superman</h1>
+                </li>
+                <li><img class="" src="img/green lantern.png" alt="">
+                    <h1>Green Lantern</h1>
+                </li>
+                <li><img class="" src="img/robin.png" alt="">
+                    <h1>Robin</h1>
+                </li>
+                <li><img class="" src="img/catwoman.png" alt="">
+                    <h1>Catwoman</h1>
+                </li>
+                <li><img class="" src="img/harley quinn.png" alt="">
+                    <h1>Harley Quinn</h1>
+                </li>
+                <li><img class="" src="img/joker.png" alt="">
+                    <h1>Joker</h1>
+                </li>
+            </ul>
+        </div>
+        <div class="choosechr">
+            <h1>請選擇角色</h1>
+            <ul>
+                <li><img class="" src="./image/den_image/allgif/乂小壞乂.gif" alt="">
+                    <h1>乂小壞乂</h1>
+                </li>
+                <li><img class="" src="./image/den_image/allgif/大番薯.gif" alt="">
+                    <h1>大番薯</h1>
+                </li>
+                <li><img class="" src="./image/den_image/allgif/德克斯特.gif" alt="">
+                    <h1>德克斯特</h1>
+                </li>
+                <li><img class="" src="./image/den_image/allgif/方塊號.gif" alt="">
+                    <h1>方塊號</h1>
+                </li>
+                <li><img class="" src="./image/den_image/allgif/眼鏡仔.gif" alt="">
+                    <h1>眼鏡仔</h1>
+                </li>
+                <li><img class="" src="./image/den_image/allgif/辣個男人.gif" alt="">
+                    <h1>辣個男人</h1>
+                </li>
+                <li><img class="" src="./image/den_image/allgif/煞氣乂流氓.gif" alt="">
+                    <h1>煞氣乂流氓</h1>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+        <div class="npcnum choosebox">
+            <h1>电脑人数</h1>
+            <ul>
+                <li>0</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+        <div class="playernum choosebox">
+            <h1>玩家人数</h1>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="map">
+        <div class="game_background"></div>
+        <div class="den_map_title">
+            <h3>按住骰子拖曳滑動擲骰</h3>
+        </div>
+        <!--骰子-->
+        <section class="dice-container">
+            <div id="denDice" class="show-front">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+                <figure class="right"></figure>
+                <figure class="left"></figure>
+                <figure class="top"></figure>
+                <figure class="bottom"></figure>
+            </div>
+        </section>
+        <div class="box" id="b16">
+            <h3></h3>
+        </div>
+        <div class="box" id="b15">
+            <h3></h3>
+        </div>
+        <div class="box" id="b14">
+            <h3></h3>
+        </div>
+        <div class="box" id="b13">
+            <h3></h3>
+        </div>
+        <div class="box" id="b12">
+            <h3></h3>
+        </div>
+        <div class="box" id="b11">
+            <h3></h3>
+        </div>
+        <div class="box" id="b10">
+            <h3></h3>
+        </div>
+        <div class="box" id="b17">
+            <h3></h3>
+        </div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="box" id="b9">
+            <h3></h3>
+        </div>
+        <div class="box" id="b18">
+            <h3></h3>
+        </div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="box" id="b8">
+            <h3></h3>
+        </div>
+
+        <div class="box" id="b19">
+            <h3></h3>
+        </div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="hi"></div>
+        <div class="box" id="b7">
+            <h3></h3>
+        </div>
+        <div class="box" id="b0">
+            <h3></h3>
+            <img class="chr" id="player1" src="./image/den_image/white.jpg" alt=" ">
+            <!-- <img src="./image/white.jpg" alt=""> -->
+        </div>
+        <div class="box" id="b1">
+            <h3></h3>
+        </div>
+        <div class="box" id="b2">
+            <h3></h3>
+        </div>
+        <div class="box" id="b3">
+            <h3></h3>
+        </div>
+        <div class="box" id="b4">
+            <h3></h3>
+        </div>
+        <div class="box" id="b5">
+            <h3></h3>
+        </div>
+        <div class="box" id="b6">
+            <h3></h3>
+        </div>
+
+        <!-- <div class="box" id="b28">
+            <h3></h3>
+        </div>
+        <div class="box" id="b27">
+            <h3></h3>
+        </div>
+        <div class="box" id="b29">
+            <h3></h3>
+        </div>
+        <div class="box" id="b4">
+            <h3></h3>
+        </div>
+        <div class="box" id="b3">
+            <h3></h3>
+        </div>
+        <div class="box" id="b2">
+            <h3></h3>
+        </div>
+        <div class="box" id="b1">
+            <h3></h3>
+        </div>
+        <div class="box" id="b0">
+            <h3></h3>
+        </div> -->
+    </div>
+
+    <div class="p1info" style="display: none;">
+        <h1></h1>
+        <h2></h2>
+    </div>
+    <div class="p2info" style="display: none;">
+        <h1></h1>
+        <h2></h2>
+    </div>
+    <div class="p3info" style="display: none;">
+        <h1></h1>
+        <h2></h2>
+    </div>
+    <div class="p4info" style="display: none;">
+        <h1></h1>
+        <h2></h2>
+    </div>
+
+    <div class="control">
+        <h1>點擊開始遊玩</h1>
+        <div class="dice"></div>
+    </div>
+
+    <div class="hide">
+        <!-- <div class="arrow"><img src="img/arrow.png"></div> -->
+        <!-- <div class="construct"><img src="img/c1.png" alt=""><img src="img/c2.png" alt=""><img src="img/c3.png" alt=""><img src="img/c4.png" alt=""><img src="img/c5.png" alt=""></div> -->
+    </div>
+    <div class="bet">
+        <div class="spcontrol">
+            <div class="spdice"></div>
+        </div>
+    </div>
+    <div class="purchasebox">
+        <!-- <h1></h1> -->
+        <div class="bar">
+            <h2>餐廳介紹</h2>
+        </div>
+        <div class="purchasebox_content">
+            <div class="purchasebox_content_left">
+
+            </div>
+            <div class="purchasebox_content_right">
+
+            </div>
+        </div>
+        <div class="btn1">開團</div>
+        <div class="btn2">參團</div>
+    </div>
+    <div class="upgradebox">
+        <h1></h1>
+        <div class="bar">
+            <h2>升级房子</h2>
+        </div>
+        <div class="btn1">确定</div>
+        <div class="btn2">取消</div>
+    </div>
+    <div class="msgbox">
+        <div class="msg"></div>
+    </div>
+    <div class="infobox">
+        <div class="bar">
+            <h2>俄罗斯</h2>
+        </div>
+        <ul>
+            <li>地主：</li>
+            <li>价格：</li>
+        </ul>
+    </div>
+
+
+    <!-- Audio has a delay in Safari :( -->
+    <audio preload="auto">
+        <source src="https://alexerlandsson.github.io/assets/codepen/roll-the-dice/sound/dice-sound.mp3"></source>
+      </audio>
+
+    <script src="./js/initializing.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/information.js"></script>
+    <script src="./js/monopoly.js"></script>
+    <script src="./js/msg.js"></script>
+    <script src="./js/check.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1369 @@
+//10.26-16:09
+.chu_header {
+    height: 0;
+    position: fixed;
+    z-index: 30;
+}
+
+footer {
+    display: none;
+}
+
+section.first_screen {
+    border: 1px solid black;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    // background-image: url(../image/index/first_screen_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    .circle_orange {
+        @include circle_bigOrange;
+        bottom: 23%;
+        right: -15%;
+        p {
+            font-size: 48px;
+            color: white;
+            position: absolute;
+            bottom: 25%;
+            right: 50%;
+            font-weight: 800;
+            @media all and (min-width: 1600px) and (max-width: 1920px) {
+                right: 45%;
+            }
+            @media all and (min-width: 1440px) and (max-width: 1599px) {
+                right: 40%;
+            }
+            @media all and (min-width: 1200px) and (max-width: 1439px) {
+                right: 30%;
+                bottom: 20%;
+            }
+            @media all and (min-width: 768px) and (max-width: 991px) {
+                right: 27%;
+                bottom: 27%;
+            }
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                bottom: 33%;
+                right: 13%;
+            }
+            @media all and (max-width: 575px) {
+                bottom: 27%;
+                right: 10%;
+            }
+        }
+    }
+    .circle_fuchsia {
+        @include circle(630px, #B71E68);
+        opacity: 0.85;
+        position: absolute;
+        top: 20%;
+        left: 55%;
+        transform: translate(-100%, 0);
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            left: 58%;
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            @include circle(600px, #B71E68);
+            left: 58%;
+            top: 13%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            @include circle(500px, #B71E68);
+            left: 95%;
+            top: 33%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            @include circle(400px, #B71E68);
+            top: 41%;
+            left: 97%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            @include circle(400px, #B71E68);
+            top: 43%;
+            left: 71%;
+        }
+        @media all and (max-width: 575px) {
+            @include circle(370px, #B71E68);
+            top: 43%;
+            left: 100%;
+        }
+        p {
+            font-size: 1.5*$fontSize;
+            color: white;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            line-height: 28px;
+        }
+    }
+    .circle_purple {
+        @include circle(400px, #5A1D81);
+        opacity: 0.85;
+        position: absolute;
+        top: 55%;
+        right: 30%;
+        z-index: -1;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            @include circle(340px, #5A1D81);
+            top: 60%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            @include circle(250px, #5A1D81);
+            width: 600px;
+            height: 600px;
+            top: 30%;
+            right: -25%;
+        }
+    }
+    .circle_food_cake {
+        background-image: url(../image/index/first_screen_friends_food1.svg);
+        width: 78px;
+        height: 78px;
+        position: absolute;
+        // top: 13%;
+        left: 20%;
+        animation: moveFood_cake 2.5s linear infinite;
+        @keyframes moveFood_cake {
+            0% {
+                top: 13%;
+            }
+            50% {
+                top: 15%;
+            }
+            100% {
+                top: 13%;
+            }
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            top: 20%;
+            left: 18%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 26%;
+            left: 17%;
+        }
+        @media all and (max-width: 575px) {
+            display: none;
+        }
+    }
+    .circle_food_noodles {
+        background-image: url(../image/index/first_screen_friends_food2.svg);
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 23%;
+        left: 10%;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            left: 60%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            top: 36%;
+            left: 76%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 33%;
+            left: 58%;
+        }
+        @media all and (max-width: 575px) {
+            top: 17%;
+            left: 60%;
+            width: 80px;
+            height: 80px;
+        }
+    }
+    .circle_food_icecream {
+        background-image: url(../image/index/first_screen_friends_food3.svg);
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        top: 47%;
+        left: 6%;
+        animation: moveFood_icecream 2.5s linear infinite;
+        @keyframes moveFood_icecream {
+            0% {
+                top: 47%;
+            }
+            50% {
+                top: 50%;
+            }
+            100% {
+                top: 47%;
+            }
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 86%;
+            left: 8%;
+        }
+    }
+    .circle_food_curry {
+        background-image: url(../image/index/first_screen_friends_food4.svg);
+        width: 124px;
+        height: 124px;
+        position: absolute;
+        bottom: 8%;
+        left: 40%;
+        animation: moveFood_curry 2.5s linear infinite;
+        @keyframes moveFood_curry {
+            0% {
+                bottom: 8%;
+            }
+            50% {
+                bottom: 10%;
+            }
+            100% {
+                bottom: 8%;
+            }
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            left: 44%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            bottom: 35%;
+            left: 28%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            bottom: 2%;
+        }
+        @media all and (max-width: 575px) {
+            display: none;
+        }
+    }
+    .circle_food_steak {
+        background-image: url(../image/index/first_screen_friends_food5.svg);
+        width: 124px;
+        height: 124px;
+        position: absolute;
+        bottom: 16%;
+        right: 17%;
+        animation: moveFood_steak 3s linear infinite;
+        @keyframes moveFood_steak {
+            0% {
+                bottom: 16%;
+            }
+            50% {
+                bottom: 13%;
+            }
+            100% {
+                bottom: 16%;
+            }
+        }
+        @media all and (min-width: 1600px) and (max-width: 1920px) {
+            bottom: 12%;
+        }
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            bottom: 10%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            bottom: 2%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            bottom: 19%;
+            right: 75%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            bottom: 48%;
+            right: 55%;
+        }
+        @media all and (max-width: 575px) {
+            bottom: 3%;
+            right: 45%;
+        }
+    }
+    .circle_food_breakfast {
+        background-image: url(../image/index/first_screen_friends_food6.svg);
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        bottom: 10%;
+        right: 5%;
+    }
+    .friends {
+        background-image: url(../image/index/first_screen_friends.svg);
+        width: 432px;
+        height: 432px;
+        position: absolute;
+        bottom: 3%;
+        left: 5%;
+        background-position: center center;
+        @media all and (min-width: 1600px) and (max-width: 1920px) {
+            width: 332px;
+            height: 332px;
+        }
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            width: 250px;
+            height: 250px;
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            width: 250px;
+            height: 250px;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            width: 320px;
+            height: 320px;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            display: none;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            display: none;
+        }
+        @media all and (max-width: 575px) {
+            display: none;
+        }
+    }
+}
+
+section.second_screen {
+    border: 1px solid black;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    // background-image: url(../image/index/second_screen_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    h2 {
+        color: white;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        font-weight: 800;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            top: 14%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            top: 13%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 11%;
+        }
+        @media all and (max-width: 575px) {
+            top: 13%;
+        }
+    }
+    h4.restaurant {
+        color: white;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        white-space: nowrap;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            top: 19%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            top: 18%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 16%;
+        }
+        @media all and (max-width: 575px) {
+            top: 18%;
+        }
+    }
+    .circle_orange {
+        @include circle_bigOrange;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        .container {
+            width: 90%;
+            margin-top: 80px;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            @media all and (min-width: 1200px) and (max-width: 1439px) {
+                width: 75%;
+            }
+            @media all and (min-width: 768px) and (max-width: 991px) {
+                width: 70%;
+            }
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                width: 65%;
+            }
+            @media all and (max-width: 575px) {
+                width: 60%;
+            }
+            .store:nth-child(2n+1) {
+                transform: translateY(1050px);
+                width: 15%;
+                @media all and (min-width: 1200px) and (max-width: 1439px) {
+                    transform: translateY(1160px);
+                }
+                @media all and (min-width: 768px) and (max-width: 991px) {
+                    transform: translateY(1110px);
+                }
+                a {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        display: inline-block;
+                        overflow: hidden;
+                        border-radius: 50%;
+                    }
+                }
+                h4 {
+                    background-color: black;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    color: white;
+                    position: absolute;
+                    top: 25%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 2;
+                }
+            }
+            .store:nth-child(2n) {
+                transform: translateY(1150px);
+                width: 25%;
+                @media all and (min-width: 1200px) and (max-width: 1439px) {
+                    transform: translateY(1230px);
+                }
+                @media all and (min-width: 768px) and (max-width: 991px) {
+                    transform: translateY(1185px);
+                }
+                @media all and (min-width: 576px) and (max-width: 767px) {
+                    transform: translateY(1215px);
+                }
+                @media all and (max-width: 575px) {
+                    transform: translateY(1140px);
+                }
+                a {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        display: inline-block;
+                        overflow: hidden;
+                        border-radius: 50%;
+                    }
+                }
+                h4 {
+                    background-color: black;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    color: white;
+                    position: absolute;
+                    top: 25%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 2;
+                }
+            }
+            .store:nth-child(3) {
+                transform: translateY(1250px);
+                width: 35%;
+                @media all and (min-width: 1200px) and (max-width: 1439px) {
+                    transform: translateY(1315px);
+                }
+                @media all and (max-width: 575px) {
+                    transform: translateY(1210px);
+                }
+                a {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        display: inline-block;
+                        overflow: hidden;
+                        border-radius: 50%;
+                    }
+                }
+                h4 {
+                    background-color: black;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    background-color: black;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    color: white;
+                    position: absolute;
+                    top: 25%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 2;
+                }
+            }
+        }
+        button#Larrow {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            bottom: -2%;
+            left: 30%;
+            outline: none;
+            background-color: transparent;
+            // color: white;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            @media all and (min-width: 1440px) and (max-width: 1599px) {
+                left: 31%;
+            }
+            @media all and (min-width: 1200px) and (max-width: 1439px) {
+                left: 35%;
+            }
+            @media all and (min-width: 768px) and (max-width: 991px) {
+                left: 35%;
+            }
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                bottom: -1%;
+            }
+            @media all and (max-width: 575px) {
+                left: 37%;
+                bottom: 3%;
+            }
+        }
+        button#Rarrow {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            bottom: -2%;
+            right: 30%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+            // color: white;
+            // border-radius: 10px;
+            @media all and (min-width: 1440px) and (max-width: 1599px) {
+                right: 31%;
+            }
+            @media all and (min-width: 1200px) and (max-width: 1439px) {
+                right: 35%;
+            }
+            @media all and (min-width: 768px) and (max-width: 991px) {
+                right: 35%;
+            }
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                bottom: -1%;
+            }
+            @media all and (max-width: 575px) {
+                right: 37%;
+                bottom: 3%;
+            }
+        }
+    }
+    .fourTeam {
+        .team_one {
+            @include circle(225px, #76AFAF);
+            position: absolute;
+            left: 14%;
+            bottom: 8%;
+            z-index: 2;
+            &:hover {
+                transform: scale(1.1);
+            }
+            @media all and (min-width: 1600px) and (max-width: 1920px) {
+                left: 8%;
+            }
+            @media all and (min-width: 1440px) and (max-width: 1599px) {
+                left: 7%;
+            }
+            @media all and (min-width: 1200px) and (max-width: 1439px) {
+                left: 5%;
+                bottom: 27%;
+            }
+            @media all and (min-width: 992px) and (max-width: 1199px) {
+                left: 2%;
+                bottom: 10%;
+            }
+            @media all and (min-width: 768px) and (max-width: 991px) {
+                left: 3%;
+                bottom: 22%;
+            }
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                left: 5%;
+                bottom: 26%;
+            }
+            @media all and (max-width: 575px) {
+                @include circle(180px, #76AFAF);
+                left: 1%;
+                bottom: 26%;
+            }
+        }
+        .content {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-35%);
+            top: 25%;
+            p {
+                font-size: $fontSize;
+                white-space: nowrap;
+                line-height: 1.5;
+                @media all and (max-width: 575px) {
+                    font-size: 0.8*$fontSize;
+                }
+            }
+        }
+        button {
+            // padding: 5px 14px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15%;
+            // border-radius: 8px;
+            // @include btnBrown_5;
+            @media all and (max-width: 575px) {
+                bottom: 8%;
+            }
+        }
+    }
+    .team_two {
+        @include circle(225px, #601C8A);
+        position: absolute;
+        left: 33.5%;
+        bottom: 12%;
+        z-index: 2;
+        &:hover {
+            transform: scale(1.1);
+        }
+        @media all and (min-width: 1600px) and (max-width: 1920px) {
+            left: 30%;
+            bottom: 2%;
+        }
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            left: 29.5%;
+            bottom: 1%;
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            left: 23%;
+            bottom: 2%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            left: 28.5%;
+            bottom: 1%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            left: 19.5%;
+            bottom: 1%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            left: 5%;
+            bottom: 1%;
+        }
+        @media all and (max-width: 575px) {
+            @include circle(180px, #601C8A);
+            left: 1%;
+            bottom: 1%;
+        }
+        .content {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-35%);
+            top: 25%;
+            p {
+                font-size: $fontSize;
+                white-space: nowrap;
+                line-height: 1.5;
+                @media all and (max-width: 575px) {
+                    font-size: 0.8*$fontSize;
+                }
+            }
+        }
+        button {
+            // padding: 5px 14px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15%;
+            // border-radius: 8px;
+            @media all and (max-width: 575px) {
+                bottom: 8%;
+            }
+        }
+    }
+    .team_three {
+        @include circle(225px, #F4EFDF);
+        position: absolute;
+        right: 31%;
+        bottom: 4%;
+        z-index: 2;
+        &:hover {
+            transform: scale(1.1);
+        }
+        @media all and (min-width: 1600px) and (max-width: 1920px) {
+            bottom: 1%;
+        }
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            right: 27%;
+            bottom: 1%;
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            right: 22%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            bottom: 5%;
+            right: 24%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            right: 19.5%;
+            bottom: 1%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            right: 5%;
+            bottom: 26%;
+        }
+        @media all and (max-width: 575px) {
+            @include circle(180px, #F4EFDF);
+            right: 1%;
+            bottom: 26%;
+        }
+        .content {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-35%);
+            top: 25%;
+            p {
+                font-size: $fontSize;
+                white-space: nowrap;
+                line-height: 1.5;
+                @media all and (max-width: 575px) {
+                    font-size: 0.8*$fontSize;
+                }
+            }
+        }
+        button {
+            // padding: 5px 14px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-35%);
+            bottom: 15%;
+            // border-radius: 8px;
+            @media all and (max-width: 575px) {
+                bottom: 8%;
+            }
+        }
+    }
+    .team_four {
+        @include circle(225px, #B71E68);
+        position: absolute;
+        right: 13%;
+        bottom: 32%;
+        z-index: 2;
+        &:hover {
+            transform: scale(1.1);
+        }
+        @media all and (min-width: 1600px) and (max-width: 1920px) {
+            bottom: 23%;
+        }
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            bottom: 19%;
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            bottom: 23%;
+            right: 4%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            bottom: 3%;
+            right: 1%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            right: 3%;
+            bottom: 22%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            right: 5%;
+            bottom: 1%;
+        }
+        @media all and (max-width: 575px) {
+            @include circle(180px, #B71E68);
+            right: 1%;
+            bottom: 1%;
+        }
+        .content {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-35%);
+            top: 25%;
+            p {
+                font-size: $fontSize;
+                white-space: nowrap;
+                line-height: 1.5;
+                @media all and (max-width: 575px) {
+                    font-size: 0.8*$fontSize;
+                }
+            }
+        }
+        button {
+            // padding: 5px 14px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15%;
+            // border-radius: 8px;
+            @media all and (max-width: 575px) {
+                bottom: 8%;
+            }
+        }
+    }
+}
+
+.twoPeople {
+    background-image: url(../image/index/second_screen_twoPeople.svg);
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    bottom: 3%;
+    left: 5%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    @media all and (min-width: 1200px) and (max-width: 1439px) {
+        width: 250px;
+        height: 250px;
+        left: 1%;
+        bottom: 0;
+    }
+    @media all and (min-width: 992px) and (max-width: 1199px) {
+        left: -3%;
+    }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+        display: none;
+    }
+    @media all and (min-width: 576px) and (max-width: 767px) {
+        display: none;
+    }
+    @media all and (max-width: 575px) {
+        display: none;
+    }
+}
+
+.friends {
+    background-image: url(../image/index/second_screen_friends.svg);
+    width: 420px;
+    height: 237px;
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+    background-repeat: no-repeat;
+    @media all and (min-width: 1600px) and (max-width: 1920px) {
+        width: 320px;
+        bottom: -2%;
+    }
+    @media all and (min-width: 1440px) and (max-width: 1599px) {
+        width: 308px;
+        bottom: -6%;
+    }
+    @media all and (min-width: 1200px) and (max-width: 1439px) {
+        width: 250px;
+        right: 2%;
+        bottom: -10%;
+    }
+    @media all and (min-width: 992px) and (max-width: 1199px) {
+        bottom: 18%;
+    }
+    @media all and (min-width: 768px) and (max-width: 991px) {
+        display: none;
+    }
+    @media all and (min-width: 576px) and (max-width: 767px) {
+        display: none;
+    }
+    @media all and (max-width: 575px) {
+        display: none;
+    }
+}
+
+section.third_screen {
+    border: 1px solid black;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    // background-image: url(../image/index/third_screen_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    .circle_orange {
+        @include circle_bigOrange;
+        top: -45%;
+        left: -29%;
+        z-index: -1;
+    }
+    h2 {
+        color: white;
+        position: absolute;
+        top: 24%;
+        left: 8%;
+        z-index: 2;
+        font-weight: 800;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            left: 5%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            top: 14%;
+            left: 11%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 11%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @media all and (max-width: 575px) {
+            top: 13%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    h4 {
+        color: white;
+        position: absolute;
+        top: 29%;
+        left: 8%;
+        z-index: 2;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            left: 5%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            top: 19%;
+            left: 12%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 16%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        @media all and (max-width: 575px) {
+            top: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+    }
+    .useCellPhone {
+        background-image: url(../image/index/third_screen_useCellPhone.svg);
+        width: 431px;
+        height: 495px;
+        position: absolute;
+        bottom: 7%;
+        left: 6%;
+        background-repeat: no-repeat;
+        @media all and (min-width: 1440px) and (max-width: 1599px) {
+            width: 350px;
+        }
+        @media all and (min-width: 1200px) and (max-width: 1439px) {
+            width: 300px;
+            bottom: 5%;
+        }
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            width: 250px;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            display: none;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            display: none;
+        }
+        @media all and (max-width: 575px) {
+            display: none;
+        }
+    }
+    .friends {
+        background-image: url(../image/index/third_screen_friends.svg);
+        width: 461px;
+        height: 273px;
+        position: absolute;
+        top: 14%;
+        right: 5%;
+        background-repeat: no-repeat;
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            width: 300px;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            display: none;
+        }
+        @media all and (max-width: 575px) {
+            display: none;
+        }
+    }
+    .video {
+        width: 55%;
+        height: 60vh;
+        background-color: darkblue;
+        position: absolute;
+        top: 25%;
+        right: 10%;
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            right: 6%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            width: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            width: 85%;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        @media all and (max-width: 575px) {
+            width: 80%;
+        }
+        button {
+            position: absolute;
+            bottom: -15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+section.fourth_screen {
+    border: 1px solid black;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    // background-image: url(../image/index/fourth_screen_background.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    .header_padding {
+        height: 120px;
+        // border: 1px solid green;
+    }
+    .fourth_screen_circle_orange {
+        @include circle_bigOrange;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -99;
+    }
+    h2 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 13%;
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            left: 12%;
+            transform: translateX(0);
+        }
+    }
+    h4 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 18%;
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            left: 12%;
+            transform: translateX(0);
+        }
+    }
+    .fourth_screen_friends {
+        background-image: url(../../image/index/fourth_screen_friends.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        // top: 50%;
+        // left: 50%;
+        // transform: translateX(-50%);
+        z-index: -98;
+        width: 35%;
+        height: 35%;
+        position: absolute;
+        bottom: 3%;
+        left: 50%;
+        transform: translateX(-50%);
+        @media all and (min-width: 992px) and (max-width: 1199px) {
+            bottom: -4%;
+        }
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            bottom: -5%;
+        }
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            display: none;
+        }
+        @media all and (max-width: 575px) {
+            display: none;
+        }
+    }
+    .chu_container {
+        max-width: 1680px;
+        width: 100%;
+        margin: 0 auto;
+        // border: 1px solid red;
+        height: 80vh;
+        position: absolute;
+        top: 13%;
+        left: 50%;
+        transform: translateX(-50%);
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            top: 14%;
+        }
+        @media all and (max-width: 575px) {
+            top: 10%;
+        }
+        .chu_row1 {
+            display: flex;
+            // border: 3px solid green;
+            justify-content: space-around;
+            height: 40vh;
+            position: relative;
+            transform: translateY(75px);
+            * {
+                color: white;
+            }
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                flex-direction: column;
+            }
+            @media all and (max-width: 575px) {
+                flex-direction: column;
+            }
+            .chu_left {
+                position: relative;
+                top: 40%;
+                border-radius: 50%;
+                // border: 1px solid blue;
+                background-color: #601C8A;
+                width: 260px;
+                height: 260px;
+                padding: 15px;
+                @media all and (min-width: 576px) and (max-width: 767px) {
+                    margin: auto;
+                    left: 25%;
+                }
+                @media all and (max-width: 575px) {
+                    margin: auto;
+                    width: 200px;
+                    height: 200px;
+                }
+                .chu_left_icon1 {
+                    margin-top: 15px;
+                    @media all and (max-width: 575px) {
+                        margin-top: 0;
+                    }
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .chu_left_content {
+                    padding: 30px 0px;
+                    font-size: $fontSize;
+                    text-align: center;
+                    transform: translateY(-22px);
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        transform: translateY(10px);
+                    }
+                }
+                span {
+                    font-size: $fontSize*1.5;
+                    text-align: center;
+                    display: block;
+                    transform: translateY(-18px);
+                    @media all and (max-width: 575px) {
+                        font-size: $fontSize;
+                    }
+                }
+                .chu_left_icon2 {
+                    text-align: right;
+                    margin-top: 5px;
+                    @media all and (max-width: 575px) {
+                        margin-top: -20px;
+                    }
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .chu_left_icon3 {
+                    display: inline-block;
+                    position: absolute;
+                    top: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    p {
+                        font-size: 16px;
+                        // color: black;
+                        transform: translateY(-15px);
+                        display: inline-block;
+                    }
+                }
+            }
+            .chu_center {
+                position: relative;
+                top: 8%;
+                border-radius: 50%;
+                width: 260px;
+                height: 260px;
+                padding: 15px;
+                background-color: #76AFAF;
+                @media all and (min-width: 576px) and (max-width: 767px) {
+                    margin: auto;
+                    top: 40%;
+                    right: 25%;
+                }
+                @media all and (max-width: 575px) {
+                    margin: auto;
+                    top: 43%;
+                    width: 200px;
+                    height: 200px;
+                }
+                // border: 1px solid blue;
+                // flex: 0 1;
+                .chu_center_icon1 {
+                    margin-top: 15px;
+                    @media all and (max-width: 575px) {
+                        margin-top: 0;
+                    }
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .chu_center_content {
+                    padding: 30px 0px;
+                    font-size: $fontSize;
+                    text-align: center;
+                    transform: translateY(-22px);
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        transform: translateY(10px);
+                    }
+                }
+                span {
+                    font-size: $fontSize*1.5;
+                    text-align: center;
+                    display: block;
+                    transform: translateY(-18px);
+                    @media all and (max-width: 575px) {
+                        font-size: $fontSize;
+                    }
+                }
+                .chu_center_icon2 {
+                    text-align: right;
+                    margin-top: 5px;
+                    @media all and (max-width: 575px) {
+                        margin-top: -20px;
+                    }
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .chu_center_icon3 {
+                    display: inline-block;
+                    position: absolute;
+                    top: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    p {
+                        font-size: 16px;
+                        // color: black;
+                        transform: translateY(-15px);
+                        display: inline-block;
+                    }
+                }
+            }
+            .chu_right {
+                position: relative;
+                top: 40%;
+                border-radius: 50%;
+                width: 260px;
+                height: 260px;
+                padding: 15px;
+                background-color: #B71E68;
+                @media all and (min-width: 576px) and (max-width: 767px) {
+                    margin: auto;
+                    left: 25%;
+                }
+                @media all and (max-width: 575px) {
+                    margin: auto;
+                    width: 200px;
+                    height: 200px;
+                    transform: translateY(10%);
+                }
+                // border: 1px solid blue;
+                // flex: 0 1;
+                .chu_right_icon1 {
+                    margin-top: 15px;
+                    @media all and (max-width: 575px) {
+                        margin-top: 0;
+                    }
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .chu_right_content {
+                    padding: 30px 0px;
+                    font-size: $fontSize;
+                    text-align: center;
+                    transform: translateY(-22px);
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        transform: translateY(10px);
+                    }
+                }
+                span {
+                    font-size: $fontSize*1.5;
+                    text-align: center;
+                    display: block;
+                    transform: translateY(-18px);
+                    @media all and (max-width: 575px) {
+                        font-size: $fontSize;
+                    }
+                }
+                .chu_right_icon2 {
+                    text-align: right;
+                    margin-top: 5px;
+                    @media all and (max-width: 575px) {
+                        margin-top: -20px;
+                    }
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .chu_right_icon3 {
+                    display: inline-block;
+                    position: absolute;
+                    top: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    p {
+                        font-size: 16px;
+                        // color: black;
+                        transform: translateY(-15px);
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        .chu_button {
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            @media all and (min-width: 576px) and (max-width: 767px) {
+                bottom: 0%;
+                left: 25%;
+            }
+            @media all and (max-width: 575px) {
+                bottom: -5%;
+            }
+        }
+    }
+}

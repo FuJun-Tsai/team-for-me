@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="description" content="fullPage methods demo." />
+    <meta name="keywords" content="fullpage,jquery,methods,callbacks,demo" />
+    <meta name="Resource-type" content="Document" />
+    <!-- <link rel="stylesheet" href="./css/head_footer_style.css"> -->
+    <link rel="stylesheet" href="./sass//vender/other/hover-min.css">
+    <link rel="stylesheet" href="./js/header_fixed.js">
+    <!-- <link rel="stylesheet" href="./css/other/animation.css"> -->
+    <link rel="stylesheet" href="./css/allstyle.css">
+    <link rel="stylesheet" type="text/css" href="./sass/vender/other/jquery.fullPage.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./css/index.css" /> -->
+    <!-- <link rel="stylesheet" href="./css/btn_hover.css"> -->
+    <!--按鈕的css -->
+    <!-- <link rel="stylesheet" href="./css/background.css"> -->
+    <title>首頁</title>
+
+    <!--[if IE]>
+		<script type="text/javascript">
+			var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+
+
+
+
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/kineticjs/4.3.1/kinetic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.2/TweenMax.min.js"></script>
+    <script src="https://www.greensock.com/_js/jquery/jquery.ui.touch-punch.js"></script>
+
+
+
+
+    <!-- 換頻套件 -->
+    <!-- <script type="text/javascript" src="./js/jquery.fullPage.js"></script>
+    <script type="text/javascript" src="./js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="./js/examples.js"></script> -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            function initialization() {
+                $('#myContainer').fullpage({
+                    // sectionsColor: ['#4A6FB1', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+                    // anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                    resize: false,
+                    // animateAnchor:false,
+                    scrollOverflow: true,
+                    // autoScrolling:true,
+                    responsive: 900,
+                    fitSection: false,
+                    // menu: '#menu',
+                    navigation: true,
+                    continuousVertical: false,
+                    // paddingTop: '20px',
+                    css3: true,
+                    onLeave: function(index, nextIndex, direction) {
+                        console.log("onLeave--" + "index: " + index + " nextIndex: " + nextIndex + " direction: " + direction);
+                    },
+                    afterLoad: function(anchorLink, index) {
+                        console.log("afterLoad--" + "anchorLink: " + anchorLink + " index: " + index);
+                    },
+                    afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {
+                        console.log("afterSlideLoad--" + "anchorLink: " + anchorLink + " index: " + index + " slideAnchor: " + slideAnchor + " slideIndex: " + slideIndex);
+                    },
+                    onSlideLeave: function(anchorLink, index, slideIndex, direction) {
+                        console.log("onSlideLeave--" + "anchorLink: " + anchorLink + " index: " + index + " slideIndex: " + slideIndex + " direction: " + direction);
+                    },
+                    afterRender: function() {
+                        console.log("afterRender");
+                    },
+                    afterResize: function() {
+                        console.log("afterResize");
+                    }
+                });
+            }
+
+            //fullPage.js initialization
+            if ($(window).height() >= 900) {
+                initialization();
+            }
+
+
+
+            $('#moveSectionUp').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.moveSectionUp();
+            });
+
+            $('#moveSectionDown').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.moveSectionDown();
+            });
+
+            $('#moveTo').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.moveTo(3, 2);
+            });
+
+            $('#moveSlideRight').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.moveSlideRight();
+            });
+
+            $('#moveSlideLeft').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.moveSlideLeft();
+            });
+
+            $('#setAutoScrollingFalse').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setAutoScrolling(false);
+            });
+
+            $('#setAutoScrollingTrue').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setAutoScrolling(true);
+            });
+
+            $('#setAllowScrollingFalse').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setAllowScrolling(false);
+            });
+
+            $('#setAllowScrollingTrue').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setAllowScrolling(true);
+            });
+
+            $('#setKeyboardScrollingFalse').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setKeyboardScrolling(false);
+            });
+
+            $('#setKeyboardScrollingTrue').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setKeyboardScrolling(true);
+            });
+
+            $('#setScrollingSpeed1500').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setScrollingSpeed(2500);
+            });
+
+            $('#setScrollingSpeed700').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.setScrollingSpeed(700);
+            });
+
+            $('#destroy').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.destroy('all');
+            });
+
+            $('#undestroy').click(function(e) {
+                e.preventDefault();
+
+                //fullPage.js initialization
+                initialization();
+            });
+
+            $('#reBuild').click(function(e) {
+                e.preventDefault();
+                $.fn.fullpage.reBuild();
+            });
+        });
+    </script>
+
+
+    <style>
+        /* 螢幕高度小於等於 899，就限定 min-height */
+        
+        @media screen and (max-height: 899px) {
+            .first_screen,
+            .second_screen,
+            .third_screen,
+            .fourth_screen {
+                min-height: 900px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- 背景泡泡 -->
+    <!-- <div id="bubbles">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+    </div> -->
+
+
+    <header class="chu_header">
+        <section>
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./image/logoHeader.svg" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="hvr-pulse-grow">
+                        <a href="./game.html"> 吃吃配對</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./searchrestaurant.html">餐廳介紹</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./share.html">吃貨分享</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./about_us.html">關於我們</a>
+                    </li>
+                    <li>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button>揪團去!</button></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="member">
+                <div class="icon">
+                    <a href="./login.html">
+                        <img src="./image/icon.svg" alt="">
+                    </a>
+                </div>
+                <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+            </div>
+            <div id="menu-bar">
+                <div id="menu" onclick="onClickMenu()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <ul class="nav1" id="nav1">
+                    <div class="member">
+                        <div class="icon">
+                            <a href="./login.html">
+                                <img src="./image/icon.svg" alt="">
+                            </a>
+                        </div>
+                        <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                    </div>
+                    <li>
+                        <a href="./game.html">吃吃配對</a>
+                    </li>
+                    <li>
+                        <a href="./searchrestaurant.html">餐廳介紹</a>
+                    </li>
+                    <li>
+                        <a href="./share.html"> 吃貨分享</a>
+                    </li>
+                    <li>
+                        <a href="./about_us.html">關於我們</a>
+                    </li>
+                    <li>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button>揪團去!</button></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+        </section>
+    </header>
+
+
+    <div id="myContainer">
+
+        <div class="section" id="section0">
+            <section class="first_screen">
+
+                <!-- 背景泡泡 -->
+                <div id="bubbles" style="position:sticky; z-index: 2 !important;">
+                    <div class="bubble x1"></div>
+                    <div class="bubble x2"></div>
+                    <div class="bubble x3"></div>
+                    <div class="bubble x4"></div>
+                    <div class="bubble x5"></div>
+                    <div class="bubble x6"></div>
+                    <div class="bubble x7"></div>
+                    <div class="bubble x8"></div>
+                    <div class="bubble x9"></div>
+                </div>
+
+                <div class="circle_orange">
+                    <p>美食大富翁</p>
+                </div>
+                <div class="circle_fuchsia">
+                    <p>不知道今天吃什麼嗎？<br>
+                        <br> 快來找餐廳、找吃友！
+                        <br> 一起成為美食大富翁吧～
+                    </p>
+                </div>
+                <div class="circle_purple"></div>
+                <div class="circle_food_cake"></div>
+                <div class="circle_food_noodles"></div>
+                <div class="circle_food_icecream"></div>
+                <div class="circle_food_curry"></div>
+                <div class="circle_food_steak"></div>
+                <div class="circle_food_breakfast"></div>
+                <div class="friends"></div>
+            </section>
+            <!-- <div class="slide" id ="slide1.1"></div> -->
+            <!-- <div class="slide" id ="slide1.2"><h1>Slide 1.2</h1></div> -->
+            <!-- <div class="slide" id ="slide1.3"><h1>Slide 1.3</h1></div> -->
+        </div>
+
+        <div class="section" id="section1">
+            <section class="second_screen">
+
+
+                <!-- 背景泡泡 -->
+                <div id="bubbles" style="position:sticky; z-index: -1 !important;">
+                    <div class="bubble x1"></div>
+                    <div class="bubble x2"></div>
+                    <div class="bubble x3"></div>
+                    <div class="bubble x4"></div>
+                    <div class="bubble x5"></div>
+                    <div class="bubble x6"></div>
+                    <div class="bubble x7"></div>
+                    <div class="bubble x8"></div>
+                    <div class="bubble x9"></div>
+                </div>
+
+
+                <h2>熱門餐廳</h2>
+                <h4 class="restaurant">最夯、最火紅的餐廳在這裡～<br> 快來加入吧！
+                </h4>
+                <div class="circle_orange">
+                    <!-- 轉盤旋轉？ -->
+                    <div class="container" id="storeContainer">
+
+                        <div class="store" id="first">
+                            <a href="#"><img src="./image/index/second_screen_restaurant1.jpg" alt="#"></a>
+                            <h4>無敵蛋餅1</h4>
+                        </div>
+                        <div class="store" id="second">
+                            <a href="#"><img src="./image/index/second_screen_restaurant2.jpg" alt="#"></a>
+                            <h4>薯杯杯2</h4>
+                        </div>
+                        <div class="store" id="third">
+                            <a href="#"><img src="./image/index/second_screen_restaurant3.jpg" alt="#"></a>
+                            <h4>小籠湯包3</h4>
+                        </div>
+                        <div class="store" id="fourth">
+                            <a href="#"><img src="./image/index/second_screen_restaurant4.jpg" alt="#"></a>
+                            <h4>大中央牛排4</h4>
+                        </div>
+                        <div class="store" id="fifth">
+                            <a href="#"><img src="./image/index/second_screen_restaurant5.jpg" alt="#"></a>
+                            <h4>竹香快餐5</h4>
+                        </div>
+
+                    </div>
+
+                    <button id="Rarrow">
+                        <img src="./image/index/arrow_right.svg" alt="">
+                    </button>
+                    <button id="Larrow">
+                        <img src="./image/index/arrow_left.svg" alt="">
+                    </button>
+                </div>
+
+
+
+                <!-- 四個團要綁著轉盤中間的餐廳 -->
+                <div class="fourTeam">
+                    <div class="team team_one">
+                        <div class="content">
+                            <p>團主：蕭黃騎</p>
+                            <p>團名：吃貨團</p>
+                            <p>用餐日期：2020/10/01</p>
+                            <p>用餐時間：18:00</p>
+                        </div>
+                        <button class="btn_5 btn_js">
+                            參加 &#9658 
+                            <span></span>
+                        </button>
+                    </div>
+                    <div class="team team_two">
+                        <div class="content">
+                            <p>團主：羅痣祥</p>
+                            <p>團名：下午茶開起來</p>
+                            <p>用餐日期：2020/10/03</p>
+                            <p>用餐時間：15:30</p>
+                        </div>
+                        <button class="btn_5 btn_js">
+                            參加 &#9658 
+                            <span></span>
+                        </button>
+                    </div>
+                    <div class="team team_three">
+                        <div class="content">
+                            <p>團主：揚塵林</p>
+                            <p>團名：吃不胖</p>
+                            <p>用餐日期：2020/10/05</p>
+                            <p>用餐時間：19:00</p>
+                        </div>
+                        <button class="btn_5 btn_js">
+                            參加 &#9658 
+                            <span></span>
+                        </button>
+                    </div>
+                    <div class="team team_four">
+                        <div class="content">
+                            <p>團主：蔡伊林</p>
+                            <p>團名：94愛吃</p>
+                            <p>用餐日期：2020/10/10</p>
+                            <p>用餐時間：12:00</p>
+                        </div>
+                        <button class="btn_5 btn_js">
+                            參加 &#9658 
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="twoPeople"></div>
+                <div class="friends"></div>
+            </section>
+            <!-- <div class="slide"></div> -->
+            <!-- <div class="slide"><div class="wrap"><h1>Slide 2.1</h1></div></div>
+			    <div class="slide"><h1>Slide 2.2</h1></div>
+			    <div class="slide"><h1>Slide 2.3</h1></div> -->
+        </div>
+
+        <div class="section" id="section2">
+            <section class="third_screen">
+
+                <!-- 背景泡泡 -->
+                <div id="bubbles" style="position:sticky; z-index: 2 !important;">
+                    <div class="bubble x1"></div>
+                    <div class="bubble x2"></div>
+                    <div class="bubble x3"></div>
+                    <div class="bubble x4"></div>
+                    <div class="bubble x5"></div>
+                    <div class="bubble x6"></div>
+                    <div class="bubble x7"></div>
+                    <div class="bubble x8"></div>
+                    <div class="bubble x9"></div>
+                </div>
+
+                <div class="circle_orange"></div>
+                <h2>吃吃配對</h2>
+                <h4>不知道吃什麼嗎？想認識新朋友嗎？<br> 進入遊戲配對，尋找餐廳和吃友～
+                </h4>
+                <div class="useCellPhone"></div>
+                <div class="friends"></div>
+                <div class="video">
+                    <video src="#"></video>
+                    <button class="btn_2 btn_js">
+                        點我進入遊戲
+                        <span></span>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <div class="section" id="section3">
+            <section class="fourth_screen">
+
+                <!-- 背景泡泡 -->
+                <div id="bubbles" style="position:sticky; z-index: -1 !important;">
+                    <div class="bubble x1"></div>
+                    <div class="bubble x2"></div>
+                    <div class="bubble x3"></div>
+                    <div class="bubble x4"></div>
+                    <div class="bubble x5"></div>
+                    <div class="bubble x6"></div>
+                    <div class="bubble x7"></div>
+                    <div class="bubble x8"></div>
+                    <div class="bubble x9"></div>
+                </div>
+
+                <div class="header_padding"></div>
+
+                <div class="fourth_screen_circle_orange"></div>
+
+                <h2>吃貨分享</h2>
+                <h4>快來聽聽網友怎麼說</h4>
+
+                <div class="chu_container">
+                    <div class="chu_row1">
+                        <div class="chu_left">
+                            <div class="chu_left_icon1">
+                                <img src="./image/user.png" alt="">
+                            </div>
+                            <div class="chu_left_icon3">
+                                <img src="./image/index/fourth_screen_hollowHeart.svg" alt="">
+                                <p>35</p>
+                            </div>
+                            <p class="chu_left_content"><img src="./image/index/fourth_screen_speaker.svg" alt=""> 皇家蝦捲好好吃
+                            </p>
+                            <span>＜最多收藏貼文＞</span>
+                            <div class="chu_left_icon2">
+                                <img src="./image/index/arrow_right.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="chu_center">
+                            <div class="chu_center_icon1">
+                                <img src="./image/user.png" alt="">
+                            </div>
+                            <div class="chu_center_icon3">
+                                <img src="./image/index/fourth_screen_comment.svg" alt="">
+                                <p>22</p>
+                            </div>
+                            <p class="chu_center_content"><img src="./image/index/fourth_screen_speaker.svg" alt=""> 乾杯燒肉好好吃
+                            </p>
+                            <span>＜最多留言貼文＞</span>
+                            <div class="chu_center_icon2">
+                                <img src="./image/index/arrow_right.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="chu_right">
+                            <div class="chu_right_icon1">
+                                <img src="./image/user.png" alt="">
+                            </div>
+                            <div class="chu_right_icon3">
+                                <img src="./image/index/fourth_screen_share.svg" alt="">
+                                <p>13</p>
+                            </div>
+                            <p class="chu_right_content"><img src="./image/index/fourth_screen_speaker.svg" alt=""> 爭鮮好好吃
+                            </p>
+                            <span>＜最多分享貼文＞</span>
+                            <div class="chu_right_icon2">
+                                <img src="./image/index/arrow_right.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn_2 btn_js chu_button">
+                        查看更多分享
+                        <span></span>
+                    </button>
+
+                </div>
+                <div class="fourth_screen_friends"></div>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- ***************************** -->
+    <footer>
+        <div class="footer">
+            <h6>Copyright © 2020 食緣 All Rights Reserved</h6>
+        </div>
+    </footer>
+
+    <!--hamburger-->
+    <script>
+        function onClickMenu() {
+            document.getElementById("menu").classList.toggle("change");
+            document.getElementById("nav1").classList.toggle("change");
+            document.getElementById("menu-bg").classList.toggle("change-bg");
+        }
+
+        function onClickSubMenu() {
+            document.getElementById("sub_menu").classList.toggle("change1");
+            document.querySelector(".nav1>li:nth-child(1)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(3)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(4)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(5)").classList.toggle("none");
+        }
+    </script>
+    <script src="./js/restaurant_team.js"></script>
+
+    <script>
+        // 使用者拖曳，就重新整理畫面。
+        $(window).on("resize", function() {
+            location.reload();
+        });
+    </script>
+    <script src="js/btn_hover.js"></script>
+    <!--按鈕js -->
+
+    <!-- <script>
+
+            tweenmax測試
+
+            TweenLite.to(
+                '#fifth',2,{
+                    x:300,
+                    y:-300,
+                    width:100,
+                    height:100,
+                    borderRadius:0,
+                    rotation:180, 
+                    scaleX:0.8,
+                }
+
+            TweenMax.to(document.getElementById("#fifth"), 2, {bezier:{curviness: 2, values:[{x: 0, y: 10}, {x: 75, y: 0}, {x: 90, y: -118}], autoRotate:true}, opacity:"1", ease:Power1.easeInOut, repeat: -1, yoyo: true})
+        
+            TweenLite.to(
+                'circle_food_cake',2,{
+                    x:300,
+                    y:-300,
+                    width:100,
+                    height:100,
+                    borderRadius:0,
+                    rotation:180, 
+                    scaleX:0.8,
+                })
+            
+        </script> -->
+
+</body>
+
+</html>

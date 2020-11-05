@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/share.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+    <script src="./js/header_fixed.js"></script>
+    <!-- <link rel="stylesheet" href="./css/head_footer_style.css"> -->
+    <link rel="stylesheet" href="./css/allstyle.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./sass/vender/other/hover-min.css">
+    <!-- <link rel="stylesheet" href="./css/background.css"> -->
+    <script src="./js/header_fixed.js"></script>
+    <title>share</title>
+</head>
+
+<body>
+    <!-- 背景泡泡 -->
+    <div id="bubbles">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+    </div>
+    <header>
+        <section>
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./image/logoHeader.svg" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li class="hvr-pulse-grow">
+                        <a href="./game.html"> 吃吃配對</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./searchrestaurant.html">餐廳介紹</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./share.html">吃貨分享</a>
+                    </li>
+                    <li class="hvr-pulse-grow">
+                        <a href="./about_us.html">關於我們</a>
+                    </li>
+                    <li>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button style="padding: 10px 20px;">揪團去!</button></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="member">
+                <div class="icon">
+                    <a href="./login.html">
+                        <img src="./image/icon.svg" alt="">
+                    </a>
+                </div>
+                <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+            </div>
+            <div id="menu-bar">
+                <div id="menu" onclick="onClickMenu()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <ul class="nav1" id="nav1">
+                    <div class="member">
+                        <div class="icon">
+                            <a href="./login.html">
+                                <img src="./image/icon.svg" alt="">
+                            </a>
+                        </div>
+                        <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                    </div>
+                    <li>
+                        <a href="./game.html">吃吃配對</a>
+                    </li>
+                    <li>
+                        <a href="./searchrestaurant.html">餐廳介紹</a>
+                    </li>
+                    <li>
+                        <a href="./share.html"> 吃貨分享</a>
+                    </li>
+                    <li>
+                        <a href="./about_us.html">關於我們</a>
+                    </li>
+                    <li>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button>揪團去!</button></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+        </section>
+    </header>
+
+    <!-- ***************************** -->
+    <!-- 新增貼文 -->
+    <div class="banner_bg">
+        <div class="text">
+            <h1>　吃貨分享</h1>
+        </div>
+    </div>    
+
+    <div class="po_wen">
+        <div class="btnCust" id="newMoodBtn">
+            <img src="./image/19.png">
+        </div>
+    </div>
+    <!-- 分類排序 -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tool_btn">
+                        <button type="button">揪團分享</button>
+                        <button type="button">美食分享</button>
+                        <select>
+                            <option>排序方式</option>
+                            <option>最新貼文</option>
+                            <option>最多收藏</option>
+                            <option>最多留言</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="cardshare">
+                <!-- -------------------卡片1--------------------- -->
+                <div class="col-md-4" id="c1">
+                    <div class="content">
+                        <!-- ------卡片表頭------- -->
+                        <div class="head">
+                            <!-- ------用戶頭像圖片------- -->
+                            <div class="user_img_block">
+                                <img src="image/user.png">
+                            </div>
+                            <!-- ------用戶名稱------- -->
+                            <div class="user_name">
+                                <h5>孫小美</h5>
+                            </div>
+                            <!-- ------貼文日期------- -->
+                            <div class="time">
+                                <h5>2020.11.27</h5>
+                            </div>
+                        </div>
+                            <!-- ------卡片分享圖片------- -->
+                        <div class="col-md-12 -outpic" id="c1-1">
+                            <div class="btn_modal">
+                                <img src="image/1.jpg">
+                            </div>
+                        </div>
+                            <!-- ------卡片表尾------- -->
+                        <div class="foot">
+                            <!-- ------收藏ICON------- -->
+                            <div class="collect_block">
+                                <img src="image/heart-shape-silhouette.png">
+                            <!-- ------收藏數------- -->
+                                <div class="collect_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                            <!-- ------回文ICON------- -->
+                            <div class="msg_block">
+                                <img src="image/comment-alt-solid.svg">
+                            <!-- ------回文數------- -->
+                                <div class="msg_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- 新增心情 燈箱 -->
+                        <div class="overlay">
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <article>
+                                        <div class="msg-title">
+                                            <h2>美食分享</h2>
+                                            <div class="btn_modal_close">
+                                                <img src="./image/XX.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 order-1">
+                                                <!-- ------內圖------- -->
+                                                <div class="msg-left">
+                                                    <div class="img_block">
+                                                        <img>
+                                                    </div>
+                                                    <div class="user_img_block">
+                                                        <img>
+                                                    </div>
+                                                    <div class="user_name">
+                                                        <h5></h5>
+                                                    </div>
+                                                    <!-- ------收藏------- -->
+                                                    <div class="collect_block">
+                                                        <img src="image/heart-shape-silhouette.png">
+                                                        <div class="collect_sum">
+                                                            <h5>999</h5>
+                                                        </div>
+                                                    </div>
+                                                    <p>小小店舖，原先座落在耕莘醫院對面的騎樓間，而在前些日子突然宣布暫停營業，幸好只是因為搬遷。
+                                                    </p>
+                                                    <input type="button" value="檢舉">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 order-2">
+                                                <div class="msg-right">
+                                                    <div class="msgin">
+                                                        <div class="msgpost">
+                                                            <div class="user_img_block">
+                                                                <img src="image/user.png">
+                                                            </div>
+                                                            <div class="user_name">
+                                                                <h5>董董：</h5>
+                                                            </div>
+                                                            <p>看起來很讚!!</p>
+                                                            <input type="button" value="檢舉">
+                                                        </div>
+                                                        <div class="msgpost">
+                                                            <div class="user_img_block">
+                                                                <img src="image/user.png">
+                                                            </div>
+                                                            <div class="user_name">
+                                                                <h5>喵貓：</h5>
+                                                            </div>
+                                                            <p>看起來很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚很讚!!</p>
+                                                            <input type="button" value="檢舉">
+                                                        </div>
+                                                    </div>
+                                                    <form action="">
+                                                        <textarea name="" id="" placeholder="留言"></textarea>
+                                                        <br>
+                                                        <input type="submit" value="送 出">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- -------------------卡片2--------------------- -->
+                <div class="col-md-4" id="C2">
+                    <div class="content">
+                        <!-- ------卡片表頭------- -->
+                        <div class="head">
+                            <!-- ------用戶頭像圖片------- -->
+                            <div class="user_img_block">
+                                <img src="image/user.png">
+                            </div>
+                            <!-- ------用戶名稱------- -->
+                            <div class="user_name">
+                                <h5>孫小美</h5>
+                            </div>
+                            <!-- ------貼文日期------- -->
+                            <div class="time">
+                                <h5>2020.11.27</h5>
+                            </div>
+                        </div>
+
+                        <!-- ------卡片分享圖片------- -->
+                        <div class="col-md-12 -inner">
+                            <div class="btn_modal">
+                                <img src="image/8.jpg">
+                            </div>
+                        </div>
+                        <!-- ------卡片表尾------- -->
+                        <div class="foot">
+                            <!-- ------收藏ICON------- -->
+                            <div class="collect_block">
+                                <img src="image/heart-shape-silhouette.png">
+                                <!-- ------收藏數------- -->
+                                <div class="collect_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                            <!-- ------回文ICON------- -->
+                            <div class="msg_block">
+                                <img src="image/comment-alt-solid.svg">
+                                <!-- ------回文數------- -->
+                                <div class="msg_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- -------------------卡片3--------------------- -->
+                <div class="col-md-4" id="C2">
+                    <div class="content">
+                        <!-- ------卡片表頭------- -->
+                        <div class="head">
+                            <!-- ------用戶頭像圖片------- -->
+                            <div class="user_img_block">
+                                <img src="image/user.png">
+                            </div>
+                            <!-- ------用戶名稱------- -->
+                            <div class="user_name">
+                                <h5>孫小美</h5>
+                            </div>
+                            <!-- ------貼文日期------- -->
+                            <div class="time">
+                                <h5>2020.11.27</h5>
+                            </div>
+                        </div>
+                        <!-- ------卡片分享圖片------- -->
+                        <div class="col-md-12 -inner">
+                            <div class="btn_modal">
+                                <img src="image/5.jpg">
+                            </div>
+                        </div>
+                        <!-- ------卡片表尾------- -->
+                        <div class="foot">
+                            <!-- ------收藏ICON------- -->
+                            <div class="collect_block">
+                                <img src="image/heart-shape-silhouette.png">
+                                <!-- ------收藏數------- -->
+                                <div class="collect_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                            <!-- ------回文ICON------- -->
+                            <div class="msg_block">
+                                <img src="image/comment-alt-solid.svg">
+                                <!-- ------回文數------- -->
+                                <div class="msg_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- -------------------卡片4--------------------- -->
+                <div class="col-md-4" id="C2">
+                    <div class="content">
+                        <!-- ------卡片表頭------- -->
+                        <div class="head">
+                            <!-- ------用戶頭像圖片------- -->
+                            <div class="user_img_block">
+                                <img src="image/user.png">
+                            </div>
+                            <!-- ------用戶名稱------- -->
+                            <div class="user_name">
+                                <h5>孫小美</h5>
+                            </div>
+                            <!-- ------貼文日期------- -->
+                            <div class="time">
+                                <h5>2020.11.27</h5>
+                            </div>
+                        </div>
+                        <!-- ------卡片分享圖片------- -->
+                        <div class="col-md-12 -inner">
+                            <div class="btn_modal">
+                                <img src="image/9.jpg">
+                            </div>
+                        </div>
+                        <!-- ------卡片表尾------- -->
+                        <div class="foot">
+                            <!-- ------收藏ICON------- -->
+                            <div class="collect_block">
+                                <img src="image/heart-shape-silhouette.png">
+                                <!-- ------收藏數------- -->
+                                <div class="collect_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                            <!-- ------回文ICON------- -->
+                            <div class="msg_block">
+                                <img src="image/comment-alt-solid.svg">
+                                <!-- ------回文數------- -->
+                                <div class="msg_sum">
+                                    <h5>999</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="newMoodLightBox" id="newMoodLightBox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="newMoodBlock">
+                        <div id="closeNewMoodBtn">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                        </div>
+                        <h2>分享你的吃吃心得</h2>
+                        <form id="newMoodForm">
+                            <div class="moodBox">
+                                <h1>上傳圖片</h1>
+                                <div class="picWrap">
+                                    <img src="./image/newMoodPic.png" id="viewImg">
+                                </div>
+                                <input type="file" name="moodPic" id="inputImg">
+                            </div>
+                            <div class="moodBox">
+                                <h1>選擇分類</h1>
+                                <select name="moodClass" id="moodClass">
+                                        <option value="揪團分享">揪團分享</option>
+                                        <option value="美食分享">美食分享</option>
+                                    </select>
+                                <h1>寫下吃吃心情</h1>
+                                <textarea name="moodContent" id="moodContent"></textarea>
+                            </div>
+                        </form>
+                        <button class="btnPink" id="newMoodPostBtn">送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gototop2">
+        <div class="goto-top">GO TOP
+            <img src="./image/14.png">
+        </div>
+    </div>
+
+    <!-- ***************************** -->
+    <footer>
+        <div class="footer">
+            <h6>Copyright © 2020 食緣 All Rights Reserved</h6>
+        </div>
+    </footer>
+
+    <!--hambuger-->
+    <script>
+        function onClickMenu() {
+            document.getElementById("menu").classList.toggle("change");
+            document.getElementById("nav1").classList.toggle("change");
+            document.getElementById("menu-bg").classList.toggle("change-bg");
+        }
+
+        function onClickSubMenu() {
+            document.getElementById("sub_menu").classList.toggle("change1");
+            document.querySelector(".nav1>li:nth-child(1)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(3)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(4)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(5)").classList.toggle("none");
+        }
+    </script>
+
+    <!-- lightbox -->
+    <!-- <script>
+        $(function(){
+        
+        // 開啟 Modal 彈跳視窗
+        $("div.btn_modal").on("click", function(){
+            $("div.overlay").addClass("-on");
+        });
+        
+        // 關閉 Modal
+        $("div.btn_modal_close").on("click", function(){
+            $("div.overlay").addClass("-opacity-zero");
+            
+            // 設定隔一秒後，移除相關 class
+            setTimeout(function(){
+            $("div.overlay").removeClass("-on -opacity-zero");
+            }, 1000);
+        });
+        
+        });
+    </script> -->
+    <script>
+        $(function() {
+            // 開啟 Modal 彈跳視窗
+            $("div.btn_modal").on("click", function() {
+                $(".overlay").addClass("-on");
+                let index = parseInt($('.btn_modal').index(this)) + 1;
+                console.log(index);
+                let userimg = $(`#c${index} .user_img_block img`).attr('src');
+                let username = $(`#c${index} .head .user_name h5:nth-child(1)`).text();
+                let largeimg = $(this).children('img').attr('src');
+
+                $('.overlay .img_block img').attr('src', largeimg);
+                $('.overlay .user_img_block img').attr('src', userimg);
+                $('.overlay .user_name h5').text(username);
+            });
+
+            // 關閉 Modal
+            $("div.btn_modal_close").on("click", function() {
+                $("div.overlay").addClass("-opacity-zero");
+
+                // 設定隔一秒後，移除相關 class
+                setTimeout(function() {
+                    $("div.overlay").removeClass("-on -opacity-zero");
+                }, 0);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+        $(window).scroll(function () {
+            var top =  $(".goto-top");
+                if ( $('body').height() <= ($(window).height() + $(window).scrollTop() + 200 )) {
+        top.animate({"margin-left": "0px"},1500);
+                } else {
+                    top.animate({"margin-left": "-100%"},1500);
+                }
+            });
+
+            $(".goto-top").on('click', function () {
+                $("html, body").animate({scrollTop: 0}, 400);
+            });
+        });
+    </script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

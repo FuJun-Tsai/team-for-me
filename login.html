@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/allstyle.css">
+    <!-- <link rel="stylesheet" href="./css/background.css"> -->
+
+
+</head>
+
+<body>
+    <!-- 背景泡泡 -->
+    <div id="bubbles">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+    </div>
+    <!-- 本體 -->
+    <main>
+
+        <section class="section_res">
+            <div class="container_res">
+                <div class="user singinBx">
+                    <div class="img_res">
+                        <img src="./image/2.png" alt="">
+                    </div>
+                    <div class="form_res">
+                        <form name="login" action="login.php" method="post">
+                            <h2>會員登入</h2>
+                            <input type="text" name="email" placeholder="請輸入帳號">
+                            <input type="password" name="password" placeholder="請輸入密碼">
+
+                            <input type="submit" name="" value="Next">
+                            <p class="learn">還未成為會員?<br><a href="#" onclick="toggleForm();">註冊會員請點我</a></p>
+                        </form>
+                    </div>
+
+                </div>
+
+
+                <div class="user singupBx">
+                    <div class="form_res">
+                        <form action="signup.php" method="post">
+                            <h2>註冊</h2>
+                            <input type="text" name="email" placeholder="請輸入註冊email">
+                            <input type="password" name="password" placeholder="請輸入密碼">
+                            <!-- <input type="password" name="password" placeholder="再次確認密碼"> -->
+                            <input type="submit" name="submit" value="Next">
+                            <p class="learn">已經有會員了?<br><a href="#" onclick="toggleForm();">會員登入點我點我</a></p>
+                        </form>
+                    </div>
+                    <div class="img_res">
+                        <img src="./image/4.jpg" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <footer>
+
+    </footer>
+
+
+
+    <script>
+        function toggleForm() {
+            var container_res = document.querySelector('.container_res');
+            container_res.classList.toggle('act')
+        }
+    </script>
+
+</body>
+
+</html>

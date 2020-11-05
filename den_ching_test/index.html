@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="./main.js"></script>
+
+</head>
+
+<body>
+
+
+    <section class="dice-container">
+        <div id="dice" class="show-front">
+            <figure class="front"></figure>
+            <figure class="back"></figure>
+            <figure class="right"></figure>
+            <figure class="left"></figure>
+            <figure class="top"></figure>
+            <figure class="bottom"></figure>
+        </div>
+    </section>
+
+    <button id="help">?</button>
+
+    <div id="instructions">Drag and drop the dice to roll</div>
+
+    <footer>
+        <a href="https://alexerlandsson.com" target="_blank">alexerlandsson.com</a>
+        <br />
+        <a href="https://twitter.com/alexerlandsson" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a href="https://codepen.io/alexerlandsson/" target="_blank"><i class="fa fa-codepen"></i></a>
+    </footer>
+
+    <!-- Audio has a delay in Safari :( -->
+    <audio preload="auto">
+    <source src="https://alexerlandsson.github.io/assets/codepen/roll-the-dice/sound/dice-sound.mp3"></source>
+  </audio>
+
+</body>
+
+</html>

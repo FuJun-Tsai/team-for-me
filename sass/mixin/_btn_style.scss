@@ -1,0 +1,375 @@
+//首頁大按鈕
+@mixin btnRed_2 {
+    //紅
+    padding: 0;
+    border: 0.1px solid #9B1E23;
+    display: inline-block;
+    outline: none;
+    background-color: #9B1E23;
+    color: #FFFFFF;
+    width: 200px;
+    height: 55px;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    // font-size: $fontSize*1.5;
+    text-align: center;
+    line-height: 55px;
+    font-weight: $fontWeight_500;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #9B1E23;
+        border: 0.1px solid #9B1E23;
+        line-height: 55px;
+    }
+}
+
+//開團按鈕
+@mixin btnBlue_3 {
+    //藍
+    padding: 0;
+    border: 0.1px solid #76AFAF;
+    display: inline-block;
+    outline: none;
+    background-color: #76AFAF;
+    color: #FFFFFF;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    font-size: $fontSize * 1.125;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_500;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #76AFAF;
+        border: 0.1px solid #76AFAF;
+        line-height: 50px;
+    }
+}
+
+//參團按鈕
+@mixin btnPurple_4 {
+    //紫
+    padding: 0;
+    border: 0.1px solid #C9528E;
+    display: inline-block;
+    outline: none;
+    background-color: #C9528E;
+    color: #FFFFFF;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    font-size: $fontSize * 1.125;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #C9528E;
+        border: 0.1px solid #C9528E;
+        line-height: 50px;
+    }
+}
+
+//參加按鈕(進入團內)
+@mixin btnBrown_5 {
+    //棕
+    padding: 0;
+    border: 0.1px solid #DF7219;
+    display: inline-block;
+    outline: none;
+    background-color: #DF7219;
+    color: #FFFFFF;
+    width: 80px;
+    height: 35px;
+    border-radius: 8px 8px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: $fontWeight_400;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #DF7219;
+        border: 0.1px solid #DF7219;
+        line-height: 30px;
+    }
+}
+
+//送出按鈕
+@mixin btnBrown_6 {
+    //棕色
+    padding: 0;
+    border: 0.1px solid #DF7219;
+    display: inline-block;
+    outline: none;
+    background-color: #DF7219;
+    color: #FFFFFF;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px 15px;
+    font-family: $fontFamily;
+    font-size: $fontSize * 1.125;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_500;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #DF7219;
+        border: 0.1px solid #DF7219;
+        line-height: 50px;
+    }
+}
+
+//留言按鈕(含貼文留言及餐廳留言)
+@mixin btnBrown_7 {
+    padding: 0;
+    border: 0.1px solid #DE8426;
+    display: inline-block;
+    outline: none;
+    background-color: #DE8426;
+    color: #FFFFFF;
+    width: 50px;
+    height: 30px;
+    border-radius: 15px 15px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #DE8426;
+        border: 0.1px solid #DE8426;
+        line-height: 30px;
+    }
+}
+
+//左右按鈕
+@mixin Other_8 {
+    padding: 0;
+    border: 0.1px solid #FFE1A4;
+    display: inline-block;
+    outline: none;
+    background-color: #FFE1A4;
+    color: #000000;
+    width: 90px;
+    height: 40px;
+    border-radius: 50% 50%;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 40px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+}
+
+//Pagination 分頁
+@mixin Other_9 {
+    padding: 0;
+    border: 0.1px solid #9B1E23;
+    display: inline-block;
+    outline: none;
+    background-color: #9B1E23;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 15px 15px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 40px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #9B1E23;
+        border: 0.1px solid #9B1E23;
+        line-height: 40px;
+    }
+}
+
+//小頁籤(會員頁)
+@mixin Other_11 {
+    padding: 0;
+    border: 0.1px solid #000000;
+    display: inline-block;
+    outline: none;
+    background-color: #80808099;
+    color: #000000;
+    width: 50px;
+    height: 40px;
+    border-radius: 15px 15px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 40px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+}
+
+// @mixin btnRed {
+//     //粉紅
+//     padding: 0;
+//     border: 0px;
+//     display: inline-block;
+//     background-color: $bgColor-style1;
+//     color: $textColor-style1;
+//     width: 150px;
+//     height: 50px;
+//     border-radius: 25px 25px;
+//     font-family: $fontFamily;
+//     font-size: $fontSize;
+//     text-align: center;
+//     line-height: 50px;
+//     font-weight: $fontWeight_600;
+//     cursor: pointer;
+//     &:hover {
+//         background-color: white;
+//         color: $bgColor-style1;
+//         border: 2.5px solid $bgColor-style1;
+//         line-height: 45px;
+//     }
+// }
+@mixin btnYellowL {
+    //粉黃長
+    padding: 0;
+    border: 0.1px;
+    display: inline-block;
+    background-color: $bgColor-style2;
+    color: gray;
+    width: 220px;
+    height: 50px;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #222222;
+        border: 0.1px solid $bgColor-style2;
+        line-height: 50px;
+    }
+}
+
+@mixin btnYellowS {
+    //粉黃短
+    padding: 0;
+    border: 0.1px;
+    display: inline-block;
+    color: gray;
+    background-color: $bgColor-style2;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: #222222;
+        border: 0.1px solid $bgColor-style2;
+        line-height: 50px;
+    }
+}
+
+@mixin btnBlue1 {
+    //粉藍
+    padding: 0;
+    border: 0.1px;
+    display: inline-block;
+    background-color: $bgColor-style4;
+    color: $textColor-style1;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: $bgColor-style4;
+        border: 0.1px solid $bgColor-style4;
+        line-height: 50px;
+    }
+}
+
+@mixin btnOther {
+    //彈出視窗btn
+    padding: 0;
+    border: 0.1px;
+    display: inline-block;
+    background-color: rgb(209, 205, 205);
+    color: #222222;
+    width: 150px;
+    height: 50px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 50px;
+    font-weight: $fontWeight_600;
+    cursor: pointer;
+    &:hover {
+        background-color: white;
+        color: rgb(209, 205, 205);
+        border: 0.1px solid rgb(209, 205, 205);
+        line-height: 50px;
+    }
+}
+
+// 下面是其他多餘的，可用可不用
+@mixin btnOther1($bgColor, $color, $width, $height) {
+    padding: 0;
+    border: 0.1px;
+    display: inline-block;
+    background-color: $bgColor;
+    color: $color;
+    width: $width;
+    height: $height;
+    border-radius: 25px 25px;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+}
+
+@mixin btnYellowNew ($bgColor, $color, $width, $height) {
+    //https://codepen.io/n_eeno/pen/QPoBXw?editors=1100 這網頁效果
+    padding: 1.5rem 3rem;
+    border: 0.1 solid transparent;
+    display: inline-block;
+    color: $color;
+    background-color: $bgColor;
+    border-radius: 3px;
+    width: $width;
+    height: $height;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: $fontWeight_400;
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+    background-size: 300%;
+    transition: all .3s;
+    cursor: pointer;
+    &:hover {
+        background-position: 100%;
+        color: $bgColor;
+        font-weight: $fontWeight_700;
+    }
+}

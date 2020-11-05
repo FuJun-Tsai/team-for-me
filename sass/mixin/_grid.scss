@@ -1,0 +1,17 @@
+@mixin grids($num) {
+    @for $i from 1 through $num {
+        .col-md-#{$i} {
+            width: ($i / $num) * 100%;
+        }
+    }
+}
+
+
+@mixin grid-box($breakpoint ,$num) {
+    @for $i from 1 through $num {
+        .col-#{$breakpoint}-#{$i} {
+            width: ($i / $num) * 100%;
+            display: inline-block;
+        }
+    }
+}

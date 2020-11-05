@@ -1,0 +1,223 @@
+// @import "forbutton";
+// @import "btn_style";
+// @import "../base/var";
+
+$btn-width: 200px !default;
+$btn-height: 50px !default;
+$btn-full: $btn-height+$btn-width !default;
+$btn-half: $btn-full/2 !default;
+$bg-color: #eeeeee !default;
+
+@keyframes criss-cross-left {
+  0% {
+    left: -20px;
+  }
+  50% {
+    left: 50%;
+    @include size(20px);
+  }
+  100% {
+    left: 50%;
+    @include size($btn-width*1.5);
+  }
+}
+
+@keyframes criss-cross-right {
+  0% {
+    right: -20px;
+  }
+  50% {
+    right: 50%;
+    @include size(20px);
+  }
+  100% {
+    right: 50%;
+    @include size($btn-width*1.5);
+  }
+}
+@mixin btn ($btn-width,$btn-height,$use_color,$bd_radius){
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  @include size(100%, $btn-height);
+  max-width: $btn-width;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid $use_color;
+  border-radius: $bd_radius;
+  background-color: $use_color;
+  outline: none;
+  // $btn-color: #fff;
+  // $btn-color-dark: shade($btn-color, 40%);
+  color: tint(#fff);
+  z-index: 2;
+  
+  span {
+    @include absolute();
+    display: block;
+    @include size(0);
+    border-radius: 50%;
+    background-color: #fff;
+    // background-color: shade($btn-color, 40%);
+    // color: shade(#fff, 40%);
+    transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: $use_color;
+    cursor: pointer;
+    span {
+      @include size(225%, $btn-width*2.25);
+    }
+  }
+  
+}  
+@mixin btn2 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  &:before,
+  &:after {
+    @include absolute(50%);
+    content: '';
+    @include size(20px);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  &:before {
+    left: -20px;
+    transform: translate(-50%, -50%);
+  }
+  
+  &:after {
+    right: -20px;
+    transform: translate(50%, -50%);
+  }
+  
+  &:hover {
+    &:before,
+    &:after {
+      z-index: -1;
+    }
+    
+    &:before {
+      animation: criss-cross-left 0.8s both;
+      animation-direction: alternate;
+    }
+    
+    &:after {
+      animation: criss-cross-right 0.8s both;
+      animation-direction: alternate;
+    }
+  }
+}  
+//首頁大按鈕
+.btn_2 {
+  @include btn(200px, 55px, #9B1E23, 25px);
+}
+//開團按鈕藍
+.btn_3{
+  @include btn(150px, 50px,  #76AFAF, 25px);
+}
+//參團按鈕紫
+.btn_4{
+  @include btn(150px, 50px, #C9528E, 25px);
+}
+//參加按鈕棕(進入團內)
+.btn_5{
+  @include btn(80px, 35px,  #DF7219, 8px);
+}
+//送出按鈕棕
+.btn_6{
+  @include btn(150px, 50px, #DF7219, 15px);
+}
+//留言按鈕(含貼文留言及餐廳留言)
+.btn_7{
+  @include btn(50px, 30px, #DF7219, 15px);
+}
+//左右按鈕
+.btn_8{
+  @include btn(40px, 40px, #000000, 50%);
+  font-weight: bold;
+}
+//Pagination 分頁
+.btn_9{
+  @include Other_9;
+}
+//小頁籤(會員頁)
+.btn_10{
+  @include btn(60px, 30px, #DF7219, 15px);
+}
+//會員頁按鈕
+.btn_11{
+  @include btn(150px, 50px, #DF7219, 15px);
+}
+//會員頁title{
+.btn_12{
+  @include btn(700px, 50px, #9B1E23, 20px 20px 0 0);
+  &:hover{
+    color:#fff;
+  }
+}
+//header專用按鈕
+.btn_header {
+  @include size(100%, $btn-height);
+  max-width: $btn-width;
+  line-height: $btn-height;
+  $btn-color: #FF7a85;
+  $btn-color-dark: shade($btn-color, 40%);
+  color: tint($btn-color);
+  text-align: center;
+  font-weight: bold;
+  @include btn2;
+  &:after{
+    background-color: $btn-color;
+  }
+  &:hover{
+    color: tint($btn-color, 75%);
+  }
+  &:before,
+  &:after {
+    @include absolute(50%);
+    content: '';
+    @include size(20px);
+    background-color: $btn-color;
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  &:before {
+    left: -20px;
+    transform: translate(-50%, -50%);
+  }
+  
+  &:after {
+    right: -20px;
+    transform: translate(50%, -50%);
+  }
+  
+  &:hover {
+    color: tint($btn-color, 75%);
+
+    &:before,
+    &:after {
+      z-index: -1;
+    }
+    
+    &:before {
+      animation: criss-cross-left 0.8s both;
+      animation-direction: alternate;
+    }
+    
+    &:after {
+      animation: criss-cross-right 0.8s both;
+      animation-direction: alternate;
+    }
+  }
+}

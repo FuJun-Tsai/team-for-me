@@ -1,0 +1,22 @@
+@mixin rwd($breakpoint) {
+    @if $breakpoint=="md_desktop" {
+        @media all and (min-width: 992px) and (max-width: 1200px) {
+            @content;
+        }
+    }
+    @else if $breakpoint=="md_medium" {
+        @media all and (min-width: 768px) and (max-width: 991px) {
+            @content;
+        }
+    }
+    @else if $breakpoint=="md_small" {
+        @media all and (min-width: 576px) and (max-width: 767px) {
+            @content;
+        }
+    }
+    @else if $breakpoint=="md_cellphone" {
+        @media all and (max-width: 575px) {
+            @content;
+        }
+    }
+}

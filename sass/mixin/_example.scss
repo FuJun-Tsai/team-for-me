@@ -1,0 +1,11 @@
+//search
+//L
+$SLW:400px;
+$SLH:20px;
+
+
+
+@mixin SearchBar($SLW,$SLH) {
+    width: $SLW;
+    height: $SLH;
+}

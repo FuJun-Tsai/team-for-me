@@ -1,0 +1,103 @@
+//base
+@import "base/var";
+@import "base/reset";
+@import "base/color";
+@import "base/font";
+//mixin
+@import "mixin/rwd";
+@import "mixin/grid";
+@import "mixin/img";
+@import "mixin/btn_style";
+//layout
+@import "layout/header";
+@import "layout/footer";
+@import "layout/login";
+@import "layout/cart";
+//page
+@import "page/main";
+@import "page/about";
+@import "page/contact";
+//套件
+@import 'vender/plugin';
+@import 'node_modules/owl.carousel/src/scss/theme.default';
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+@import 'sass/vender/other/animation';
+@import 'sass/vender/bootstrap/bootstrap-grid';
+
+// @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+
+// /**** === CSS 註解  === ****/
+// body {
+//     padding: $a;
+//     max-width: 1000px;
+//     color: $red;
+//     margin: $margin;
+//     font-family: $font_family;
+//     background-color: map-get($bg-color, 'blue');
+//     h1,
+//     h2,
+//     h3,
+//     h4,
+//     h5 {
+//         margin: 0;
+//         padding: 0;
+//     }
+// }
+// ;
+// .wrapper {
+//     h1 {
+//         font-size: 150px;
+//     }
+//     .text {
+//         font-size: 30px;
+//     }
+//     .banner {
+//         //a
+//         h1 {
+//             font-size: 32px;
+//             color: yellow;
+//         }
+//     }
+//     .spec01 {
+//         //b 
+//         h1 {
+//             color: black;
+//             font-size: 18px;
+//         }
+//     }
+// }
+// @include rwd(desktop){
+//     h1 {
+//        font-size: 100px;
+//     }
+//   }
+//   @include rwd(medium){
+//       h1 {
+//          font-size: 60px;
+//       }
+//     }
+//     @include rwd(small){
+//         h1{
+//             font-size : 30px
+//         }
+//     }
+// //grid
+// @include grids(12);
+// // bg image
+// @include bg-image(aa bb cc dd ee);
+// @include bg-image(person) {
+//     border: 1px solid #eee;
+//     color: lawngreen;
+// }
+// @include bg-image(pp) {
+//     box-shadow: 10px 10px 1px lawngreen;
+// }
+// // image (判斷 png/jpg)
+// @include bg-images(jpg, a1 a2 a3 a4);
+// @include bg-images(png, b1 b2 b3 b4);
+// button {
+//     @include btn(#000000, #ffffff, 100px, 100px, 10px, 10px)
+// }

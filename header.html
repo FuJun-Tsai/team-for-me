@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/其他東西/header.css">
+    <title>header</title>
+</head>
+
+<body>
+    <header>
+        <section>
+            <div class="logo">
+                <img src="./image/logoHeader.svg" alt="">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        吃吃配對
+                    </li>
+                    <li>
+                        餐廳介紹
+                    </li>
+                    <li>
+                        吃貨分享
+                    </li>
+                    <li>
+                        關於我們
+                    </li>
+                    <li>
+                        <button>揪團去!</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="member">
+                <div class="icon">
+                    <img src="./image/icon.svg" alt="">
+                </div>
+                <span>登入</span>
+            </div>
+            <div id="menu-bar">
+                <div id="menu" onclick="onClickMenu()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <ul class="nav1" id="nav1">
+                    <li>
+                        吃吃配對
+                    </li>
+                    <li>
+                        餐廳介紹
+                    </li>
+                    <li>
+                        吃貨分享
+                    </li>
+                    <li>
+                        關於我們
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+        </section>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--hambuger-->
+    <script>
+        function onClickMenu() {
+            document.getElementById("menu").classList.toggle("change");
+            document.getElementById("nav1").classList.toggle("change");
+            document.getElementById("menu-bg").classList.toggle("change-bg");
+        }
+
+        function onClickSubMenu() {
+            document.getElementById("sub_menu").classList.toggle("change1");
+            document.querySelector(".nav1>li:nth-child(1)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(3)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(4)").classList.toggle("none");
+            document.querySelector(".nav1>li:nth-child(5)").classList.toggle("none");
+        }
+    </script>
+</body>
+
+</html>

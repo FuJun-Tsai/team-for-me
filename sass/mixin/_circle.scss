@@ -1,0 +1,15 @@
+@mixin circle($R,$color) {
+    border-radius: 50%;
+    width: $R;
+    height: $R;
+    background-color:$color;
+}
+
+@mixin circle_bigOrange {
+    border-radius: 50%;
+    width: 1430px;
+    height: 1430px;
+    background-color:#DE8426;
+    opacity: 0.85;
+    position: absolute;
+}

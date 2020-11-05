@@ -89,31 +89,6 @@ function itemfunction(){
         $('#mainimg').attr('src',src);
     });
 
-    $('#send').on('submit',function(){
-        let content = $('#send textarea').val();
-        let array = content.split('');
-        let id = $('#leavemessage div:last-child').attr('id').split('L')[1];
-        id = parseInt(id);
-        id+=1;
-        for(let i=0;i<=array.length-1;i+=1){
-            if(array[i].charCodeAt()==10){
-                array[i]='<br>';
-            }
-            content = array.join('');
-        }
-
-        $('#leavemessage').append(`
-        <div id='L${id}' class='single_L'  >
-            <img src="http://fakeimg.pl/60x60" alt="">
-            <p>${content}</p>
-            <i class="fas fa-exclamation-triangle">檢舉</i>
-        </div>` 
-        );
-        content = '';
-        $('textarea').val('');
-        return false;
-    });
-
     let today = new Date();
     day = today.getDay();
 
@@ -151,5 +126,8 @@ function itemfunction(){
         $('#report').css({'display':'none'});
         $('.jun_back').css({'display':'none'});
     });
+
+
+    
 
 }

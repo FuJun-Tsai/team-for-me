@@ -128,6 +128,7 @@ function itemfunction(){
     });
 
 
+    $('#send button').val('5,1');
     
 
 }

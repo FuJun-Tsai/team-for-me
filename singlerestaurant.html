@@ -362,13 +362,7 @@
                                         
                                     </div>
                                     <div class="single_messaging">
-                                        <img src="http://fakeimg.pl/60x60" alt="">
-                                        <form id="send" action="singleRenderRP.php">
-                                            <textarea name="RES_MESSAGE_WORD" cols="30" rows="10"></textarea>
-                                            <button class="btn_6 btn_js" name="MEMBER_NO" value="1">送出
-                                                <span></span>
-                                            </button>
-                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -397,7 +391,17 @@
                             <i class="fas fa-exclamation-triangle">檢舉</i>
                         </div>              
                         `);
+                    
                     }
+                    $('.single_messaging').append(`
+                    <img src="http://fakeimg.pl/60x60" alt="">
+                    <form id="send" action="singleRenderRP.php">
+                        <textarea name="RES_MESSAGE_WORD" cols="30" rows="10"></textarea>
+                        <button class="btn_6 btn_js" name="test" value="5,1">送出
+                            <span></span>
+                        </button>
+                    </form>
+                    `);
                     itemfunction(); 
 
                 }
@@ -413,14 +417,14 @@
                     content = array.join('');
                 }
 
-                // let time = new Date();
-                // time.getDate;
-                // time.getFullYear;
-
                 $.ajax({
                     url:`singleRenderRP${location.search}.php`,
                     type:'GET',
-                    dataType:'json',
+                    data:{
+                        RES_ON:(location.search.split('=')[1]),
+                        MEMBER_NO:1
+                        
+                    },
                     success(data){
                         console.log(data);
                     },

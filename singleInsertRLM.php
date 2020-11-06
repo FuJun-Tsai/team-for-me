@@ -3,7 +3,7 @@ $ErrMsg='';
 $nowdate = (string)date("Y-m-d");
 $nowtime = (string)date("H:i:s");
 $datetime = "$nowdate $nowtime";
-$test = explode(",",$_REQUEST['test']);
+$test = explode(",",$_REQUEST['RES_MEM']);
 try{
     require_once('./connetbook.php');
     $sql = "insert into `restaurant_message` 
@@ -26,11 +26,13 @@ try{
     $RPdata-> bindValue(':RES_MESSAGE_WORD',$_REQUEST['RES_MESSAGE_WORD']);
     $RPdata-> execute();
 
+    echo $test[0] , $test[1] , '<br>' , $_REQUEST['RES_MESSAGE_WORD'];
     if($RPdata->rowCount()==0){
         echo '資料有誤';
     }else{
         $RPresult = $RPdata->fetch(PDO::FETCH_ASSOC);
         echo JSON_encode($RPresult);
+
     }
     
 }catch(PDOException $e){

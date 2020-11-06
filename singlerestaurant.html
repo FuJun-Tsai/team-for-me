@@ -233,27 +233,7 @@
         </div>
 
         <div id="report">
-            <div class="single_reportback">
-                <i class="fas fa-times single_cancel"></i>
-                <h2>檢舉餐廳留言</h2>
-                <form action="" method="GET">
-                    <label for="report">
-                    選擇檢舉類型:
-                        <select name="report">
-                            <option value="1">惡意謾罵</option>
-                            <option value="2">淫穢色情</option>
-                            <option value="3">無關主題</option>
-                            <option value="0">其他</option>
-                        </select>
-                    </label>
-                    <h4 style="font-weight: bold;">檢舉原因：</h4>
-                    <textarea name="" id=""></textarea>
-                </form>
-                <button>送出檢舉</button>
-                <div class="single_thank">
-                    <p>感謝你的檢舉</p>
-                </div>
-            </div>
+
         </div> 
 
     </section>
@@ -383,64 +363,71 @@
                 dataType:'json',
                 success(data){
                     let items = data.length;
-                    console.log(location.search.split('=')[1]);
+                    console.log(data);
                     for(let i=0;i<=items-1;i+=1){
+
+                        let item = data[i].word.split('');
+                        let content = '';
+
+                        for(let i=0;i<=item.length-1;i+=1){
+                            if(item[i].charCodeAt()==10){
+                                item[i]='<br>';
+                            }
+                            content = item.join('');
+                        }
+
                         $('#leavemessage').append(`
                         <div id="${data[i].id}" class="single_L">
                             <img src="http://fakeimg.pl/60x60" alt="">
-                            <p>${data[i].word}</p>
+                            <p>${content}</p>
                             <p class="time">${data[i].time}</p>
                             <i class="fas fa-exclamation-triangle">檢舉</i>
                         </div>              
                         `);
                     
                     }
+
                     $('.single_messaging').append(`
                     <img src="http://fakeimg.pl/60x60" alt="">
-                    <form id="send" action="singleInsertRLM.php">
+                    <form id="send" action="singleInsertRLM.php" method="POST">
                         <textarea name="RES_MESSAGE_WORD" cols="30" rows="10"></textarea>
-                        <button class="btn_6 btn_js" name="test" value="${location.search.split('=')[1]},1">送出
+                        <button class="btn_6 btn_js" name="RES_MEM" value="${location.search.split('=')[1]},1">送出
                             <span></span>
                         </button>
                     </form>
                     `);
+
+                    $('#report').append(`
+                    <div class="single_reportback">
+                        <i class="fas fa-times single_cancel"></i>
+                        <h2>檢舉餐廳留言</h2>
+                        <form action="singleInsertRP.php" method="GET">
+                            <!-- <label for="report">
+                                    選擇檢舉類型:
+                                    <select name="report">
+                                        <option value="1">惡意謾罵</option>
+                                        <option value="2">淫穢色情</option>
+                                        <option value="3">無關主題</option>
+                                        <option value="0">其他</option>
+                                    </select>
+                                </label> -->
+                            <h4 style="font-weight: bold;">檢舉原因：</h4>
+                            <textarea name="RES_MES_REPORT_REASON" id=""></textarea>
+                            <button name="test" value="">送出檢舉</button>
+                        </form>
+                        <div class="single_thank">
+                            <p>感謝你的檢舉</p>
+                        </div>
+                    </div>
+                    `);
+
                     itemfunction(); 
 
                 }
             });
 
-            $('#send button').on('click',function(){
-                let content = $('#send textarea').val();
-                let array = content.split('');
-                for(let i=0;i<=array.length-1;i+=1){
-                    if(array[i].charCodeAt()==10){
-                        array[i]='<br>';
-                    }
-                    content = array.join('');
-                }
 
-                $.ajax({
-                    url:`singleInsertRLM.php`,
-                    type:'GET',
-                    data:{
-                        // RES_ON:(location.search.split('=')[1]),
-                        // MEMBER_NO:1,
-                        // RES_MESSAGE_WORD:`${content}`
 
-                        
-                    },
-                    success(data){
-                        console.log(data);
-                    },
-                    error(data){
-                        console.log(data);
-                    }
-    
-                });
-
-                content = '';
-                $('textarea').val('');
-            });
 
             $('.single_reportback button').on('click',function(){
 
@@ -454,10 +441,6 @@
                     $('.single_reportback .reporterror').remove();
                     $('.single_reportback button').css({'display':'none'});
 
-                    // $.ajax({
-
-
-                    // });
                 }
 
             });

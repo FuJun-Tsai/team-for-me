@@ -118,6 +118,10 @@ function itemfunction(){
     });
 
     $('.single_L i').on('click',function(){
+        let id = $(this).closest('.single_L').attr('id');
+        console.log(id);
+        $('.single_reportback button').val(`${id.split('L')[1]}`);
+
         $('#report').css({'display':'inline-block'});
         $('.jun_back').css({'display':'inline-block'});
         $('.single_reportback form').css({'display':'block'});
@@ -133,7 +137,29 @@ function itemfunction(){
 
     });
     
+ 
 
-    
+
+    ///--------------------------------
+
+    $('#send').on('submit', function(){
+        $.ajax({
+            url: 'singleInsertRLM.php',
+            method: 'POST',               
+            dataType: 'json',             
+            data: {
+                RES_MEM:$('#send .btn_js').val(),
+                RES_MESSAGE_WORD:$('#send textarea').val()
+            },
+            success(data){
+                console.log($('#send textarea').val());
+                
+            },
+        });
+        $('textarea').val('');
+        return false; 
+    });
+
+
 
 }

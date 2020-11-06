@@ -120,15 +120,20 @@ function itemfunction(){
     $('.single_L i').on('click',function(){
         $('#report').css({'display':'inline-block'});
         $('.jun_back').css({'display':'inline-block'});
+        $('.single_reportback form').css({'display':'block'});
+        $('.single_reportback button').css({'display':'block'});
+        $('.single_reportback .single_thank').css({'display':'none'});
+        $('.single_reportback form textarea').val('');
+
     });
 
     $('.single_cancel').on('click',function(){
         $('#report').css({'display':'none'});
         $('.jun_back').css({'display':'none'});
+
     });
+    
 
-
-    $('#send button').val('5,1');
     
 
 }

@@ -2,7 +2,7 @@
 $ErrMsg='';
 $nowdate = (string)date("Y-m-d");
 $nowtime = (string)date("H:i:s");
-$result = "$nowdate $nowtime";
+$datetime = "$nowdate $nowtime";
 $test = explode(",",$_REQUEST['test']);
 try{
     require_once('./connetbook.php');
@@ -15,7 +15,7 @@ try{
             VALUES
             (:RES_NO,
             :MEMBER_NO,
-            '$result',
+            '$datetime',
             :RES_MESSAGE_WORD); 
             ";
 

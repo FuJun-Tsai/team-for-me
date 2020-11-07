@@ -293,16 +293,16 @@
             type:'POST',
             dataType:'json',
             success(data){
-
                 for(let i=0 ; i<=data.length ;i+=1){
-                $(`.${data[i].resno}`).append(`
-                    <div id="${data[i].id}" class="L">
-                        <img src="http://fakeimg.pl/60x60" alt="">
-                        <p>${data[i].content}</p>
-                    </div>
+                    $(`.${data[i].resno}`).append(`
+                        <div id="${data[i].id}" class="L">
+                            <img src="http://fakeimg.pl/60x60" alt="">
+                            <p>${data[i].content}</p>
+                        </div>
                     `);
-                }
-            }
+                };
+            },
+
         });
                 
     });

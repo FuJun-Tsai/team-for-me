@@ -333,7 +333,7 @@ section {
             }
         }
     }
-    #report{
+    .single_report{
         @include light-box-setting(100%,500px,absolute);
         display: none;
         border-radius: 24px;

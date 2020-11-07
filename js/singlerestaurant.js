@@ -122,7 +122,7 @@ function itemfunction(){
         console.log(id);
         $('.single_reportback button').val(`${id.split('L')[1]}`);
 
-        $('#report').css({'display':'inline-block'});
+        $('.single_report').css({'display':'inline-block'});
         $('.jun_back').css({'display':'inline-block'});
         $('.single_reportback form').css({'display':'block'});
         $('.single_reportback button').css({'display':'block'});
@@ -132,7 +132,7 @@ function itemfunction(){
     });
 
     $('.single_cancel').on('click',function(){
-        $('#report').css({'display':'none'});
+        $('.single_report').css({'display':'none'});
         $('.jun_back').css({'display':'none'});
 
     });
@@ -151,13 +151,46 @@ function itemfunction(){
                 RES_MEM:$('#send .btn_js').val(),
                 RES_MESSAGE_WORD:$('#send textarea').val()
             },
-            success(data){
-                console.log($('#send textarea').val());
+            complete(data,Status){
+                // console.log(`complete-${data}`);
+                // console.log(`complete-${Status}`); parsererror 
+                let nowtime = new Date();
+                let todate = String(nowtime.getDate());
+                if(todate.length == 1){
+                    todate = `0${todate}`;
+                }
+                let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
                 
+                $('#leavemessage').append(`
+                <div class="single_L">
+                    <img src="http://fakeimg.pl/60x60" alt="">
+                    <p>${$('.single_messaging textarea').val()}</p>
+                    <p class="time">${timetext}</p>
+                    <i class="fas fa-exclamation-triangle">檢舉</i>
+                </div>              
+                `);
+                $('.single_messaging textarea').val('');
             },
         });
-        $('textarea').val('');
+    
         return false; 
+
+    });
+
+    $('#report').on('submit',function(){
+        $.ajax({
+            url: 'singleInsertRP.php',
+            method: 'POST',               
+            dataType: 'json',             
+            data: {
+                MESSAGE_NO:$(this).find('button')[0].val(),
+                RES_MES_REPORT_REASON:$(this).find('textarea')[0].val()
+            },
+
+        });
+
+        return false; 
+
     });
 
 

@@ -232,7 +232,7 @@
             </div> -->
         </div>
 
-        <div id="report">
+        <div class="single_report">
 
         </div> 
 
@@ -363,7 +363,6 @@
                 dataType:'json',
                 success(data){
                     let items = data.length;
-                    console.log(data);
                     for(let i=0;i<=items-1;i+=1){
 
                         let item = data[i].word.split('');
@@ -397,11 +396,11 @@
                     </form>
                     `);
 
-                    $('#report').append(`
+                    $('.single_report').append(`
                     <div class="single_reportback">
                         <i class="fas fa-times single_cancel"></i>
                         <h2>檢舉餐廳留言</h2>
-                        <form action="singleInsertRP.php" method="GET">
+                        <form id="report" action="singleInsertRP.php" method="POST">
                             <!-- <label for="report">
                                     選擇檢舉類型:
                                     <select name="report">

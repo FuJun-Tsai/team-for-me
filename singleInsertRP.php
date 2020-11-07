@@ -24,11 +24,12 @@ try{
     $RPdata-> bindValue(':RES_MES_REPORT_REASON',$_REQUEST['RES_MES_REPORT_REASON']);
     $RPdata-> execute();
 
+    echo $_REQUEST['test'] , '<br>' , $_REQUEST['RES_MES_REPORT_REASON'] ;
     if($RPdata->rowCount()==0){
         echo '資料有誤';
     }else{
-        // $RPresult = $RPdata->fetch();
-        // echo JSON_encode($RPresult);
+        $RPresult = $RPdata->fetch(PDO::FETCH_ASSOC);
+        echo JSON_encode($RPresult);
     }
     
 }catch(PDOException $e){

@@ -245,7 +245,7 @@
         $(document).ready(function(){
 
         $.ajax({
-            url:'searchRender.php',
+            url:'searchRenderRES.php',
             type:'GET',
             dataType:'json',
             success(data){
@@ -268,23 +268,8 @@
                                     <h3>餐廳介紹：</h3>
                                     <p id="rint">${data[i].summary}</p>
                                     <h3>網友留言：</h3>
-                                    <div id="leavemessage" class="insearch">
-                                        <div id="L1" class="L">
-                                            <img src="http://fakeimg.pl/60x60" alt="">
-                                            <p>1231232313</p>
-                                        </div>
-                                        <div id="L2" class="L">
-                                            <img src="http://fakeimg.pl/60x60" alt="">
-                                            <p>1231232313</p>
-                                        </div>
-                                        <div id="L3" class="L">
-                                            <img src="http://fakeimg.pl/60x60" alt="">
-                                            <p>1231232313</p>
-                                        </div>
-                                        <div id="L4" class="L">
-                                            <img src="http://fakeimg.pl/60x60" alt="">
-                                            <p>1231232313</p>
-                                        </div>
+                                    <div id="leavemessage" class="insearch ${data[i].id}">
+
                                     </div>
                                     <form action="singlerestaurant.html" method="GET">
                                         <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
@@ -300,6 +285,26 @@
                 }
             },
         });
+        
+
+
+        $.ajax({
+            url:'searchRenderLM.php',
+            type:'POST',
+            dataType:'json',
+            success(data){
+
+                for(let i=0 ; i<=data.length ;i+=1){
+                $(`.${data[i].resno}`).append(`
+                    <div id="${data[i].id}" class="L">
+                        <img src="http://fakeimg.pl/60x60" alt="">
+                        <p>${data[i].content}</p>
+                    </div>
+                    `);
+                }
+            }
+        });
+                
     });
     </script>
 

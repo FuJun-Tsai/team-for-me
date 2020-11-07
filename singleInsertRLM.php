@@ -1,4 +1,5 @@
 <?
+header('Content-Type: application/json; charset=UTF-8');
 $ErrMsg='';
 $nowdate = (string)date("Y-m-d");
 $nowtime = (string)date("H:i:s");
@@ -30,9 +31,8 @@ try{
     if($RPdata->rowCount()==0){
         echo '資料有誤';
     }else{
-        $RPresult = $RPdata->fetch(PDO::FETCH_ASSOC);
-        echo JSON_encode($RPresult);
-
+        // $RPresult = $RPdata->fetch(PDO::FETCH_ASSOC);
+        // echo JSON_encode($RPresult);
     }
     
 }catch(PDOException $e){

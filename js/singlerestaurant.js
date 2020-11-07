@@ -151,6 +151,12 @@ function itemfunction(){
                 RES_MEM:$('#send .btn_js').val(),
                 RES_MESSAGE_WORD:$('#send textarea').val()
             },
+            success(data,Status){
+                console.log('success');
+            },
+            error(){
+                console.log('error');
+            },
             complete(data,Status){
                 // console.log(`complete-${data}`);
                 // console.log(`complete-${Status}`); parsererror 

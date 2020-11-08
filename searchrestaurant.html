@@ -129,39 +129,40 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="selection col-lg-8">
+                    <form class="selection col-lg-8" id="condition" method="POST" action="searchConditionRender.php">
 
                         <input id="searchword" type="text" placeholder="美食快搜">
                         <button id="searchwordbtn">搜尋</button>
 
-                        <label for="" class="kind">餐廳種類：
-                        <label for="jap"><input type="checkbox" name="kind" id="jap" value="jap">日式</label>
-                        <label for="usa"><input type="checkbox" name="kind" id="usa" value="usa">美式</label>
-                        <label for="west"><input type="checkbox" name="kind" id="west" value="west">西式</label>
-                        <label for="kor"><input type="checkbox" name="kind" id="kor" value="kor">韓式</label>
-                        <label for="chi"><input type="checkbox" name="kind" id="chi" value="chi">中台</label>
-                        <label for="sea"><input type="checkbox" name="kind" id="sea" value="sea">東南亞</label>
+                        <label for="kind" class="kind">餐廳種類：
+                            <label for="k1"><input type="checkbox" name="kind" id="k1" value="1">日式</label>
+                            <label for="k2"><input type="checkbox" name="kind" id="k2" value="2">美式</label>
+                            <label for="k3"><input type="checkbox" name="kind" id="k3" value="3">西式</label>
+                            <label for="k4"><input type="checkbox" name="kind" id="k4" value="4">韓式</label>
+                            <label for="k5"><input type="checkbox" name="kind" id="k5" value="5">中台</label>
                         </label>
 
-                        <label for="" class="style">料理風格：
-                       <label for="pot"><input type="checkbox" name="style[]" id="pot" value="pot">火鍋</label>
-                        <label for="bbq"><input type="checkbox" name="style[]" id="bbq" value="bbq">燒烤</label>
-                        <label for="fried"><input type="checkbox" name="style[]" id="fried" value="fried">炸物</label>
-                        <label for="stirfry"><input type="checkbox" name="style[]" id="stirfry" value="stirfry">快炒</label>
-                        <label for="light"><input type="checkbox" name="style[]" id="light" value="light">簡餐</label>
-                        <label for="steak"><input type="checkbox" name="style[]" id="steak" value="steak">排餐</label>
-                        <label for="cold"><input type="checkbox" name="style[]" id="cold" value="cold">冷盤</label>
+                        <label for="style[]" class="style">料理風格：
+                            <label for="s1"><input type="checkbox" name="style[]" id="s1" value="1">火鍋</label>
+                            <label for="s2"><input type="checkbox" name="style[]" id="s2" value="2">燒烤</label>
+                            <label for="s3"><input type="checkbox" name="style[]" id="s3" value="3">炸物</label>
+                            <label for="s4"><input type="checkbox" name="style[]" id="s4" value="4">快炒</label>
+                            <label for="s5"><input type="checkbox" name="style[]" id="s5" value="5">簡餐</label>
+                            <label for="steak"><input type="checkbox" name="style[]" id="steak" value="steak">排餐</label>
+                            <label for="cold"><input type="checkbox" name="style[]" id="cold" value="cold">冷盤</label>
                         </label>
-                    </div>
+
+
+                    </form>
                 </div>
             </div>
-
-            <div class="result">
-                <div class="container">
-                    <div class="row">
-                        <div class="error" style="display: none;">似乎沒有匹配篩選的店家...換其他的搜尋條件吧~</div>
-                    </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="error" style="display: none;">似乎沒有匹配篩選的店家...換其他的搜尋條件吧~</div>
                 </div>
+            </div>
+            <div class="result">
 
                 <!-- <div id="R1" class="rest container">
                     <div class="row">
@@ -243,73 +244,182 @@
 
     <script>
         $(document).ready(function(){
+        K = '';
+        S = [];
+        Restaurant();
+        MessageRender();
 
-        $.ajax({
-            url:'searchRenderRES.php',
-            type:'GET',
-            dataType:'json',
-            success(data){
-                for(let i=0;i<data.length-1;i+=1){
-                    $('.result').append(`
-                        <div id="${data[i].id}" class="rest container">
-                            <div class="row">
-                                <div class="rep col-lg-5">
-                                    <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
-                                </div>
-                                <div class="detail col-lg-7">
-                                    <h2>${data[i].name}</h2>
-                                    <div class="kind west">${data[i].kind}</div>
-                                    <div class="style steak">${data[i].style}</div>
-                                    <div class="record">
-                                        <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
-                                        <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
-                                        <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+        function Restaurant(){
+            $.ajax({
+                url:'searchRenderRES.php',
+                type:'GET',
+                dataType:'json',
+                success(data){
+                    for(let i=0;i<data.length-1;i+=1){
+                        $('.result').append(`
+                            <div id="${data[i].id}" class="rest container">
+                                <div class="row">
+                                    <div class="rep col-lg-5">
+                                        <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
                                     </div>
-                                    <h3>餐廳介紹：</h3>
-                                    <p id="rint">${data[i].summary}</p>
-                                    <h3>網友留言：</h3>
-                                    <div id="leavemessage" class="insearch ${data[i].id}">
+                                    <div class="detail col-lg-7">
+                                        <h2>${data[i].name}</h2>
+                                        <div class="kind west">${data[i].kind}</div>
+                                        <div class="style steak">${data[i].style}</div>
+                                        <div class="record">
+                                            <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
+                                            <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
+                                            <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+                                        </div>
+                                        <h3>餐廳介紹：</h3>
+                                        <p id="rint">${data[i].summary}</p>
+                                        <h3>網友留言：</h3>
+                                        <div id="leavemessage" class="insearch ${data[i].id}">
 
-                                    </div>
-                                    <form action="singlerestaurant.html" method="GET">
-                                        <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
-                                    </form>
-                                    <div class="go">
-                                        <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
-                                        <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                        </div>
+                                        <form action="singlerestaurant.html" method="GET">
+                                            <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
+                                        </form>
+                                        <div class="go">
+                                            <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
+                                            <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    `);
-                }
-            },
+                        `);
+                    }
+                },
+            });
+        }
+
+
+        
+        function MessageRender(){
+            $.ajax({
+                url:'searchRenderLM.php',
+                type:'POST',
+                dataType:'json',
+                success(data){
+                    for(let i=0 ; i<=data.length ;i+=1){
+                        $(`.${data[i].resno}`).append(`
+                            <div id="${data[i].id}" class="L">
+                                <img src="http://fakeimg.pl/60x60" alt="">
+                                <p>${data[i].content}</p>
+                            </div>
+                        `);
+                    };
+                },
+
+            });
+        }
+
+        $('#condition input:checkbox').on('click',function(){
+            if($(this).attr('name')=='kind'){
+                K = $("input[name='kind']:checked").map(function(){
+                    return $(this).val();
+                }).get();
+
+            }else{
+                S = $("input[name='style[]']:checked").map(function(){
+                    return $(this).val(); 
+                }).get();
+            }
+            
+            ConditionSearch(K,S.join(','));
         });
         
+        function ConditionSearch(K,S){
+            let condition = `${K}&${S}`;
+            console.log(condition);
+            $.ajax({
+                url:'searchConditionRender.php',
+                type:'GET',
+                dataType:'json',
+                data:{
+                    condition:condition,
+                },
+                success(data){
+                    $('.error').css({'display': 'none'});
+                    $('.result').empty();
+                    for(let i=0;i<data.length;i+=1){
+                        $('.result').append(`
+                            <div id="${data[i].id}" class="rest container">
+                                <div class="row">
+                                    <div class="rep col-lg-5">
+                                        <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
+                                    </div>
+                                    <div class="detail col-lg-7">
+                                        <h2>${data[i].name}</h2>
+                                        <div class="kind west">${data[i].kind}</div>
+                                        <div class="style steak">${data[i].style}</div>
+                                        <div class="record">
+                                            <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
+                                            <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
+                                            <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+                                        </div>
+                                        <h3>餐廳介紹：</h3>
+                                        <p id="rint">${data[i].summary}</p>
+                                        <h3>網友留言：</h3>
+                                        <div id="leavemessage" class="insearch ${data[i].id}">
 
+                                        </div>
+                                        <form action="singlerestaurant.html" method="GET">
+                                            <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
+                                        </form>
+                                        <div class="go">
+                                            <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
+                                            <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    }
+                },
+                error(data){
+                    $('.result').empty();
+                    $('.error').css({'display': 'block'});
 
-        $.ajax({
-            url:'searchRenderLM.php',
-            type:'POST',
-            dataType:'json',
-            success(data){
-                for(let i=0 ; i<=data.length ;i+=1){
-                    $(`.${data[i].resno}`).append(`
-                        <div id="${data[i].id}" class="L">
-                            <img src="http://fakeimg.pl/60x60" alt="">
-                            <p>${data[i].content}</p>
-                        </div>
-                    `);
-                };
-            },
+                }
 
-        });
+            });
+
+            MessageRender();
+
+        }
+   
                 
     });
     </script>
 
-    <script src="./js/searchrestaurant.js"></script>
-    <script src="./js/searchAnimate.js"></script>
+    <script>
+            imgcube();
+
+            function imgcube(){
+                let imgwidth = $('.rep div').width();
+                if($(window).width()<600){
+                    $('.rep div').height(imgwidth);
+                    // console.log(imgwidth);
+                }else{
+                    $('.rep div').height(500);
+                }
+            };
+
+            window.addEventListener('resize',function(){
+                    imgcube();
+            });
+
+            $('.kind input').on('click',function(){
+                if($(this).prop('checked')){
+                    $('.kind input:checkbox').prop('checked',false);
+                    $(this).prop('checked',true);
+                };
+            });
+    </script>
+
+    <!-- <script src="./js/searchrestaurant.js"></script> -->
+    <!-- <script src="./js/searchAnimate.js"></script> -->
 
 </body>
 

@@ -20,12 +20,9 @@ try{
     $LMdata-> bindValue(':RES_NO',$_REQUEST['RES_NO']);
     $LMdata-> execute();
 
-    if($LMdata->rowCount()==0){
-        echo '資料有誤';
-    }else{
-        $LMresult = $LMdata->fetchAll(PDO::FETCH_ASSOC);
-        echo JSON_encode($LMresult);
-    }
+
+    $LMresult = $LMdata->fetchAll(PDO::FETCH_ASSOC);
+    echo JSON_encode($LMresult);
     
 }catch(PDOException $e){
     $ErrMsg.= $e->getMessage() . $e->getLine();

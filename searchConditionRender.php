@@ -1,6 +1,17 @@
 <?
 $ErrMsg = '';
 $condition = explode("&",$_REQUEST['condition']);
+$word = '';
+if(strlen($condition[1])>2){
+    $item = explode(",",$condition[1]);
+    for($i=0;$i<count($item);$i+=1){
+        if($i!=count($item)-1){
+            $word.="'$item[$i]',";
+        }else{
+            $word.="'$item[$i]'";
+        }
+    }
+}
 $search = $_REQUEST['search'];
 
 try{
@@ -27,7 +38,9 @@ try{
         if($condition[0] and $condition[1]){
             $sql.= ' and ';
         };
-        if($condition[1]){
+        if(strlen($condition[1])>2){
+            $sql.= " rs.STYLE_NO in($word) ";
+        }else if($condition[1]){
             $sql.= ' rs.STYLE_NO in(:style) '; 
         };
     };

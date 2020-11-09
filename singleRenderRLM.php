@@ -3,6 +3,7 @@ $ErrMsg='';
 try{
     require_once('./connetbook.php');
     $sql = 'select 
+                R.RES_NO as no,
                 concat("L" , R.RES_MESSAGE_NO) as id,
                 mm.MEMBER_IMAGE as img,
                 R.RES_MESSAGE_WORD as word,

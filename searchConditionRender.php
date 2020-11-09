@@ -1,6 +1,8 @@
 <?
 $ErrMsg = '';
 $condition = explode("&",$_REQUEST['condition']);
+$search = $_REQUEST['search'];
+
 try{
     require_once('./connetbook.php');
     $sql = 'select  
@@ -32,8 +34,6 @@ try{
 
     $sql.= ' order by no ASC;';
 
-    // echo '<br><br>' , $sql , '<br><br>' ;
-
     $data = $pdo->prepare($sql);
     if($condition[0]){
         $data-> bindValue(':kind',$condition[0]);
@@ -42,7 +42,6 @@ try{
         $data-> bindValue(':style',$condition[1]);
     };
     $data-> execute();
-
     if($data->rowCount()==0){
         echo 'error';
     }else{
@@ -50,9 +49,9 @@ try{
         echo JSON_encode($result);
     };
 
+
 }catch(PDOException $e){
     $ErrMsg.= $e->getMessage() . $e->getLine();
     echo $ErrMsg;
 }
-
 ?>

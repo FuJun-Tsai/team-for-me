@@ -120,7 +120,7 @@ function itemfunction(){
     $('.single_L i').on('click',function(){
         let id = $(this).closest('.single_L').attr('id');
         console.log(id);
-        $('.single_reportback button').val(`${id.split('L')[1]}`);
+        $('.single_reportback button').val(`${id.split('L')[1]}&${location.search}`);
 
         $('.single_report').css({'display':'inline-block'});
         $('.jun_back').css({'display':'inline-block'});
@@ -137,14 +137,11 @@ function itemfunction(){
 
     });
     
- 
-
-
     ///--------------------------------
-
+    
     $('#send').on('submit', function(){
         $.ajax({
-            url: 'singleInsertRLM.php',
+            url: `singleInsertRLM.php`,
             method: 'POST',               
             dataType: 'json',             
             data: {
@@ -158,8 +155,8 @@ function itemfunction(){
                 console.log('error');
             },
             complete(data,Status){
-                // console.log(`complete-${data}`);
-                // console.log(`complete-${Status}`); parsererror 
+                console.log(`complete-${data}`);
+                console.log(`${Status}`);
                 let nowtime = new Date();
                 let todate = String(nowtime.getDate());
                 if(todate.length == 1){
@@ -178,19 +175,19 @@ function itemfunction(){
                 $('.single_messaging textarea').val('');
             },
         });
-    
         return false; 
 
     });
 
     $('#report').on('submit',function(){
         $.ajax({
-            url: 'singleInsertRP.php',
+            url: `singleInsertRP.php`,
             method: 'POST',               
             dataType: 'json',             
             data: {
                 MESSAGE_NO:$(this).find('button')[0].val(),
-                RES_MES_REPORT_REASON:$(this).find('textarea')[0].val()
+                RES_MES_REPORT_REASON:$(this).find('textarea')[0].val(),
+                
             },
 
         });

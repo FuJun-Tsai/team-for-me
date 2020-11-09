@@ -131,8 +131,8 @@
                 <div class="row">
                     <form class="selection col-lg-8" id="condition" method="POST" action="searchConditionRender.php">
 
-                        <input id="searchword" type="text" placeholder="美食快搜">
-                        <button id="searchwordbtn">搜尋</button>
+                        <input id="searchword" type="text" placeholder="美食快搜" name="searchbar">
+                        <button id="searchwordbtn" value="" name="condition">搜尋</button>
 
                         <label for="kind" class="kind">餐廳種類：
                             <label for="k1"><input type="checkbox" name="kind" id="k1" value="1">日式</label>
@@ -244,154 +244,170 @@
 
     <script>
         $(document).ready(function(){
-        K = '';
-        S = [];
-        // Restaurant();
-        ConditionSearch(K,S.join(','));
-        MessageRender();
+            K = '';
+            S = [];
+            result = [];
+            search = '';
+            // Restaurant();
+            ConditionSearch(K,S.join(','),result,search);
+            // MessageRender(result);
 
-        function Restaurant(){
-            $.ajax({
-                url:'searchRenderRES.php',
-                type:'GET',
-                dataType:'json',
-                success(data){
-                    for(let i=0;i<data.length;i+=1){
-                        $('.result').append(`
-                            <div id="${data[i].id}" class="rest container">
-                                <div class="row">
-                                    <div class="rep col-lg-5">
-                                        <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
-                                    </div>
-                                    <div class="detail col-lg-7">
-                                        <h2>${data[i].name}</h2>
-                                        <div class="kind west">${data[i].kind}</div>
-                                        <div class="style steak">${data[i].style}</div>
-                                        <div class="record">
-                                            <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
-                                            <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
-                                            <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+            function Restaurant(){
+                $.ajax({
+                    url:'searchRenderRES.php',
+                    type:'GET',
+                    dataType:'json',
+                    success(data){
+                        for(let i=0;i<data.length;i+=1){
+                            $('.result').append(`
+                                <div id="${data[i].id}" class="rest container">
+                                    <div class="row">
+                                        <div class="rep col-lg-5">
+                                            <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
                                         </div>
-                                        <h3>餐廳介紹：</h3>
-                                        <p id="rint">${data[i].summary}</p>
-                                        <h3>網友留言：</h3>
-                                        <div id="leavemessage" class="insearch ${data[i].id}">
+                                        <div class="detail col-lg-7">
+                                            <h2>${data[i].name}</h2>
+                                            <div class="kind west">${data[i].kind}</div>
+                                            <div class="style steak">${data[i].style}</div>
+                                            <div class="record">
+                                                <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
+                                                <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
+                                                <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+                                            </div>
+                                            <h3>餐廳介紹：</h3>
+                                            <p id="rint">${data[i].summary}</p>
+                                            <h3>網友留言：</h3>
+                                            <div id="leavemessage" class="insearch ${data[i].id}">
 
-                                        </div>
-                                        <form action="singlerestaurant.html" method="GET">
-                                            <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
-                                        </form>
-                                        <div class="go">
-                                            <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
-                                            <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                            </div>
+                                            <form action="singlerestaurant.html" method="GET">
+                                                <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
+                                            </form>
+                                            <div class="go">
+                                                <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
+                                                <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        `);
-                    }
-                },
-            });
-        }
-
-
-        
-        function MessageRender(){
-            $.ajax({
-                url:'searchRenderLM.php',
-                type:'POST',
-                dataType:'json',
-                success(data){
-                    for(let i=0 ; i<=data.length ;i+=1){
-                        $(`.${data[i].resno}`).append(`
-                            <div id="${data[i].id}" class="L">
-                                <img src="http://fakeimg.pl/60x60" alt="">
-                                <p>${data[i].content}</p>
-                            </div>
-                        `);
-                    };
-                },
-
-            });
-        }
-
-        $('#condition input:checkbox').on('click',function(){
-            if($(this).attr('name')=='kind'){
-                K = $("input[name='kind']:checked").map(function(){
-                    return $(this).val();
-                }).get();
-
-            }else{
-                S = $("input[name='style[]']:checked").map(function(){
-                    return $(this).val(); 
-                }).get();
+                            `);
+                        }
+                    },
+                });
             }
-            
-            ConditionSearch(K,S.join(','));
-        });
-        
-        function ConditionSearch(K,S){
-            let condition = `${K}&${S}`;
-            console.log(condition);
-            $.ajax({
-                url:'searchConditionRender.php',
-                type:'GET',
-                dataType:'json',
-                data:{
-                    condition:condition,
-                },
-                success(data){
-                    $('.error').css({'display': 'none'});
-                    $('.result').empty();
-                    for(let i=0;i<data.length;i+=1){
-                        $('.result').append(`
-                            <div id="${data[i].id}" class="rest container">
-                                <div class="row">
-                                    <div class="rep col-lg-5">
-                                        <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
-                                    </div>
-                                    <div class="detail col-lg-7">
-                                        <h2>${data[i].name}</h2>
-                                        <div class="kind west">${data[i].kind}</div>
-                                        <div class="style steak">${data[i].style}</div>
-                                        <div class="record">
-                                            <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
-                                            <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
-                                            <div class="group"><i class="fas fa-users"></i><span>300</span></div>
-                                        </div>
-                                        <h3>餐廳介紹：</h3>
-                                        <p id="rint">${data[i].summary}</p>
-                                        <h3>網友留言：</h3>
-                                        <div id="leavemessage" class="insearch ${data[i].id}">
 
+            function MessageRender(e){
+                $.ajax({
+                    url:'searchRenderLM.php',
+                    type:'POST',
+                    dataType:'json',
+                    data:{
+                        e:e.join(','),
+                    },
+                    success(data){
+                        for(let i=0 ; i<=data.length ;i+=1){
+                            $(`.${data[i].resno}`).append(`
+                                <div id="${data[i].id}" class="L">
+                                    <img src="http://fakeimg.pl/60x60" alt="">
+                                    <p>${data[i].content}</p>
+                                </div>
+                            `);
+                        };
+                    },
+
+                });
+            }
+
+            $('#condition input:checkbox').on('click',function(){
+                if($(this).attr('name')=='kind'){
+                    K = $("input[name='kind']:checked").map(function(){
+                        return $(this).val();
+                    }).get();
+                }else{
+                    S = $("input[name='style[]']:checked").map(function(){
+                        return $(this).val(); 
+                    }).get();
+                }
+                
+                ConditionSearch(K,S.join(','),search);
+            });
+
+
+            $('#searchwordbtn').on('click',function(){
+                $(this).val(`${$('#searchword').val()}`);
+                search = $('#searchword').val();
+                ConditionSearch(K,S.join(','),search);
+            });
+
+
+            function ConditionSearch(K,S,result,search=""){
+                let condition = `${K}&${S}`;
+                console.log("----????????---",search); 
+                $.ajax({
+                    url:'searchConditionRender.php',
+                    type:'GET',
+                    dataType:'json',
+                    data:{
+                        condition:condition,
+                        search:search
+                    },
+                    success(data){
+                        result = [];
+                        for(let i=0;i<data.length;i+=1){
+                            result.push(data[i].no);
+                        };
+                        $('.error').css({'display': 'none'});
+                        $('.result').empty();
+                        for(let i=0;i<data.length;i+=1){
+                            $('.result').append(`
+                                <div id="${data[i].id}" class="rest container">
+                                    <div class="row">
+                                        <div class="rep col-lg-5">
+                                            <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
                                         </div>
-                                        <form action="singlerestaurant.html" method="GET">
-                                            <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
-                                        </form>
-                                        <div class="go">
-                                            <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
-                                            <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                        <div class="detail col-lg-7">
+                                            <h2>${data[i].name}</h2>
+                                            <div class="kind west">${data[i].kind}</div>
+                                            <div class="style steak">${data[i].style}</div>
+                                            <div class="record">
+                                                <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
+                                                <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
+                                                <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+                                            </div>
+                                            <h3>餐廳介紹：</h3>
+                                            <p id="rint">${data[i].summary}</p>
+                                            <h3>網友留言：</h3>
+                                            <div id="leavemessage" class="insearch ${data[i].id}">
+
+                                            </div>
+                                            <form action="singlerestaurant.html" method="GET">
+                                                <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
+                                            </form>
+                                            <div class="go">
+                                                <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
+                                                <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        `);
-                    }
-                },
-                error(data){
-                    $('.result').empty();
-                    $('.error').css({'display': 'block'});
+                            `);
+                        }
+                    },
+                    error(data){
+                        $('.result').empty();
+                        $('.error').css({'display': 'block'});
 
-                }
+                    },
+                    complete(){
+                        MessageRender(result);
+                    },
 
-            });
+                });
 
-            MessageRender();
+            };
+     
+        });
 
-        }
-   
-                
-    });
     </script>
 
     <script>

@@ -314,8 +314,11 @@
                             `);
                         };
                     },
-
+                    
                 });
+                imgcube();
+                
+
             }
 
             $('#condition input:checkbox').on('click',function(){
@@ -336,11 +339,15 @@
             $('#searchwordbtn').on('click',function(){
                 $(this).val(`${$('#searchword').val()}`);
                 search = $('#searchword').val();
+                console.log(K);
+                console.log(S);
+
                 ConditionSearch(K,S.join(','),search);
+                return false;
             });
 
 
-            function ConditionSearch(K,S,result,search=""){
+            function ConditionSearch(K,S,result,search=''){
                 let condition = `${K}&${S}`;
                 console.log("----????????---",search); 
                 $.ajax({
@@ -411,28 +418,30 @@
     </script>
 
     <script>
-            imgcube();
+  
 
-            function imgcube(){
-                let imgwidth = $('.rep div').width();
-                if($(window).width()<600){
-                    $('.rep div').height(imgwidth);
-                    // console.log(imgwidth);
-                }else{
-                    $('.rep div').height(500);
-                }
-            };
-
-            window.addEventListener('resize',function(){
-                    imgcube();
-            });
-
-            $('.kind input').on('click',function(){
-                if($(this).prop('checked')){
-                    $('.kind input:checkbox').prop('checked',false);
-                    $(this).prop('checked',true);
+                function imgcube(){
+                    let imgwidth = $('.rep img').width();
+                    if($(window).width()<600){
+                        $('.rep img').width($(window).width()-20);
+                        $('.rep img').height($(window).width()-20);
+                        console.log(`window-width${$(window).width()}`);
+                    }else{
+                        $('.rep img').height(500);
+                    }
                 };
-            });
+
+                window.addEventListener('resize',function(){
+                        imgcube();
+                });
+
+                $('.kind input').on('click',function(){
+                    if($(this).prop('checked')){
+                        $('.kind input:checkbox').prop('checked',false);
+                        $(this).prop('checked',true);
+                    };
+                });
+
     </script>
 
     <!-- <script src="./js/searchrestaurant.js"></script> -->

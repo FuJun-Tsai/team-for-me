@@ -1,29 +1,39 @@
 body{
-    .banner_bg{
-    background-image: url("../image/12.jpg");
-    background-repeat: no-repeat;
-    height: 500px;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 5%;
-    background-attachment: fixed;
-        .text{
-            width: 90%;
-            height: 400px;
-            margin-top: 50px;
-            margin-left: 5%;
-            display: inline-block;
-            letter-spacing: 50px;
-            color: rgb(95, 95, 95);
-            text-decoration: none;
-            text-align: center;
-            background-color: white;
-            opacity: 0.75;
-            padding-top: 160px;
-        }
-        h1{
-            font-weight: 900;
+    .banner_share{
+        .banner_bg{
+        background-image: url("../image/12.jpg");
+        background-repeat: no-repeat;
+        height: 500px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 5%;
+        background-attachment: fixed;
+            .text{
+                width: 90%;
+                height: 400px;
+                margin-top: 50px;
+                margin-left: 5%;
+                display: inline-block;
+                // letter-spacing: 50px;
+                color: rgb(95, 95, 95);
+                text-decoration: none;
+                text-align: center;
+                // opacity: 0.75;
+                padding-top: 160px;
+                // padding: 20px;
+                outline: 5px solid white;
+                outline-offset: -13px;
+                background-color: rgba(223, 114, 25, 0.1);
+                h1{
+                    font-weight: 900;
+                    background-color: white;
+                    display: inline-block;
+                    padding-right: 28px;
+                    padding: 30px 0;
+                    margin-top: 0;
+                }
+            }
         }
     }
     .btnCust {
@@ -36,9 +46,9 @@ body{
         // font-weight: bold;
         // text-align: center;
         // line-height: 130px;
-        z-index: 5;
+        z-index: 1;
         position: fixed;
-        right: 10%;
+        right: 5%;
         bottom: 40%;
         // display: inline-block;
         // border-radius: 50%;
@@ -88,6 +98,7 @@ body{
                 cursor: pointer;
                 border: 0.1px solid #DF7219;
                 border-radius: 8px 8px 0px 0px;
+                margin-top: 2%;
                 }
                 button:hover {
                     background-color: #ffffff;
@@ -95,19 +106,40 @@ body{
                     border: 0.1px solid #DF7219;
                 }
                 select{
-                    padding: 20px 30px;
+                    padding: 20px 25px;
                     border-radius: 8px 8px 0px 0px;
                     background-color: #ffffff;
                     color: #DF7219;
                     border: 0.1px solid #DF7219;
+                    margin-top: 2%;
                 }
             }
             .col-md-4 {
                 display: inline-block;
                 margin-bottom: 5%;
                 .content {
-                    border: 1px solid grey;
-                    background-color: white;
+                    border: 1px solid rgb(206, 206, 206);
+                    @include lineGradient(50%,345deg,#F2AB39,transparent);
+                    border-radius: 10px;
+                    box-shadow:  0 0 20px #979797;
+                    width: 95%;
+                    .ord{
+                        h4{
+                            margin: 5% 3% 5% 5%;
+                            font-weight: 500;
+                            border-bottom: 1px solid orangered;
+                            display: inline-block;
+                            color: orangered;
+                        }
+                        h3{
+                            margin: 0 3% 5% 5%;
+                            font-weight: 900;
+                            // border-bottom: 1px solid orangered;
+                            // display: inline-block;
+                            color: orangered;
+                        }
+
+                    }
                     .head {
                         margin-top: 5%;
                         .user_img_block {
@@ -149,205 +181,292 @@ body{
                         cursor: pointer;
                     }
                     .btn_modal img {
-                        max-width: 100%;
+                        max-width: 340px;
+                        height: 250px;
+                        width: 100%;
+                        object-fit: cover;
                     }
                     .foot {
                         margin-bottom: 5%;
                         margin-top: 30px;
-                    }
-                    .collect_block {
+                        .collect_block {
                         padding-left: 10%;
                         margin-bottom: 5%;
                         display: inline-block;
-                        img {
-                            width: 25px;
+                            .heartIcon{
+                                display: inline-block;
+                                img {
+                                    width: 25px;
+                                    cursor: pointer;
+                                }
+                            }
+                            .collect_sum {
+                                padding-left: 10px;
+                                display: inline-block;
+                                h5 {
+                                    margin-top: 10%;
+                                }
+                            }
                         }
-                        .collect_sum {
-                            padding-left: 10px;
-                            display: inline-block;
-                            h5 {
+                        .msg_block {
+                            /* display: inline-block; */
+                            float: right;
+                            padding-right: 10%;
+                            img {
+                                width: 25px;
+                            }
+                            .msg_sum {
+                                padding-left: 10px;
+                                display: inline-block;
+                            }h5 {
                                 margin-top: 10%;
                             }
                         }
                     }
-                    .msg_block {
-                        /* display: inline-block; */
-                        float: right;
-                        padding-right: 10%;
-                        img {
-                            width: 25px;
-                        }
-                        .msg_sum {
-                            padding-left: 10px;
-                            display: inline-block;
-                        }h5 {
-                            margin-top: 10%;
-                        }
+                    .more{
+                        margin: 0 0 10% 35%;
+                        color: orangered;
+                        background-color: white;
+                        padding: 3% 10%;
+                        font-size: 16px;
+                        display: inline-block;
+                        cursor: pointer;
                     }
-                    //lightbox
-                    .overlay.-on {
-                        /* 加上 -on 之後，Modal 漸漸出現，因為有設定 transition */
-                        opacity: 1;
-                        z-index: 1;
-                    }
-                    .overlay {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100vh;
-                        background-color: hsla(0, 0%, 0%, .5);
-                        opacity: 0;
-                        z-index: -1;
-                        article{
-                            background-color: white;
-                            max-width: 100%;
-                            border-radius: 10px;
-                            box-shadow: 0 0 10px #ddd;
-                            padding: 3%;
-                            height: 80vh;
-                            overflow-x:hidden;
-                            overflow-y:auto;
-                            margin: 0 2%;
-                            z-index: 300;
-                            // position: absolute;
-                            // top: 50%;
-                            // left: 50%;
-                            margin-top: 15%;
-                            // transform: translate(-50%, -50%);
-                            .msg-title{
-                                h2 {
-                                    display: inline-block;
-                                }
-                                .btn_modal_close {
-                                    float: right;
-                                    cursor: pointer;
-                                    img {
-                                        display: inline-block;
-                                        width: 30px;
-                                    }
-                                }
-                            }
-                            .msg-left {
-                                display: inline-block;
-                                /* width: 60%; */
-                                .img_block {
-                                    width: 100%;
-                                    margin: 5% 0;
-                                    display: inline-block;
-                                    img {
-                                        display: inline-block;
-                                        max-width: 100%;
-                                    }
-                                }.user_img_block {
-                                    margin: 2% 0 4% 0;
-                                    display: inline-block;
-                                    img {
-                                        width: 35px;
-                                        display: inline-block;
-                                        vertical-align: middle;
-                                    }
-                                }.user_name {
-                                    /* border: 1px solid red; */
-                                    display: inline-block;
-                                    h5 {
-                                        padding-left: 15px;
-                                        display: inline-block;
-                                        padding-top: 6%;
-                                        margin-top: 10%;
-                                    }
-                                }
-                                .collect_block {
-                                    float: right;
-                                    padding: 0;
-                                    margin: 0;
-                                    margin-top: 2%;
-                                }p {
-                                    display: inline-block;
-                                    text-align: justify;
-                                    padding: 3%;
-                                    border: 1px solid grey;
-                                    line-height: 25px;
-                                    margin-bottom: 5%;
-                                }
-                            }
-                            .msg-right {
-                                display: inline-block;
-                                vertical-align: top;
-                                margin: 3% 0 0 3%;
-                                .msgin {
-                                    margin-right: 5%;
-                                    .msgpost {
-                                        border: 1px solid grey;
-                                        padding: 2%;
-                                        margin-bottom: 10%;
-                                        background-color: #FFE1A4;
-                                        input{
-                                            margin-left: 80%;
-                                            margin-top: 5%;
-                                        }
-                                        .user_img_block {
-                                            margin: 2% 0 4% 0;
-                                            display: inline-block;
-                                            img {
-                                                width: 35px;
-                                                display: inline-block;
-                                                vertical-align: middle;
-                                            }
-                                        }
-                                        .user_name {
-                                            /* border: 1px solid red; */
-                                            display: inline-block;
-                                            h5 {
-                                                padding-left: 15px;
-                                                display: inline-block;
-                                                margin-top: 10%;
-                                            }
-                                        }
-                                        p {
-                                            margin: 0;
-                                            line-height: 25px;
-                                            /* margin-left: 22%; */
-                                        }
-                                    }
-                                }form{ 
-                                    textarea {
-                                        outline: none;
-                                        width: 170px;
-                                        height: 50px;
-                                        margin-bottom: 5%;
-                                    }
-                                    input {
-                                        padding: 0;
-                                        border: 0.1px solid #DF7219;
-                                        display: inline-block;
-                                        outline: none;
-                                        background-color: #DF7219;
-                                        color: #FFFFFF;
-                                        width: 150px;
-                                        height: 50px;
-                                        border-radius: 15px 15px;
-                                        /* font-family: fontFamily; */
-                                        /* font-size: fontSize * 1.125; */
-                                        text-align: center;
-                                        line-height: 50px;
-                                        /* font-weight: fontWeight_500; */
-                                        cursor: pointer;
-                                    }
-                                    input:hover {
-                                        background-color: white;
-                                        color: #DF7219;
-                                        border: 0.1px solid #DF7219;
-                                        line-height: 50px;
-                                    }
-                                }
-                            }
-                        }
+                    .more:hover{
+                        color:white;
+                        background-color:  orangered;
                     }
                 }
             }
         }
     }
+    //lightbox
+    .overlay.-on {
+        /* 加上 -on 之後，Modal 漸漸出現，因為有設定 transition */
+        opacity: 1;
+        z-index: 1;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: hsla(0, 0%, 0%, .5);
+        opacity: 0;
+        z-index: -1;
+        article{
+            background: linear-gradient(#fbefa1,white);
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ddd;
+            padding: 3%;
+            height: 75vh;
+            overflow: auto;
+            margin: 0 5%;
+            z-index: 200;
+            // position: absolute;
+            // top: 50%;
+            // left: 50%;
+            margin-top: 13%;
+            // transform: translate(-50%, -50%);
+            .btn_modal_close {
+                float: right;
+                cursor: pointer;
+                img {
+                    display: inline-block;
+                    width: 30px;
+                }
+            }
+            .msg-left {
+                display: inline-block;
+                h4 {
+                    display: inline-block;
+                    color: orangered;
+                    padding: 0;
+                    border-bottom: 1px solid orangered;
+                }
+                h2 {
+                    color: orangered;
+                    padding: 0 2%;
+                    font-weight: 900;
+                    margin-top: 3%;
+                }
+                .img_block {
+                    width: 90%;
+                    margin: 5% 5%;
+                    display: block;
+                    img {
+                        display: inline-block;
+                        max-width: 100%;
+                    }
+                }
+                .left_info{
+                    margin: 0 5%;
+                    .user_block{
+                        margin: 0 20% 0 0;
+                        display: inline-block;
+                        .user_img_block {
+                        display: inline-block;
+                            img {
+                                width: 35px;
+                                display: inline-block;
+                            }
+                        }.user_name {
+                            display: inline-block;
+                            h5 {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                    .collect_block {
+                        display: inline-block;
+                        .heartIcon{
+                            display: inline-block;
+                            img {
+                                width: 35px;
+                                cursor: pointer;
+                            }
+                        }
+                        .collect_sum {
+                            display: inline-block;
+                        }
+                    }
+                    input{
+                        float: right;
+                        margin: 1% 0 0 0;
+                    }
+                }
+                p {
+                    display: inline-block;
+                    text-align: justify;
+                    padding: 3%;
+                    border: 1px solid grey;
+                    line-height: 25px;
+                    margin: 5% 5%;
+                    width: 90%;
+                    height: 130px;
+                    overflow: auto;
+                }
+            }
+            }
+            @media screen and (max-width: 992px){
+                article{
+                    margin-top: 20%;
+                    .msg-left{
+                        p{
+                            height: auto;
+                        }
+                    }.msg-right{
+                        .msgin {
+                            height: auto;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: 700px){
+                article{
+                    margin-top: 30%;
+                }
+            }
+            @media screen and (max-width: 480px){
+                article{
+                    margin-top: 45%;
+                }
+            }
+            .msg-right {
+                vertical-align: top;
+                margin: 5% 0 0 5%;
+                h3 {
+                    display: inline-block;
+                    padding: 2% 0;
+                    font-weight: 900;
+                    color: orangered;
+                }
+                .msgin {
+                    margin: 0 5% 5% 0;
+                    height: 350px;
+                    overflow: auto;
+                    .msgpost {
+                        border: 1px solid grey;
+                        padding: 2%;
+                        margin-bottom: 5%;
+                        background-color: #FFE1A4;
+                        .right_info{
+                            border-bottom: 1px solid grey;
+                            padding: 0 0 2% 0;
+                            margin: 0 0 2% 0;
+                            .user_block{
+                                display: inline-block;
+                                .user_img_block {
+                                display: inline-block;
+                                    img {
+                                        width: 35px;
+                                        display: inline-block;
+                                    }
+                                }.user_name {
+                                    display: inline-block;
+                                    h5 {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                            .collect_block {
+                                display: inline-block;
+                                .heartIcon{
+                                    display: inline-block;
+                                    img {
+                                        width: 35px;
+                                        cursor: pointer;
+                                    }
+                                }
+                                .collect_sum {
+                                    display: inline-block;
+                                }
+                            }
+                            input{
+                                float: right;
+                                margin: 1% 0 0 0;
+                            }
+                        }
+                        p {
+                            margin: 0;
+                            line-height: 25px;
+                        }
+                    }
+                }form{ 
+                    textarea {
+                        outline: none;
+                        width: 95%;
+                        height: 80px;
+                        margin-bottom: 1%;
+                    }
+                    input {
+                        padding: 0;
+                        border: 0.1px solid #DF7219;
+                        display: inline-block;
+                        outline: none;
+                        background-color: #DF7219;
+                        color: #FFFFFF;
+                        width: 150px;
+                        height: 50px;
+                        border-radius: 15px 15px;
+                        /* font-family: fontFamily; */
+                        /* font-size: fontSize * 1.125; */
+                        text-align: center;
+                        line-height: 50px;
+                        /* font-weight: fontWeight_500; */
+                        cursor: pointer;
+                    }
+                    input:hover {
+                        background-color: white;
+                        color: #DF7219;
+                        border: 0.1px solid #DF7219;
+                        line-height: 50px;
+                    }
+                }
+            }
+        }
     .newMoodLightBox {
         width: 100%;
         height: 100%;
@@ -363,8 +482,8 @@ body{
         left: 0;
         .newMoodBlock {
             padding: 2%;
-            margin: 0%;
-            width: 100%;
+            margin: 0 auto;
+            width: 90%;
             position: relative;
             border-radius: 10px;
             background-image: url("../image/15.png");
@@ -408,7 +527,6 @@ body{
                 margin: 0 auto;
                 .moodBox {
                     font-size: 16px;
-                    width: 50%;
                     align-items: center; 
                     width: 100%;
                     margin: 0 auto;
@@ -421,7 +539,7 @@ body{
                     .picWrap {
                         border: 1px solid #646464;
                         width: 100%;
-                        height: 200px;
+                        height: 265px;
                         margin-bottom: 10px;
                         text-overflow : ellipsis;
                         overflow: hidden;
@@ -440,6 +558,11 @@ body{
                         height: 30px;
                         color: #646464;
                     }
+                    textarea.moodTitle {
+                        width: 100%;
+                        height: 35px;
+                        font-size: 18px;
+                    }
                     textarea {
                         width: 100%;
                         height: 110px;
@@ -448,7 +571,7 @@ body{
                 }
             }
             #newMoodPostBtn {
-                margin: 20px 43%; 
+                margin: 20px 40%; 
             }
             .btnPink {
                 padding: 0;

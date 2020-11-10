@@ -2,9 +2,9 @@
 header('Content-Type: application/json; charset=UTF-8');
 $ErrMsg='';
 $test = explode('&',$_REQUEST['test']);
-echo($test[0]);
-echo($test[1]);
-echo '<br><br>';
+// echo($test[0]);
+// echo($test[1]);
+// echo '<br><br>';
 try{
     require_once('./connetbook.php');
     $sql = "insert into `report_restaurant_message` 

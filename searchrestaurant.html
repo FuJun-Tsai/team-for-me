@@ -339,8 +339,10 @@
             $('#searchwordbtn').on('click',function(){
                 $(this).val(`${$('#searchword').val()}`);
                 search = $('#searchword').val();
-                console.log(K);
-                console.log(S);
+                console.log(search);
+                console.log($('#searchword').val());
+                // console.log(K);
+                // console.log(S);
 
                 ConditionSearch(K,S.join(','),search);
                 return false;
@@ -425,7 +427,6 @@
                     if($(window).width()<600){
                         $('.rep img').width($(window).width()-20);
                         $('.rep img').height($(window).width()-20);
-                        console.log(`window-width${$(window).width()}`);
                     }else{
                         $('.rep img').height(500);
                     }

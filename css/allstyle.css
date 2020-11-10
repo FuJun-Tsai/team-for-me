@@ -6996,7 +6996,7 @@ body {
   }
 }
 
-body .banner_bg {
+body .banner_share .banner_bg {
   background-image: url("../image/12.jpg");
   background-repeat: no-repeat;
   height: 500px;
@@ -7007,30 +7007,35 @@ body .banner_bg {
   background-attachment: fixed;
 }
 
-body .banner_bg .text {
+body .banner_share .banner_bg .text {
   width: 90%;
   height: 400px;
   margin-top: 50px;
   margin-left: 5%;
   display: inline-block;
-  letter-spacing: 50px;
   color: #5f5f5f;
   text-decoration: none;
   text-align: center;
-  background-color: white;
-  opacity: 0.75;
   padding-top: 160px;
+  outline: 5px solid white;
+  outline-offset: -13px;
+  background-color: rgba(223, 114, 25, 0.1);
 }
 
-body .banner_bg h1 {
+body .banner_share .banner_bg .text h1 {
   font-weight: 900;
+  background-color: white;
+  display: inline-block;
+  padding-right: 28px;
+  padding: 30px 0;
+  margin-top: 0;
 }
 
 body .btnCust {
   /*自訂按鈕*/
-  z-index: 5;
+  z-index: 1;
   position: fixed;
-  right: 10%;
+  right: 5%;
   bottom: 40%;
   -webkit-transition: -webkit-filter 0.1s;
   transition: -webkit-filter 0.1s;
@@ -7098,6 +7103,7 @@ body section .container .tool_btn button {
   cursor: pointer;
   border: 0.1px solid #DF7219;
   border-radius: 8px 8px 0px 0px;
+  margin-top: 2%;
 }
 
 body section .container .tool_btn button:hover {
@@ -7107,11 +7113,12 @@ body section .container .tool_btn button:hover {
 }
 
 body section .container .tool_btn select {
-  padding: 20px 30px;
+  padding: 20px 25px;
   border-radius: 8px 8px 0px 0px;
   background-color: #ffffff;
   color: #DF7219;
   border: 0.1px solid #DF7219;
+  margin-top: 2%;
 }
 
 body section .container .col-md-4 {
@@ -7120,8 +7127,26 @@ body section .container .col-md-4 {
 }
 
 body section .container .col-md-4 .content {
-  border: 1px solid grey;
-  background-color: white;
+  border: 1px solid #cecece;
+  background: linear-gradient(345deg, #F2AB39 -50%, transparent 100%);
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 20px #979797;
+          box-shadow: 0 0 20px #979797;
+  width: 95%;
+}
+
+body section .container .col-md-4 .content .ord h4 {
+  margin: 5% 3% 5% 5%;
+  font-weight: 500;
+  border-bottom: 1px solid orangered;
+  display: inline-block;
+  color: orangered;
+}
+
+body section .container .col-md-4 .content .ord h3 {
+  margin: 0 3% 5% 5%;
+  font-weight: 900;
+  color: orangered;
 }
 
 body section .container .col-md-4 .content .head {
@@ -7172,7 +7197,11 @@ body section .container .col-md-4 .content .btn_modal {
 }
 
 body section .container .col-md-4 .content .btn_modal img {
-  max-width: 100%;
+  max-width: 340px;
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 body section .container .col-md-4 .content .foot {
@@ -7180,51 +7209,71 @@ body section .container .col-md-4 .content .foot {
   margin-top: 30px;
 }
 
-body section .container .col-md-4 .content .collect_block {
+body section .container .col-md-4 .content .foot .collect_block {
   padding-left: 10%;
   margin-bottom: 5%;
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .collect_block img {
-  width: 25px;
+body section .container .col-md-4 .content .foot .collect_block .heartIcon {
+  display: inline-block;
 }
 
-body section .container .col-md-4 .content .collect_block .collect_sum {
+body section .container .col-md-4 .content .foot .collect_block .heartIcon img {
+  width: 25px;
+  cursor: pointer;
+}
+
+body section .container .col-md-4 .content .foot .collect_block .collect_sum {
   padding-left: 10px;
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .collect_block .collect_sum h5 {
+body section .container .col-md-4 .content .foot .collect_block .collect_sum h5 {
   margin-top: 10%;
 }
 
-body section .container .col-md-4 .content .msg_block {
+body section .container .col-md-4 .content .foot .msg_block {
   /* display: inline-block; */
   float: right;
   padding-right: 10%;
 }
 
-body section .container .col-md-4 .content .msg_block img {
+body section .container .col-md-4 .content .foot .msg_block img {
   width: 25px;
 }
 
-body section .container .col-md-4 .content .msg_block .msg_sum {
+body section .container .col-md-4 .content .foot .msg_block .msg_sum {
   padding-left: 10px;
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .msg_block h5 {
+body section .container .col-md-4 .content .foot .msg_block h5 {
   margin-top: 10%;
 }
 
-body section .container .col-md-4 .content .overlay.-on {
+body section .container .col-md-4 .content .more {
+  margin: 0 0 10% 35%;
+  color: orangered;
+  background-color: white;
+  padding: 3% 10%;
+  font-size: 16px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+body section .container .col-md-4 .content .more:hover {
+  color: white;
+  background-color: orangered;
+}
+
+body .overlay.-on {
   /* 加上 -on 之後，Modal 漸漸出現，因為有設定 transition */
   opacity: 1;
   z-index: 1;
 }
 
-body section .container .col-md-4 .content .overlay {
+body .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -7235,148 +7284,231 @@ body section .container .col-md-4 .content .overlay {
   z-index: -1;
 }
 
-body section .container .col-md-4 .content .overlay article {
-  background-color: white;
-  max-width: 100%;
+body .overlay article {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbefa1), to(white));
+  background: linear-gradient(#fbefa1, white);
+  max-width: 90%;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 10px #ddd;
           box-shadow: 0 0 10px #ddd;
   padding: 3%;
-  height: 80vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin: 0 2%;
-  z-index: 300;
-  margin-top: 15%;
+  height: 75vh;
+  overflow: auto;
+  margin: 0 5%;
+  z-index: 200;
+  margin-top: 13%;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-title h2 {
-  display: inline-block;
-}
-
-body section .container .col-md-4 .content .overlay article .msg-title .btn_modal_close {
+body .overlay article .btn_modal_close {
   float: right;
   cursor: pointer;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-title .btn_modal_close img {
+body .overlay article .btn_modal_close img {
   display: inline-block;
   width: 30px;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left {
-  display: inline-block;
-  /* width: 60%; */
-}
-
-body section .container .col-md-4 .content .overlay article .msg-left .img_block {
-  width: 100%;
-  margin: 5% 0;
+body .overlay article .msg-left {
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left .img_block img {
+body .overlay article .msg-left h4 {
+  display: inline-block;
+  color: orangered;
+  padding: 0;
+  border-bottom: 1px solid orangered;
+}
+
+body .overlay article .msg-left h2 {
+  color: orangered;
+  padding: 0 2%;
+  font-weight: 900;
+  margin-top: 3%;
+}
+
+body .overlay article .msg-left .img_block {
+  width: 90%;
+  margin: 5% 5%;
+  display: block;
+}
+
+body .overlay article .msg-left .img_block img {
   display: inline-block;
   max-width: 100%;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left .user_img_block {
-  margin: 2% 0 4% 0;
+body .overlay article .msg-left .left_info {
+  margin: 0 5%;
+}
+
+body .overlay article .msg-left .left_info .user_block {
+  margin: 0 20% 0 0;
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left .user_img_block img {
+body .overlay article .msg-left .left_info .user_block .user_img_block {
+  display: inline-block;
+}
+
+body .overlay article .msg-left .left_info .user_block .user_img_block img {
   width: 35px;
   display: inline-block;
-  vertical-align: middle;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left .user_name {
-  /* border: 1px solid red; */
+body .overlay article .msg-left .left_info .user_block .user_name {
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left .user_name h5 {
-  padding-left: 15px;
+body .overlay article .msg-left .left_info .user_block .user_name h5 {
   display: inline-block;
-  padding-top: 6%;
-  margin-top: 10%;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left .collect_block {
+body .overlay article .msg-left .left_info .collect_block {
+  display: inline-block;
+}
+
+body .overlay article .msg-left .left_info .collect_block .heartIcon {
+  display: inline-block;
+}
+
+body .overlay article .msg-left .left_info .collect_block .heartIcon img {
+  width: 35px;
+  cursor: pointer;
+}
+
+body .overlay article .msg-left .left_info .collect_block .collect_sum {
+  display: inline-block;
+}
+
+body .overlay article .msg-left .left_info input {
   float: right;
-  padding: 0;
-  margin: 0;
-  margin-top: 2%;
+  margin: 1% 0 0 0;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-left p {
+body .overlay article .msg-left p {
   display: inline-block;
   text-align: justify;
   padding: 3%;
   border: 1px solid grey;
   line-height: 25px;
-  margin-bottom: 5%;
+  margin: 5% 5%;
+  width: 90%;
+  height: 130px;
+  overflow: auto;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right {
-  display: inline-block;
+@media screen and (max-width: 992px) {
+  body .overlay article {
+    margin-top: 20%;
+  }
+  body .overlay article .msg-left p {
+    height: auto;
+  }
+  body .overlay article .msg-right .msgin {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  body .overlay article {
+    margin-top: 30%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body .overlay article {
+    margin-top: 45%;
+  }
+}
+
+body .overlay .msg-right {
   vertical-align: top;
-  margin: 3% 0 0 3%;
+  margin: 5% 0 0 5%;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin {
-  margin-right: 5%;
+body .overlay .msg-right h3 {
+  display: inline-block;
+  padding: 2% 0;
+  font-weight: 900;
+  color: orangered;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost {
+body .overlay .msg-right .msgin {
+  margin: 0 5% 5% 0;
+  height: 350px;
+  overflow: auto;
+}
+
+body .overlay .msg-right .msgin .msgpost {
   border: 1px solid grey;
   padding: 2%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   background-color: #FFE1A4;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost input {
-  margin-left: 80%;
-  margin-top: 5%;
+body .overlay .msg-right .msgin .msgpost .right_info {
+  border-bottom: 1px solid grey;
+  padding: 0 0 2% 0;
+  margin: 0 0 2% 0;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost .user_img_block {
-  margin: 2% 0 4% 0;
+body .overlay .msg-right .msgin .msgpost .right_info .user_block {
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost .user_img_block img {
+body .overlay .msg-right .msgin .msgpost .right_info .user_block .user_img_block {
+  display: inline-block;
+}
+
+body .overlay .msg-right .msgin .msgpost .right_info .user_block .user_img_block img {
   width: 35px;
   display: inline-block;
-  vertical-align: middle;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost .user_name {
-  /* border: 1px solid red; */
+body .overlay .msg-right .msgin .msgpost .right_info .user_block .user_name {
   display: inline-block;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost .user_name h5 {
-  padding-left: 15px;
+body .overlay .msg-right .msgin .msgpost .right_info .user_block .user_name h5 {
   display: inline-block;
-  margin-top: 10%;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right .msgin .msgpost p {
+body .overlay .msg-right .msgin .msgpost .right_info .collect_block {
+  display: inline-block;
+}
+
+body .overlay .msg-right .msgin .msgpost .right_info .collect_block .heartIcon {
+  display: inline-block;
+}
+
+body .overlay .msg-right .msgin .msgpost .right_info .collect_block .heartIcon img {
+  width: 35px;
+  cursor: pointer;
+}
+
+body .overlay .msg-right .msgin .msgpost .right_info .collect_block .collect_sum {
+  display: inline-block;
+}
+
+body .overlay .msg-right .msgin .msgpost .right_info input {
+  float: right;
+  margin: 1% 0 0 0;
+}
+
+body .overlay .msg-right .msgin .msgpost p {
   margin: 0;
   line-height: 25px;
-  /* margin-left: 22%; */
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right form textarea {
+body .overlay .msg-right form textarea {
   outline: none;
-  width: 170px;
-  height: 50px;
-  margin-bottom: 5%;
+  width: 95%;
+  height: 80px;
+  margin-bottom: 1%;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right form input {
+body .overlay .msg-right form input {
   padding: 0;
   border: 0.1px solid #DF7219;
   display: inline-block;
@@ -7394,7 +7526,7 @@ body section .container .col-md-4 .content .overlay article .msg-right form inpu
   cursor: pointer;
 }
 
-body section .container .col-md-4 .content .overlay article .msg-right form input:hover {
+body .overlay .msg-right form input:hover {
   background-color: white;
   color: #DF7219;
   border: 0.1px solid #DF7219;
@@ -7422,8 +7554,8 @@ body .newMoodLightBox {
 
 body .newMoodLightBox .newMoodBlock {
   padding: 2%;
-  margin: 0%;
-  width: 100%;
+  margin: 0 auto;
+  width: 90%;
   position: relative;
   border-radius: 10px;
   background-image: url("../image/15.png");
@@ -7483,7 +7615,6 @@ body .newMoodLightBox .newMoodBlock #newMoodForm {
 
 body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox {
   font-size: 16px;
-  width: 50%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -7501,7 +7632,7 @@ body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox h1 {
 body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox .picWrap {
   border: 1px solid #646464;
   width: 100%;
-  height: 200px;
+  height: 265px;
   margin-bottom: 10px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -7530,6 +7661,12 @@ body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox select {
   color: #646464;
 }
 
+body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox textarea.moodTitle {
+  width: 100%;
+  height: 35px;
+  font-size: 18px;
+}
+
 body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox textarea {
   width: 100%;
   height: 110px;
@@ -7537,7 +7674,7 @@ body .newMoodLightBox .newMoodBlock #newMoodForm .moodBox textarea {
 }
 
 body .newMoodLightBox .newMoodBlock #newMoodPostBtn {
-  margin: 20px 43%;
+  margin: 20px 40%;
 }
 
 body .newMoodLightBox .newMoodBlock .btnPink {

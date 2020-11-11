@@ -96,7 +96,6 @@ function itemfunction(){
         'color':'red',
         'fontSize':'20px',
     });
-    
     $(`#${day} span`).css({
         'color':'red',
         'fontSize':'20px',
@@ -159,15 +158,27 @@ function itemfunction(){
                 console.log(`${Status}`);
                 let nowtime = new Date();
                 let todate = String(nowtime.getDate());
+                let word = $('.single_messaging textarea').val();
+                let item = word.split('');
+                
+
+                for(let i=0;i<=item.length-1;i+=1){
+                    if(item[i].charCodeAt()==10){
+                        item[i]='<br>';
+                    }
+                    word = item.join('');
+                }
+                console.log(word);
+
                 if(todate.length == 1){
                     todate = `0${todate}`;
                 }
                 let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
-                
+
                 $('#leavemessage').append(`
                 <div class="single_L">
                     <img src="http://fakeimg.pl/60x60" alt="">
-                    <p>${$('.single_messaging textarea').val()}</p>
+                    <p>${word}</p>
                     <p class="time">${timetext}</p>
                     <i class="fas fa-exclamation-triangle">檢舉</i>
                 </div>              

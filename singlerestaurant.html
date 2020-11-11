@@ -374,7 +374,6 @@
                             }
                             content = item.join('');
                         }
-
                         $('#leavemessage').append(`
                         <div id="${data[i].id}" class="single_L">
                             <img src="http://fakeimg.pl/60x60" alt="">
@@ -395,7 +394,7 @@
                         </button>
                     </form>
                     `);
-                    console.log(location.search);
+
                     $('.single_report').append(`
                     <div class="single_reportback">
                         <i class="fas fa-times single_cancel"></i>
@@ -423,6 +422,7 @@
                     itemfunction(); 
 
                 }
+                
             });
 
 

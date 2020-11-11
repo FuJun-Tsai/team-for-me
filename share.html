@@ -278,7 +278,7 @@
                             <span class="line2"></span>
                         </div>
                         <h2>分享你的吃吃心得</h2>
-                        <form id="newMoodForm">
+                        <form id="newMoodForm" action="shareInsertPost.php" method="GET">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="moodBox">
@@ -293,9 +293,9 @@
                                     <div class="moodBox">
                                         <h1>選擇貼文分類</h1>
                                         <select name="moodClass" id="moodClass">
-                                                <option value="揪團分享">揪團分享</option>
-                                                <option value="美食分享">美食分享</option>
-                                            </select>
+                                            <option value="0">揪團分享</option>
+                                            <option value="1">美食分享</option>
+                                        </select>
                                         <h1>寫下吃吃標題</h1>
                                         <textarea name="moodTitle" id="moodTitle" class="moodTitle"></textarea>
 
@@ -304,8 +304,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <button class="btnPink" id="newMoodPostBtn">送出</button>
                         </form>
-                        <button class="btnPink" id="newMoodPostBtn">送出</button>
                     </div>
                 </div>
             </div>
@@ -369,7 +369,7 @@
                 dataType:'json',
                 type:'GET',
                 success(data){
-                    for(let i=0;i<=data.length;i+=1){
+                    for(let i=0;i<data.length;i+=1){
                         if(data[i].kind==0){
                             data[i].kind='#美食分享';
                         }else{
@@ -399,9 +399,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12 -innerc" id="c1-1">
+                                    <div class="col-md-12">
                                         <div class="btn_modal">
-                                            <img src="image/${data[i].img}">
+                                            <img src="image/article_sharing/${data[i].img}">
                                         </div>
                                     </div>
 
@@ -430,20 +430,117 @@
                             </div>
                         `);
                         
-                        
-                        htmljs();
-            
                         $(`.${data[i].id}`).on('click',function(){
                             let id = $(this).val();
                             $(".msg-left h4").text(`${data[i].kind}`);
                             $(".msg-left h2").text(`${data[i].title}`);
-                            $(".img_block img").attr('src',`${data[i].img}`);
+                            $(".img_block img").attr('src',`image/article_sharing/${data[i].img}`);
                             $(".msg-left p").text(`${data[i].word}`);
-
                             lightdetail(id);
                         });
+                        
+                        // if(i==data.length-1){
+                        
+
+
+                            // htmljs();
+
+                        // };
+
                     };
-                    
+
+                    $('#newMoodForm').on('submit',function(){
+                        $.ajax({
+                            url:'shareInsertPost.php',
+                            type:'GET',
+                            data:{
+                                title:$('#moodTitle').val(),
+                                word :$('#moodContent').val(),
+                                kind :$('#moodClass').val(),
+                                img  :new FormData($('#inputImg')),
+
+                            },
+                            dataType:'json',
+                            complete(data){
+                                let nowtime = new Date();
+                                let todate = String(nowtime.getDate());
+                                let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
+                                let title = $('#moodClass').val();
+
+                                if(title==0){
+                                    title = '美食分享';
+                                }else{
+                                    title = '揪團分享';
+                                };
+                                
+                                console.log(data);
+                                
+                                $('#cardshare').append(`
+                                    <div class="col-md-4">
+                                        <div class="content">
+
+                                            <div class="ord">
+                                                <h4>${title}</h4>
+                                                <h3>${$('#moodTitle').val()}</h3>
+                                            </div>
+                                            <div class="head">
+
+                                                <div class="user_img_block">
+                                                    <img src="image/{{headimg}}>
+                                                </div>
+
+                                                <div class="user_name">
+                                                    <h5>{{哈洽馬}}</h5>
+                                                </div>
+
+                                                <div class="time">
+                                                    <h5>${timetext}</h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="btn_modal">
+                                                    <img src="image/article_sharing/{{XX.img}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="foot">
+
+                                                <div class="collect_block">
+                                                    <div class="heartIcon">
+                                                        <img src="image/heart-shape-outline.png" class="fillicon">
+                                                    </div>
+
+                                                    <div class="collect_sum">
+                                                        <h5>999</h5>
+                                                    </div>
+                                                </div>
+
+                                                <div class="msg_block">
+                                                    <img src="image/comment-alt-solid.svg">
+
+                                                    <div class="msg_sum">
+                                                        <h5>999</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="more newpost" style="outline:none; border:none;"  value="">more</button>
+                                        </div>
+                                    </div>
+                                `);
+
+                                // $('.newpost').on('click',function(){
+                                    
+                                // });
+
+                            }
+
+                        });
+
+
+                    });
+
+                    htmljs();
                 
                 },
             
@@ -456,8 +553,6 @@
             //     lightdetail(id);
             // });
 
-
-
             function lightdetail(e){
                 $.ajax({
                     url:'sharelightRender.php',
@@ -469,6 +564,7 @@
                     success(data){
                         console.log(data); 
                         $(".overlay").addClass("-on");
+                        $(".msgin").empty();
 
                         for(let i=0;i<data.length;i+=1){
                             $(".msgin").append(`
@@ -476,7 +572,7 @@
                                 <div class="right_info">
                                     <div class="user_block">
                                         <div class="user_img_block">
-                                            <img src="${data[i].img}">
+                                            <img src="image/article_sharing/${data[i].img}">
                                         </div>
                                         <div class="user_name">
                                             <h5>${data[i].name}：</h5>

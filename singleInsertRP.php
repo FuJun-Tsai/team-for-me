@@ -38,6 +38,6 @@ try{
     echo $ErrMsg;
 }
 header("location:singlerestaurant.html$test[1]");
-// header("location:singlerestaurant.html?RES_NO=1");
+// header("location:singlerestaurant.html?RES_NO=15");
 
 ?>

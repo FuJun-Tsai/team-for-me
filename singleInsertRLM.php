@@ -4,7 +4,7 @@ $ErrMsg='';
 $test = explode(",",$_REQUEST['RES_MEM']);
 try{
     require_once('./connetbook.php');
-    $sql = "insert into `restaurant_message` 
+    $sql = "INSERT into `restaurant_message` 
             (RES_NO,
             MEMBER_NO,
             RES_MES_TIME,
@@ -14,8 +14,7 @@ try{
             (:RES_NO,
             :MEMBER_NO,
             now(),
-            :RES_MESSAGE_WORD); 
-            ";
+            :RES_MESSAGE_WORD);";
 
 
     $RPdata = $pdo->prepare($sql);
@@ -24,7 +23,7 @@ try{
     $RPdata-> bindValue(':RES_MESSAGE_WORD',$_REQUEST['RES_MESSAGE_WORD']);
     $RPdata-> execute();
 
-    echo $test[0] , $test[1] , '<br>' , $_REQUEST['RES_MESSAGE_WORD'];
+    // echo $test[0] , $test[1] , '<br>' , $_REQUEST['RES_MESSAGE_WORD'];
     if($RPdata->rowCount()==0){
         echo '資料有誤';
     }else{

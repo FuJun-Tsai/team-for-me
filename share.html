@@ -235,7 +235,7 @@
 
                             <div class="col-md-6 order-2">
                                 <div class="msg-right">
-                                    <h3>留言區</h3>
+                                    <!-- <h3>留言區</h3> -->
                                     <div class="msgin">
                                         <!-- <div class="msgpost">
                                             <div class="right_info">
@@ -255,10 +255,10 @@
                                         </div> -->
                                     </div>
 
-                                    <form action="" id="nuan_LeaveMessage">
+                                    <!-- <form action="" id="nuan_LeaveMessage">
                                         <textarea name="" id="" placeholder="留言"></textarea>
                                         <input type="submit" value="送 出">
-                                    </form>
+                                    </form> -->
                                 </div>
                             </div>
                         </div>
@@ -278,13 +278,13 @@
                             <span class="line2"></span>
                         </div>
                         <h2>分享你的吃吃心得</h2>
-                        <form id="newMoodForm" action="shareInsertPost.php" method="GET">
+                        <form id="newMoodForm" action="shareInsertPost.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="moodBox">
                                         <h1>上傳圖片</h1>
                                         <div class="picWrap">
-                                            <img src="./image/newMoodPic.png" id="viewImg">
+                                            <img src="" id="viewImg">
                                         </div>
                                         <input type="file" name="moodPic" id="inputImg">
                                     </div>
@@ -431,6 +431,7 @@
                         `);
                         
                         $(`.${data[i].id}`).on('click',function(){
+
                             let id = $(this).val();
                             $(".msg-left h4").text(`${data[i].kind}`);
                             $(".msg-left h2").text(`${data[i].title}`);
@@ -449,101 +450,118 @@
 
                     };
 
-                    $('#newMoodForm').on('submit',function(){
-                        $.ajax({
-                            url:'shareInsertPost.php',
-                            type:'GET',
-                            data:{
-                                title:$('#moodTitle').val(),
-                                word :$('#moodContent').val(),
-                                kind :$('#moodClass').val(),
-                                img  :new FormData($('#inputImg')),
-
-                            },
-                            dataType:'json',
-                            complete(data){
-                                let nowtime = new Date();
-                                let todate = String(nowtime.getDate());
-                                let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
-                                let title = $('#moodClass').val();
-
-                                if(title==0){
-                                    title = '美食分享';
-                                }else{
-                                    title = '揪團分享';
-                                };
-                                
-                                console.log(data);
-                                
-                                $('#cardshare').append(`
-                                    <div class="col-md-4">
-                                        <div class="content">
-
-                                            <div class="ord">
-                                                <h4>${title}</h4>
-                                                <h3>${$('#moodTitle').val()}</h3>
-                                            </div>
-                                            <div class="head">
-
-                                                <div class="user_img_block">
-                                                    <img src="image/{{headimg}}>
-                                                </div>
-
-                                                <div class="user_name">
-                                                    <h5>{{哈洽馬}}</h5>
-                                                </div>
-
-                                                <div class="time">
-                                                    <h5>${timetext}</h5>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="btn_modal">
-                                                    <img src="image/article_sharing/{{XX.img}}">
-                                                </div>
-                                            </div>
-
-                                            <div class="foot">
-
-                                                <div class="collect_block">
-                                                    <div class="heartIcon">
-                                                        <img src="image/heart-shape-outline.png" class="fillicon">
-                                                    </div>
-
-                                                    <div class="collect_sum">
-                                                        <h5>999</h5>
-                                                    </div>
-                                                </div>
-
-                                                <div class="msg_block">
-                                                    <img src="image/comment-alt-solid.svg">
-
-                                                    <div class="msg_sum">
-                                                        <h5>999</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button class="more newpost" style="outline:none; border:none;"  value="">more</button>
-                                        </div>
-                                    </div>
-                                `);
-
-                                // $('.newpost').on('click',function(){
-                                    
-                                // });
-
-                            }
-
-                        });
-
-
-                    });
-
                     htmljs();
                 
                 },
             
+            });
+
+
+            $('#newMoodPostBtn').on('click',function(){
+                $.ajax({
+                    url:'shareInsertPost.php',
+                    type:'GET',
+                    data:{
+                        moodTitle:$('#moodTitle').val(),
+                        moodContent :$('#moodContent').val(),
+                        moodClass :$('#moodClass').val(),
+                        img  :new FormData($('#inputImg')),
+                        // img  :$('#inputImg'),
+
+                    },
+                    // data:{
+                    //     title:1,
+                    //     word :2,
+                    //     kind :0,
+                    //     // img  :new FormData($('#inputImg')),
+
+                    // },
+                    // data:`title=1&word=1&kind=0`,
+                    dataType:'json',
+                    complete(data){
+                        let nowtime = new Date();
+                        let todate = String(nowtime.getDate());
+                        let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
+                        let title = $('#moodClass').val();
+
+                        if(title==0){
+                            title = '美食分享';
+                        }else{
+                            title = '揪團分享';
+                        };
+                        
+                        console.log(data);
+                        
+                        $('#cardshare').append(`
+                            <div class="col-md-4">
+                                <div class="content">
+
+                                    <div class="ord">
+                                        <h4>${title}</h4>
+                                        <h3>${$('#moodTitle').val()}</h3>
+                                    </div>
+                                    <div class="head">
+
+                                        <div class="user_img_block">
+                                            <img src="image/{{headimg}}>
+                                        </div>
+
+                                        <div class="user_name">
+                                            <h5>{{哈洽馬}}</h5>
+                                        </div>
+
+                                        <div class="time">
+                                            <h5>${timetext}</h5>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="btn_modal">
+                                            <img src="image/article_sharing/{{XX.img}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="foot">
+
+                                        <div class="collect_block">
+                                            <div class="heartIcon">
+                                                <img src="image/heart-shape-outline.png" class="fillicon">
+                                            </div>
+
+                                            <div class="collect_sum">
+                                                <h5>999</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="msg_block">
+                                            <img src="image/comment-alt-solid.svg">
+
+                                            <div class="msg_sum">
+                                                <h5>999</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="more newpost" style="outline:none; border:none;"  value="">more</button>
+                                </div>
+                            </div>
+                        `);
+
+                        $('.newpost').on('click',function(){
+                            // let id = $(this).val();
+                            // $(".msg-left h4").text(`${data[i].kind}`);
+                            // $(".msg-left h2").text(`${data[i].title}`);
+                            // $(".img_block img").attr('src',`image/article_sharing/${data[i].img}`);
+                            // $(".msg-left p").text(`${data[i].word}`);
+                            // lightdetail(id);
+                            console.log('here');
+
+                        });
+
+                    }
+
+                });
+
+
             });
 
         
@@ -564,35 +582,99 @@
                     success(data){
                         console.log(data); 
                         $(".overlay").addClass("-on");
-                        $(".msgin").empty();
+                        $(".msg-right").empty();
+
+                        $(".msg-right").append(`
+                        <h3>留言區</h3>
+                        `);
 
                         for(let i=0;i<data.length;i+=1){
-                            $(".msgin").append(`
-                            <div class="msgpost">
-                                <div class="right_info">
-                                    <div class="user_block">
-                                        <div class="user_img_block">
-                                            <img src="image/article_sharing/${data[i].img}">
+                            $(".msg-right").append(`
+                            <div class="msgin">
+                                <div class="msgpost">
+                                    <div class="right_info">
+                                        <div class="user_block">
+                                            <div class="user_img_block">
+                                                <img src="${data[i].headimg}">
+                                            </div>
+                                            <div class="user_name">
+                                                <h5>${data[i].name}：</h5>
+                                            </div>
                                         </div>
-                                        <div class="user_name">
-                                            <h5>${data[i].name}：</h5>
-                                        </div>
+                                        <input type="button" value="檢舉">
                                     </div>
-                                    <input type="button" value="檢舉">
+                                    <p>${data[i].word}</p>
+                                    <p>${data[i].time}</p>
                                 </div>
-                                <p>${data[i].word}</p>
                             </div>
+
                             `);
 
                         }
 
+                        $('.msg-right').append(`
+                        <form id="nuan_LeaveMessage" action="shareInsertMessage.php" method="GET">
+                            <textarea name="word" id="" placeholder="留言"></textarea>
+                            <button type="submit" name="no" value="${data[0].no}">送出</button>
+                        </form>
+                        `);
+
+                        LM();
+
                     },
+
                     complete(){
+
                     }
 
                 });
 
             };
+
+            function LM(){
+
+                $('#nuan_LeaveMessage button').on('click',function(){
+                    $.ajax({
+                        url:'shareInsertMessage.php',
+                        type:'GET',
+                        dataType:'json',
+                        data:{
+                            no:$(this).val(),
+                            word:$('#nuan_LeaveMessage textarea').val(),
+                        },
+                        complete(data){
+
+                        },
+
+                    });
+                    let lastindex = $('.msgpost').length -1;
+                    let message = $('#nuan_LeaveMessage textarea');
+                    let nowtime = new Date();
+                    let todate = String(nowtime.getDate());
+                    let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
+
+                        $('.msgin').append(
+                            `<div class="msgpost">
+                                <div class="right_info">
+                                    <div class="user_block">
+                                        <div class="user_img_block">
+                                            <img src="{{會員大頭照}}">
+                                        </div>
+                                        <div class="user_name">
+                                            <h5>{{會員名稱}}：</h5>
+                                        </div>
+                                    </div>
+                                    <input type="button" value="檢舉">
+                                </div>
+                                <p>${message.val()}</p>
+                                <p>${timetext}</p>
+                            </div>`
+                        );
+                        return false;
+                        message.val('');
+                });
+
+            }
 
 
         });
@@ -678,28 +760,28 @@
                     filter(id);
                 });
                 
-                $('#nuan_LeaveMessage').on('submit',function(){
-                    let message = $('#nuan_LeaveMessage textarea');
-                    let lastindex = $('.msgpost').length -1;
-                    $('.msgin').append(
-                        `<div class="msgpost">
-                            <div class="right_info">
-                                <div class="user_block">
-                                    <div class="user_img_block">
-                                        <img>
-                                    </div>
-                                    <div class="user_name">
-                                        <h5>董董：</h5>
-                                    </div>
-                                </div>
-                                <input type="button" value="檢舉">
-                            </div>
-                            <p>${message.val()}</p>
-                        </div>`
-                    );
-                    return false;
-                    message.val('');
-                });
+                // $('#nuan_LeaveMessage').on('submit',function(){
+                //     let message = $('#nuan_LeaveMessage textarea');
+                //     let lastindex = $('.msgpost').length -1;
+                //     $('.msgin').append(
+                //         `<div class="msgpost">
+                //             <div class="right_info">
+                //                 <div class="user_block">
+                //                     <div class="user_img_block">
+                //                         <img>
+                //                     </div>
+                //                     <div class="user_name">
+                //                         <h5>董董：</h5>
+                //                     </div>
+                //                 </div>
+                //                 <input type="button" value="檢舉">
+                //             </div>
+                //             <p>${message.val()}</p>
+                //         </div>`
+                //     );
+                //     return false;
+                //     message.val('');
+                // });
 
             });
         };

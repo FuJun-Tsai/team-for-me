@@ -1,9 +1,21 @@
 <?php
 $ErrMsg='';
-echo $_FILES['img']['type'];
+// print_r($_FILES['moodPic']['type']);
 // JOIN member_management mm on(A.MEMBER_NO = mm.MEMBER_NO) 
 try{
     require_once("./connetbook.php");
+    $sql = "SELECT MAX(ARTICLE_NO) 
+            FROM article_sharing";
+    $data = $pdo->prepare($sql);
+    $data-> execute();
+    $num = $data->fetch(PDO::FETCH_ASSOC);
+    $num = $num['MAX(ARTICLE_NO)'];
+    $num = (integer) $num;
+    $num += 1;
+    $type = explode('/',$_FILES['moodPic']['type'])[1];
+
+    $imgname = 'Art_' . "{$num}" . ".$type"; 
+
     $sql = "INSERT INTO `article_sharing` (
             MEMBER_NO,
             ARTICLE_TITLE,
@@ -19,31 +31,30 @@ try{
             :word,
             now(),
             :kind,
-            Art_6
+            '$imgname'
             );";
 
+    $sql.= " ORDER BY `ARTICLE_NO` ASC";
+
     $data = $pdo->prepare($sql);
-    $data-> bindValue(':title',$_REQUEST['title']);
-    $data-> bindValue(':word',$_REQUEST['word']);
-    $data-> bindValue(':kind',$_REQUEST['kind']);
-    // $data-> bindValue(':img',$_FILES['img']['name']);
+    $data-> bindValue(':title',$_REQUEST['moodTitle']);
+    $data-> bindValue(':word',$_REQUEST['moodContent']);
+    $data-> bindValue(':kind',$_REQUEST['moodClass']);
+    // $data-> bindValue(':img',$_FILES['moodPic']['name']);
     $data-> execute();
 
     if($data->rowCount()==0){
         echo 'PHP錯誤';
-    }else{
-        $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
     }
 
-    // $from = $_FILES["img"]["tmp_name"]; //暫存區中的路徑和檔名
-    // $fileName = $_FILES["img"]["name"];;//原始檔案名稱
-    // $to = "image/article_sharing/{$fileName}";
-    // if(copy($from, $to)){
-    //     echo "上傳成功<br>";
-    // }else{
-    //     echo "上傳失敗<br>";
-    // }
+    $from = $_FILES["moodPic"]["tmp_name"]; //暫存區中的路徑和檔名
+    $fileName = $_FILES["moodPic"]["name"];;//原始檔案名稱
+    $to = "image/article_sharing/{$imgname}";
+    if(copy($from, $to)){
+        echo "上傳成功<br>";
+    }else{
+        echo "上傳失敗<br>";
+    }
 
 }catch(PDOException $e){
     $ErrMsg.= '錯誤內容' . $e->getMessage() . '<br>';
@@ -51,5 +62,6 @@ try{
     echo $ErrMsg;
 }
 
+header("location:share.html");
 
 ?>

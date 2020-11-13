@@ -47,8 +47,8 @@ try{
         echo 'PHP錯誤';
     }
 
-    $from = $_FILES["moodPic"]["tmp_name"]; //暫存區中的路徑和檔名
-    $fileName = $_FILES["moodPic"]["name"];;//原始檔案名稱
+    $from = $_FILES["moodPic"]["tmp_name"];
+    $fileName = $_FILES["moodPic"]["name"];
     $to = "image/article_sharing/{$imgname}";
     if(copy($from, $to)){
         echo "上傳成功<br>";

@@ -17,6 +17,42 @@
 </head>
 
 <body>
+    <!-- 登入lightbox -->
+    <section class="section_res" id="login_box" style="display:none">
+        <div class="container_res">
+            <div class="user singinBx">
+                <div class="img_res">
+                    <img src="./image/2.png" alt="">
+                </div>
+                <div class="form_res">
+                    <form name="login">
+                        <h2>會員登入</h2>
+                        <input type="text" name="MEMBER_ID" placeholder="請輸入帳號">
+                        <input type="password" name="MEMBER_PSW" placeholder="請輸入密碼">
+
+                        <input type="button" name="" value="登入" id="btnLogin">
+                        <input type="button" name="" value="取消" id="btnLoginCancel">
+                        <p class="learn">還未成為會員?<br><a href="#" onclick="toggleForm();">註冊會員請點我</a></p>
+                    </form>
+                </div>
+            </div>
+            <div class="user singupBx">
+                <div class="form_res">
+                    <form action="signup.php" method="post">
+                        <h2>註冊</h2>
+                        <input type="text" name="newmem_account" placeholder="請輸入註冊email">
+                        <input type="password" name="newmem_psw" placeholder="請輸入密碼">
+                        <!-- <input type="password" name="password" placeholder="再次確認密碼"> -->
+                        <input type="submit" name="submit" value="註冊">
+                        <p class="learn">已經有會員了?<br><a href="#" onclick="toggleForm();">會員登入點我點我</a></p>
+                    </form>
+                </div>
+                <div class="img_res">
+                    <img src="./image/4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- 背景泡泡 -->
     <div id="bubbles">
         <div class="bubble x1"></div>
@@ -55,13 +91,14 @@
                     </li>
                 </ul>
             </div>
-            <div class="member">
-                <div class="icon">
-                    <a href="./login.html">
-                        <img src="./image/icon.svg" alt="">
-                    </a>
+            <div class="member" id="login">
+                <div class="icon" >
+                    <img src="./image/icon.svg" id="headshot_icon">
+                    <span class="username" style="display: none;"></span>
                 </div>
-                <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                <div id="nametest"></div>
+                <!-- <span id="memName">&nbsp;</span> -->
+                <span id="spanLogin">登入</span>
             </div>
             <div id="menu-bar">
                 <div id="menu" onclick="onClickMenu()">
@@ -788,6 +825,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+    <script src="js/login.js"></script>
 </body>
 </html>

@@ -108,6 +108,12 @@ body {
                     font-size: $fontSize;
                 }
             }
+            .error{
+                font-size: 30px;
+                height: 300px;
+                line-height: 300px;
+                display: none;
+            }
             // label {}
             .result {
                 margin-top: 20px;

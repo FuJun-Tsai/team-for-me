@@ -270,25 +270,31 @@ section {
                     position: relative;
                     img {
                         border-radius: 50%;
-                        // width: 40px;
-                        // height: 40px;
+                        width: 60px;
+                        height: 60px;
                         margin: 20px;
+                        background-size: cover;
                     }
                     i {
                         position: absolute;
                         right: 10px;
-                        bottom: 0;
+                        bottom: 4px;
                         cursor: pointer;
                     }
                     .time{
                         position: absolute;
                         top: 4px;
                         right: 12px;
+                        padding: 0;
                     }
                     .name{
                         position: absolute;
                         top: 4px;
                         right: 12px;
+                    }
+                    p{
+                        padding-top: 20px;
+                        padding-bottom: 20px;
                     }
                 }
             }
@@ -304,6 +310,9 @@ section {
             img {
                 margin: 20px;
                 border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                background-size: cover;
             }
             #send {
                 height: 60px;

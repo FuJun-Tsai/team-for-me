@@ -36,6 +36,42 @@
 
 
 <body>
+    <!-- 登入lightbox -->
+    <section class="section_res" id="login_box" style="display:none">
+        <div class="container_res">
+            <div class="user singinBx">
+                <div class="img_res">
+                    <img src="./image/2.png" alt="">
+                </div>
+                <div class="form_res">
+                    <form name="login">
+                        <h2>會員登入</h2>
+                        <input type="text" name="MEMBER_ID" placeholder="請輸入帳號">
+                        <input type="password" name="MEMBER_PSW" placeholder="請輸入密碼">
+
+                        <input type="button" name="" value="登入" id="btnLogin">
+                        <input type="button" name="" value="取消" id="btnLoginCancel">
+                        <p class="learn">還未成為會員?<br><a href="#" onclick="toggleForm();">註冊會員請點我</a></p>
+                    </form>
+                </div>
+            </div>
+            <div class="user singupBx">
+                <div class="form_res">
+                    <form action="signup.php" method="post">
+                        <h2>註冊</h2>
+                        <input type="text" name="newmem_account" placeholder="請輸入註冊email">
+                        <input type="password" name="newmem_psw" placeholder="請輸入密碼">
+                        <!-- <input type="password" name="password" placeholder="再次確認密碼"> -->
+                        <input type="submit" name="submit" value="註冊">
+                        <p class="learn">已經有會員了?<br><a href="#" onclick="toggleForm();">會員登入點我點我</a></p>
+                    </form>
+                </div>
+                <div class="img_res">
+                    <img src="./image/4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- 背景泡泡 -->
     <div class="container-fluid">
         <div class="row">
@@ -78,13 +114,14 @@
                     </li>
                 </ul>
             </div>
-            <div class="member">
-                <div class="icon">
-                    <a href="./login.html">
-                        <img src="./image/icon.svg" alt="">
-                    </a>
+            <div class="member" id="login">
+                <div class="icon" >
+                    <img src="./image/icon.svg" id="headshot_icon">
+                    <span class="username" style="display: none;"></span>
                 </div>
-                <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                <div id="nametest"></div>
+                <!-- <span id="memName">&nbsp;</span> -->
+                <span id="spanLogin">登入</span>
             </div>
             <div id="menu-bar">
                 <div id="menu" onclick="onClickMenu()">
@@ -266,7 +303,6 @@
 
     <script>
         $(document).ready(function(){
-
             $.ajax({
                 url:`singleRenderRES.php${location.search}`,
                 type:'GET',
@@ -356,12 +392,14 @@
                 }
             
             });
-            //./image/member/${data[i].img}<-大頭貼
+
             $.ajax({
                 url:`singleRenderRLM.php${location.search}`,
                 type:'GET',
                 dataType:'json',
                 success(data){
+
+
                     let items = data.length;
                     for(let i=0;i<=items-1;i+=1){
 
@@ -376,7 +414,7 @@
                         }
                         $('#leavemessage').append(`
                         <div id="${data[i].id}" class="single_L">
-                            <img src="http://fakeimg.pl/60x60" alt="">
+                            <img src="./image/member/${data[i].img}" alt="">
                             <p>${content}</p>
                             <p class="time">${data[i].time}</p>
                             <i class="fas fa-exclamation-triangle">檢舉</i>
@@ -385,11 +423,25 @@
                     
                     }
 
+
+
+                }
+                
+            });
+
+            $.ajax({
+                url:'getuser.php',
+                type:'POST',
+                dataType:'json',
+                success(e){
+
+                    console.log(e);
+
                     $('.single_messaging').append(`
-                    <img src="http://fakeimg.pl/60x60" alt="">
+                    <img src="./image/member/${e.IMG}">
                     <form id="send" action="singleInsertRLM.php" method="POST">
                         <textarea name="RES_MESSAGE_WORD" cols="30" rows="10"></textarea>
-                        <button class="btn_6 btn_js" name="RES_MEM" value="${location.search.split('=')[1]},1">送出
+                        <button class="btn_6 btn_js" name="RES_MEM" value="${location.search.split('=')[1]},${e.NO}">送出
                             <span></span>
                         </button>
                     </form>
@@ -420,13 +472,8 @@
                     `);
 
                     itemfunction(); 
-
-                }
-                
+                },
             });
-
-
-
 
             $('.single_reportback button').on('click',function(){
 
@@ -449,7 +496,7 @@
     </script>
 
     <script src="./js/singlerestaurant.js"></script>
-
+    <script src="js/login.js"></script>
 </body>
 
 

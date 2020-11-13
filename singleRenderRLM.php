@@ -1,11 +1,14 @@
 <?
 $ErrMsg='';
+session_start();
+
 try{
     require_once('./connetbook.php');
     $sql = 'select 
                 R.RES_NO as no,
                 concat("L" , R.RES_MESSAGE_NO) as id,
                 mm.MEMBER_IMAGE as img,
+                mm.MEMBER_NAME as name,
                 R.RES_MESSAGE_WORD as word,
                 R.RES_MES_TIME as time
 

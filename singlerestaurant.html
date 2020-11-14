@@ -399,7 +399,6 @@
                 dataType:'json',
                 success(data){
 
-
                     let items = data.length;
                     for(let i=0;i<=items-1;i+=1){
 
@@ -424,13 +423,17 @@
                     }
 
 
-
+                },
+                complete(e){
+                    itemfunction(); 
                 }
+
+
                 
             });
 
             $.ajax({
-                url:'getuser.php',
+                url:'GETUSER.php',
                 type:'POST',
                 dataType:'json',
                 success(e){
@@ -451,8 +454,7 @@
                     <div class="single_reportback">
                         <i class="fas fa-times single_cancel"></i>
                         <h2>檢舉餐廳留言</h2>
-                        <form id="report" action="singleInsertRP.php" method="POST">
-                            <!-- <label for="report">
+                            <!--<label for="report">
                                     選擇檢舉類型:
                                     <select name="report">
                                         <option value="1">惡意謾罵</option>
@@ -464,29 +466,16 @@
                             <h4 style="font-weight: bold;">檢舉原因：</h4>
                             <textarea name="RES_MES_REPORT_REASON" id=""></textarea>
                             <button type="submit" name="test" value="">送出檢舉</button>
-                        </form>
                         <div class="single_thank">
                             <p>感謝你的檢舉</p>
                         </div>
                     </div>
                     `);
 
-                    itemfunction(); 
                 },
-            });
-
-            $('.single_reportback button').on('click',function(){
-
-                if($('.single_reportback form textarea').val().length==0){
-                    $('.single_reportback').append(`
-                        <p class="reporterror" style="color:red">請輸入內容</p>
-                    `);
-                }else{
-                    $('.single_reportback form').css({'display':'none'});
-                    $('.single_thank').css({'display':'inline-block'});
-                    $('.single_reportback .reporterror').remove();
-                    $('.single_reportback button').css({'display':'none'});
-
+    
+                complete(e){
+                    itemfunction(); 
                 }
 
             });

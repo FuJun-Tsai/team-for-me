@@ -118,7 +118,7 @@ function itemfunction(){
 
     $('.single_L i').on('click',function(){
         let id = $(this).closest('.single_L').attr('id');
-        console.log(id);
+
         $('.single_reportback button').val(`${id.split('L')[1]}&${location.search}`);
 
         $('.single_report').css({'display':'inline-block'});
@@ -133,7 +133,9 @@ function itemfunction(){
     $('.single_cancel').on('click',function(){
         $('.single_report').css({'display':'none'});
         $('.jun_back').css({'display':'none'});
-
+        $(this).siblings('textarea').val('');
+        $(this).siblings('textarea').css({'display':'block'});
+        $(this).siblings('h4').css({'display':'block'});
     });
     
     ///--------------------------------
@@ -191,23 +193,42 @@ function itemfunction(){
 
     });
 
-    $('#report').on('submit',function(){
+    $('.single_reportback button').on('click',function(){
+        console.log('here');
         $.ajax({
             url: `singleInsertRP.php`,
             method: 'POST',               
             dataType: 'json',             
             data: {
-                MESSAGE_NO:$(this).find('button')[0].val(),
-                RES_MES_REPORT_REASON:$(this).find('textarea')[0].val(),
+                MESSAGE_NO:$('.single_reportback button').val(),
+                RES_MES_REPORT_REASON:$('.single_reportback textarea').val(),
                 
             },
+            complete(e){
+                console.log(e);
+            }
 
         });
-
         return false; 
 
     });
 
+    $('.single_reportback button').on('click',function(){
 
+        if($('.single_reportback textarea').val().length==0){
+            $('.single_reportback').append(`
+                <p class="reporterror" style="color:red">請輸入內容</p>
+            `);
+        }else{
+            // $('.single_reportback').css({'display':'none'});
+            $('.single_reportback textarea').css({'display':'none'});
+            $('.single_reportback h4').css({'display':'none'});
+            $('.single_thank').css({'display':'inline-block'});
+            $('.single_reportback .reporterror').remove();
+            $('.single_reportback button').css({'display':'none'});
+
+        }
+
+    });
 
 }

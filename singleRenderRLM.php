@@ -24,7 +24,6 @@ try{
     $LMdata-> bindValue(':RES_NO',$_REQUEST['RES_NO']);
     $LMdata-> execute();
 
-
     $LMresult = $LMdata->fetchAll(PDO::FETCH_ASSOC);
     echo JSON_encode($LMresult);
     

@@ -16,7 +16,6 @@ try{
             now(),
             :RES_MESSAGE_WORD);";
 
-
     $RPdata = $pdo->prepare($sql);
     $RPdata-> bindValue(':RES_NO',$test[0]);
     $RPdata-> bindValue(':MEMBER_NO',$test[1]);

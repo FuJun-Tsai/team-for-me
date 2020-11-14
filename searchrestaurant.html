@@ -330,6 +330,11 @@
                                 </div>
                             `);
                         }
+
+                        $('.like i').on('click',function(){
+                            collect();
+                        });
+
                     },
                 });
             }
@@ -356,7 +361,6 @@
                 });
                 imgcube();
                 
-
             }
 
             $('#condition input:checkbox').on('click',function(){
@@ -389,7 +393,7 @@
 
             function ConditionSearch(K,S,result,search=''){
                 let condition = `${K}&${S}`;
-                console.log("----????????---",search); 
+                // console.log("----????????---",search); 
                 $.ajax({
                     url:'searchConditionRender.php',
                     type:'GET',
@@ -399,9 +403,15 @@
                         search:search
                     },
                     success(data){
+                        console.log(data);
                         result = [];
                         for(let i=0;i<data.length;i+=1){
                             result.push(data[i].no);
+                            if(data[i].collectRES == null){
+                                data[i].collectRES = 'style="color:black;"';
+                            }else{
+                                data[i].collectRES = 'style="color:red;"';
+                            }
                         };
                         $('.error').css({'display': 'none'});
                         $('.result').empty();
@@ -447,11 +457,42 @@
                     },
                     complete(){
                         MessageRender(result);
+                        collection();
                     },
 
                 });
 
             };
+
+            function collection(){
+                $.ajax({
+                    url:'REScollection.php',
+                    type:'POST',
+                    dataType:'json',
+                    success(data){
+                        console.log(data);
+                        for(let i=0;i<=data.length;i+=1){
+                            $(`#${data[i].ID} .like i`).css({'color':'red'});
+                        }
+                    },
+
+                });
+
+            }
+
+            function collect(){
+                $.ajax({
+                    url:'',
+                    type:'POST',
+                    dataType:'json',
+                    success(e){
+
+                    },
+                    complete(e){
+
+                    }
+                });
+            }
      
         });
 

@@ -9,7 +9,14 @@ try{
             "IMG"=>$_SESSION["MEMBER_IMAGE"],
         );
         echo json_encode($user);
-    };
+    }else{
+        $user = array(
+            "NO"=>'0',
+            "NAME"=>'訪客',
+            "IMG"=>'icon.svg',
+        );
+        echo json_encode($user);
+    }
 
 
 }catch(PDOException $e){

@@ -1,7 +1,7 @@
 <?
 header('Content-Type: application/json; charset=UTF-8');
 $ErrMsg='';
-$test = explode('&',$_REQUEST['test']);
+$test = explode('&',$_REQUEST['MESSAGE_NO']);
 // echo($test[0]);
 // echo($test[1]);
 // echo '<br><br>';
@@ -37,7 +37,7 @@ try{
     $ErrMsg.= $e->getMessage() . $e->getLine();
     echo $ErrMsg;
 }
-header("location:singlerestaurant.html$test[1]");
+// header("location:singlerestaurant.html$test[1]");
 // header("location:singlerestaurant.html?RES_NO=15");
 
 ?>

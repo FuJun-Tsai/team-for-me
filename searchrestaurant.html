@@ -11,8 +11,8 @@
     <!-- <link rel="stylesheet" href="./css/head_footer_style.css"> -->
     <!-- kits -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <!-- <link rel="stylesheet" href="./css/btn_hover.css"> -->
     <link rel="stylesheet" href="./css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="./css/btn_hover.css"> -->
     <!-- <link rel="stylesheet" href="./css/bootstrap-grid.css"> -->
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
@@ -23,8 +23,8 @@
     <script src="./js/header_fixed.js"></script>
     <!-- <link rel="stylesheet" href="./css/background.css"> -->
     <!-- local -->
-    <!-- <link rel="stylesheet" href="./css/bootstrap/bootstrap_nopm.css"> -->
     <link rel="stylesheet" href="./css/allstyle.css">
+    <!-- <link rel="stylesheet" href="./css/bootstrap/bootstrap_nopm.css"> -->
     <!-- btn -->
     <link rel="stylesheet" href="./css/btn_hover.css">
     <script src="js/btn_hover.js"></script>
@@ -166,7 +166,7 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <form class="selection col-lg-8" id="condition" method="POST" action="searchConditionRender.php">
+                    <div class="selection col-lg-8" id="condition" method="POST" action="searchConditionRender.php">
 
                         <input id="searchword" type="text" placeholder="美食快搜" name="searchbar">
                         <button id="searchwordbtn" value="" name="condition">搜尋</button>
@@ -185,12 +185,10 @@
                             <label for="s3"><input type="checkbox" name="style[]" id="s3" value="3">炸物</label>
                             <label for="s4"><input type="checkbox" name="style[]" id="s4" value="4">快炒</label>
                             <label for="s5"><input type="checkbox" name="style[]" id="s5" value="5">簡餐</label>
-                            <label for="steak"><input type="checkbox" name="style[]" id="steak" value="steak">排餐</label>
-                            <label for="cold"><input type="checkbox" name="style[]" id="cold" value="cold">冷盤</label>
+                            <label for="s6"><input type="checkbox" name="style[]" id="s6" value="6">排餐</label>
                         </label>
 
-
-                    </form>
+                    </div>
                 </div>
             </div>
             
@@ -286,58 +284,8 @@
             S = [];
             result = [];
             search = '';
-            // Restaurant();
             ConditionSearch(K,S.join(','),result,search);
             // MessageRender(result);
-
-            function Restaurant(){
-                $.ajax({
-                    url:'searchRenderRES.php',
-                    type:'GET',
-                    dataType:'json',
-                    success(data){
-                        for(let i=0;i<data.length;i+=1){
-                            $('.result').append(`
-                                <div id="${data[i].id}" class="rest container">
-                                    <div class="row">
-                                        <div class="rep col-lg-5">
-                                            <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
-                                        </div>
-                                        <div class="detail col-lg-7">
-                                            <h2>${data[i].name}</h2>
-                                            <div class="kind west">${data[i].kind}</div>
-                                            <div class="style steak">${data[i].style}</div>
-                                            <div class="record">
-                                                <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
-                                                <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
-                                                <div class="group"><i class="fas fa-users"></i><span>300</span></div>
-                                            </div>
-                                            <h3>餐廳介紹：</h3>
-                                            <p id="rint">${data[i].summary}</p>
-                                            <h3>網友留言：</h3>
-                                            <div id="leavemessage" class="insearch ${data[i].id}">
-
-                                            </div>
-                                            <form action="singlerestaurant.html" method="GET">
-                                                <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
-                                            </form>
-                                            <div class="go">
-                                                <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
-                                                <a href=""><button class="btnBlue btn_4 btn_js">參團<span></span></button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `);
-                        }
-
-                        $('.like i').on('click',function(){
-                            collect();
-                        });
-
-                    },
-                });
-            }
 
             function MessageRender(e){
                 $.ajax({
@@ -349,7 +297,7 @@
                     },
                     success(data){
                         console.log(data);
-                        for(let i=0 ; i<=data.length ;i+=1){
+                        for(let i=0 ; i<=data.length-1 ;i+=1){
                             $(`.${data[i].resno}`).append(`
                                 <div id="${data[i].id}" class="L">
                                     <img src="./image/member/${data[i].mmimg}" alt="">
@@ -404,7 +352,7 @@
                         search:search
                     },
                     success(data){
-                        // console.log(data);
+                        console.log(data);
                         result = [];
                         for(let i=0;i<data.length;i+=1){
                             result.push(data[i].no);
@@ -449,7 +397,14 @@
                                     </div>
                                 </div>
                             `);
-                        }
+
+                            TweenLite.from(`#${data[i].id}`,0.5,{
+                                opacity:-2,
+                                y:-300,
+                            },);
+
+                        };
+                        
                     },
                     error(data){
                         $('.result').empty();
@@ -471,29 +426,35 @@
                     type:'POST',
                     dataType:'json',
                     success(data){
-                        console.log(data);
-                        for(let i=0;i<=data.length;i+=1){
-                            $(`#${data[i].ID} .like i`).css({'color':'red'});
+                        console.log(data); //R3
+                        for(let i=0;i<=data.length-1;i+=1){
+                            $(`#${data[i].ID} .like i`).addClass('tored');
                         }
                     },
-
+                    complete(){
+                        $('.like').on('click',function(){
+                            let RES = ($(this).closest('.rest').attr('id').split('R')[1]);
+                            $(this).children('.like i').toggleClass('tored');
+                            collect($(this).children('.like i').hasClass('tored'),RES);
+                        }); 
+                    }
                 });
 
             }
 
-            function collect(){
-
+            function collect(e,RES){
                 $.ajax({
-                    url:'',
+                    url:'collect.php',
                     type:'POST',
                     dataType:'json',
-                    success(e){
-                        console.log(e);
+                    data:{
+                        do:e,
+                        RES:RES,
                     },
-                    complete(e){
-                        console.log(e);
-                    }
-
+                    success(e){
+                        // console.log(e);
+                    },
+                
                 });
             }
      
@@ -503,29 +464,29 @@
 
     <script>
   
+        function imgcube(){
+            let imgwidth = $('.rep img').width();
+            if($(window).width()<600){
+                $('.rep img').width($(window).width()-20);
+                $('.rep img').height($(window).width()-20);
+            }else{
+                $('.rep img').height(500);
+            }
+        };
 
-                function imgcube(){
-                    let imgwidth = $('.rep img').width();
-                    if($(window).width()<600){
-                        $('.rep img').width($(window).width()-20);
-                        $('.rep img').height($(window).width()-20);
-                    }else{
-                        $('.rep img').height(500);
-                    }
-                };
+        window.addEventListener('resize',function(){
+                imgcube();
+        });
 
-                window.addEventListener('resize',function(){
-                        imgcube();
-                });
-
-                $('.kind input').on('click',function(){
-                    if($(this).prop('checked')){
-                        $('.kind input:checkbox').prop('checked',false);
-                        $(this).prop('checked',true);
-                    };
-                });
+        $('.kind input').on('click',function(){
+            if($(this).prop('checked')){
+                $('.kind input:checkbox').prop('checked',false);
+                $(this).prop('checked',true);
+            };
+        });
 
     </script>
+
     <script src="js/login.js"></script>
     <!-- <script src="./js/searchrestaurant.js"></script> -->
     <!-- <script src="./js/searchAnimate.js"></script> -->

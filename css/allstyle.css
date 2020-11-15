@@ -235,6 +235,10 @@ h6 {
   line-height: 20px;
 }
 
+* .tored {
+  color: red;
+}
+
 p::-webkit-scrollbar-track {
   background-color: #FFE1A4;
 }

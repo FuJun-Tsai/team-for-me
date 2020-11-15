@@ -102,10 +102,10 @@ function itemfunction(){
     });
 
     function largeH(){
-        let ww = $(window).width()+17;
+        let ww = $(window).width();
         if(ww<600){
             $('.single_large').css({
-                'height':`${ww}px`,
+                'height':`${ww - 40 }px`,
             });
         }
     }

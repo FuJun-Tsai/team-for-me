@@ -40,6 +40,10 @@
     .single_small::-webkit-scrollbar-thumb {
         background-color: #bb6573;
     }
+    .tored{
+        color:red;
+    }
+
 }
 
 body {
@@ -240,6 +244,16 @@ section {
                             }
                             .btnBlue {
                                 // @include btnPurple_4;
+                            }
+                        }
+                        .like{
+                            position: absolute;
+                            top: 48px;
+                            right: 24px;
+                            cursor: pointer;
+                            i,span{
+                                font-size: 24px;
+
                             }
                         }
                     }

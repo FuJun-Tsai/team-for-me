@@ -308,6 +308,7 @@
                 type:'GET',
                 dataType:'json',
                 success(data){
+                    console.log(data);
                     let trade = data.trade.split('');
                     for(let i=0;i<7;i+=1){
                         if(trade[i]==1){
@@ -345,7 +346,8 @@
                                 </div>
                                 <aside id="detail" class="col-lg-5">
                                     <h3 class="single_item">店家名稱：</h3>
-                                    <span id="rname">${data.name}</span>
+                                    <span id="rname" style="font-size:24px;font-weight:bold;">${data.name}</span>
+                                    <div class="like"><i class="fas fa-heart"></i><span> 收藏</span></div>
                                     <h3 class="single_item">店家介紹：</h3>
                                     <p id="rint">${data.intro}</p>
                                     <h3 class="single_item">營業時間：</h3>
@@ -479,6 +481,46 @@
                 }
 
             });
+
+            $.ajax({
+                url:'singlecollection.php',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    RES:location.search.split('=')[1],
+                },
+                success(data){
+                    console.log(data);
+                    $('.like i').addClass('tored');
+                },
+                complete(e){
+                    $('.like').on('click',function(){
+                        $('.like i').toggleClass('tored');
+                        collect($('.like i').hasClass('tored'));
+                    });
+                    
+                    
+                }
+            });
+
+            function collect(e){
+                // console.log(e);
+                $.ajax({
+                    url:'collect.php',
+                    type:'POST',
+                    dataType:'json',
+                    data:{
+                        do:e,
+                        RES:location.search.split('=')[1],
+                    },
+                    success(e){
+                        console.log(e);
+                    },
+                    complete(e){
+                        console.log(e);
+                    }
+                });
+            }
 
         });
 

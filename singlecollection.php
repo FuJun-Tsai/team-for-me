@@ -1,19 +1,18 @@
 <?php
-$Errmsg='';
+$Errmsg = '';
 session_start();
-$condition = $_SESSION['MEMBER_NO'];
+$member = $_SESSION['MEMBER_NO'];
+$res = $_REQUEST['RES'];
 try{
     require_once('connetbook.php');
-    $sql = "SELECT MEMBER_NO ,
-                   concat('R' , RES_NO) as ID
-            FROM `restaurant_collection` 
-            where ";
-    
-    $sql.= ' ; ';
+    $sql = "SELECT * FROM `restaurant_collection`
+            WHERE 
+                MEMBER_NO = $member AND 
+                RES_NO = $res;";
 
     $data = $pdo->prepare($sql);
     $data-> execute();
-    
+
     if($data->rowCount()==0){
         echo '資料有誤';
     }else{
@@ -22,8 +21,9 @@ try{
     }
 
 }catch(PDOException $e){
-    $Errmsg.= $e->getLine() . '<br>' . $e->getMessage();
+    $Errmsg.= '<br>' . $e->getLine() . '<br>' . $e->getMessage() ;
     echo $Errmsg;
 }
+
 
 ?>

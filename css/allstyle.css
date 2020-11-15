@@ -513,6 +513,8 @@ body section .content .result .rest .detail .insearch .L {
 
 body section .content .result .rest .detail .insearch .L img {
   border-radius: 50%;
+  width: 60px;
+  height: 60px;
   margin: 20px;
 }
 
@@ -7787,6 +7789,10 @@ body .gototop2 .goto-top img {
   background-color: #bb6573;
 }
 
+* .tored {
+  color: red;
+}
+
 body {
   position: relative;
 }
@@ -8085,6 +8091,17 @@ section .single_content #introduction .container .single_restaurant #detail .sin
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+section .single_content #introduction .container .single_restaurant #detail .like {
+  position: absolute;
+  top: 48px;
+  right: 24px;
+  cursor: pointer;
+}
+
+section .single_content #introduction .container .single_restaurant #detail .like i, section .single_content #introduction .container .single_restaurant #detail .like span {
+  font-size: 24px;
 }
 
 section .single_content h4 {

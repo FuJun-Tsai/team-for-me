@@ -1,4 +1,4 @@
-<?
+<?php
 $ErrMsg = '';
 $condition = explode("&",$_REQUEST['condition']);
 $word = '';
@@ -15,7 +15,7 @@ if(strlen($condition[1])>2){
 $search = $_REQUEST['search'];
 
 try{
-    require_once('./connetbook.php');
+    require_once('./connectbook.php');
     $sql = 'select  
                 R.RES_NO as no,
                 concat("R" , R.RES_NO) as id,
@@ -55,6 +55,7 @@ try{
         $data-> bindValue(':style',$condition[1]);
     };
     $data-> execute();
+    
     if($data->rowCount()==0){
         echo 'error';
     }else{

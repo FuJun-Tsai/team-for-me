@@ -6,7 +6,7 @@ echo $_REQUEST['word'];
 echo '<br><br>';
 
 try{
-    require_once("./connetbook.php");
+    require_once("./connectbook.php");
 
     $sql = "INSERT INTO `article_message` (
             ARTICLE_NO,

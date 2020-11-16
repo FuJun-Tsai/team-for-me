@@ -1,4 +1,4 @@
-<?
+<?php
 $ErrMsg='';
 $e = explode(',',$_REQUEST['e']);
 $word = '';
@@ -11,7 +11,7 @@ for($i=0;$i<count($e);$i+=1){
     }
 }
 try{
-    require_once('./connetbook.php');
+    require_once('./connectbook.php');
     $sql = "select 
                 concat('R' , R.RES_NO) as resno,
                 concat('L' , R.RES_MESSAGE_NO) as id,

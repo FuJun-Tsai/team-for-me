@@ -3,7 +3,7 @@ $Errmsg='';
 session_start();
 $condition = $_SESSION['MEMBER_NO'];
 try{
-    require_once('connetbook.php');
+    require_once('connectbook.php');
     $sql = "SELECT MEMBER_NO ,
                    concat('R' , RES_NO) as ID
             FROM `restaurant_collection` 

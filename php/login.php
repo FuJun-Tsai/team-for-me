@@ -1,7 +1,7 @@
 <?php
 try{
   session_start();
-  require_once("../connectRes.php");
+  require_once("../connectbook.php");
   $sql = " SELECT MEMBER_ID ,MEMBER_PSW ,MEMBER_IMAGE ,MEMBER_NO ,MEMBER_NAME
   FROM `member_management` 
   WHERE MEMBER_ID=:MEMBER_ID

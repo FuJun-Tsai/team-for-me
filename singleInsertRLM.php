@@ -1,9 +1,9 @@
-<?
+<?php
 header('Content-Type: application/json; charset=UTF-8');
 $ErrMsg='';
 $test = explode(",",$_REQUEST['RES_MEM']);
 try{
-    require_once('./connetbook.php');
+    require_once('connectbook.php');
     $sql = "INSERT into `restaurant_message` 
             (RES_NO,
             MEMBER_NO,

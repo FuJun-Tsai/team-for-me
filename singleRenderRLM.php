@@ -1,9 +1,9 @@
-<?
+<?php
 $ErrMsg='';
 session_start();
 
 try{
-    require_once('./connetbook.php');
+    require_once('./connectbook.php');
     $sql = 'select 
                 R.RES_NO as no,
                 concat("L" , R.RES_MESSAGE_NO) as id,

@@ -1,9 +1,11 @@
 <?php
 $Errmsg='';
 session_start();
+// $condition = isset($_SESSION['MEMBER_NO']) ? $_SESSION['MEMBER_NO'] : '0';
 $condition = $_SESSION['MEMBER_NO'];
+
 try{
-    require_once('connetbook.php');
+    require_once('connectbook.php');
     $sql = "SELECT MEMBER_NO ,
                    concat('R' , RES_NO) as ID
             FROM `restaurant_collection` 

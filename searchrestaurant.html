@@ -279,7 +279,15 @@
     </script>
 
     <script>
+
         $(document).ready(function(){
+            searchJS();
+        });
+
+        function searchJS(){
+
+            $('.result').empty();
+
             K = '';
             S = [];
             result = [];
@@ -376,7 +384,7 @@
                                             <div class="kind west">${data[i].kind}</div>
                                             <div class="style steak">${data[i].style}</div>
                                             <div class="record">
-                                                <div class="like"><i class="fas fa-heart"></i><span>23</span></div>
+                                                <div class="like"><i class="far fa-heart"></i><span>23</span></div>
                                                 <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
                                                 <div class="group"><i class="fas fa-users"></i><span>300</span></div>
                                             </div>
@@ -426,16 +434,20 @@
                     type:'POST',
                     dataType:'json',
                     success(data){
-                        console.log(data); //R3
+                        console.log(data); 
                         for(let i=0;i<=data.length-1;i+=1){
                             $(`#${data[i].ID} .like i`).addClass('tored');
                         }
                     },
                     complete(){
                         $('.like').on('click',function(){
-                            let RES = ($(this).closest('.rest').attr('id').split('R')[1]);
-                            $(this).children('.like i').toggleClass('tored');
-                            collect($(this).children('.like i').hasClass('tored'),RES);
+                            if($('#spanLogin').text()=='登入'){
+                                $('#login_box').css({'display':'flex'});
+                            }else{
+                                let RES = ($(this).closest('.rest').attr('id').split('R')[1]);
+                                $(this).children('.like i').toggleClass('tored');
+                                collect($(this).children('.like i').hasClass('tored'),RES);
+                            }
                         }); 
                     }
                 });
@@ -452,18 +464,16 @@
                         RES:RES,
                     },
                     success(e){
-                        // console.log(e);
+                        
                     },
                 
                 });
             }
      
-        });
-
-    </script>
-
-    <script>
+        }
   
+        ///////////////
+
         function imgcube(){
             let imgwidth = $('.rep img').width();
             if($(window).width()<600){

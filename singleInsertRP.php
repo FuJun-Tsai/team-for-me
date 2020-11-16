@@ -1,4 +1,4 @@
-<?
+<?php
 header('Content-Type: application/json; charset=UTF-8');
 $ErrMsg='';
 $test = explode('&',$_REQUEST['MESSAGE_NO']);
@@ -6,7 +6,7 @@ $test = explode('&',$_REQUEST['MESSAGE_NO']);
 // echo($test[1]);
 // echo '<br><br>';
 try{
-    require_once('./connetbook.php');
+    require_once('connectbook.php');
     $sql = "insert into `report_restaurant_message` 
             (MESSAGE_NO,
             RES_MES_REPORT_REASON,

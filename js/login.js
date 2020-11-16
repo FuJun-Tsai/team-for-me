@@ -32,7 +32,8 @@ let member;
       let xhr = new XMLHttpRequest();
       xhr.onload = function(){
         member = JSON.parse(xhr.responseText);
-        if(member.MEMBER_ID = true){
+        console.log("====",member);
+        if(member.MEMBER_ID!=undefined){
           $id("headshot_icon").setAttribute("src",`./image/member/${member.MEMBER_IMAGE}`);
           $id('spanLogin').innerHTML = '登出';
           // document.getElementsByClassName('username')[0].innerText(`${member.MEMBERR_NO}`);
@@ -41,7 +42,8 @@ let member;
           
           $id('login_box').style.display = 'none';
           MEMBER_ID = '';
-          MEMBER_PSW = '';          
+          MEMBER_PSW = '';
+          memberrender();
         }else{
             window.alert("帳密錯誤~");
         }
@@ -51,7 +53,10 @@ let member;
       xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
       let data_info = `MEMBER_ID=${MEMBER_ID}&MEMBER_PSW=${MEMBER_PSW}`;
       console.log(data_info);
+
+      // memberrender();
       xhr.send(data_info); 
+
     }
 
     function cancelLogin(){
@@ -84,6 +89,11 @@ let member;
       xhr.send(null);
     }
 
+    function toggleForm() {
+        var container_res = document.querySelector('.container_res');
+        container_res.classList.toggle('act');
+    }
+
     function init(){
       user = '';
       //-----------------------檢查是否已登入
@@ -99,12 +109,21 @@ let member;
       //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
       $id('btnLoginCancel').onclick = cancelLogin;
 
+
     }; //window.onload
 
     window.addEventListener("load",init,false);
 
-    function toggleForm() {
-        var container_res = document.querySelector('.container_res');
-        container_res.classList.toggle('act')
-    }
+    //登入成功後整頁渲染
+    function memberrender(){
+      let herehref = location.href.split('?')[0].split('/')[location.href.split('?')[0].split('/').length-1];
 
+      if(herehref=='singlerestaurant.html'){
+          singleJS();
+      };
+
+      if(herehref=='searchrestaurant.html'){
+          searchJS();
+      };
+
+    };

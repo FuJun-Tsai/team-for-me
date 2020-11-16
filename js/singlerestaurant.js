@@ -140,57 +140,61 @@ function itemfunction(){
     
     ///--------------------------------
     
-    $('#send').on('submit', function(){
+    $('#send button').on('click', function(){
 
-        $.ajax({
-            url: `singleInsertRLM.php`,
-            method: 'POST',               
-            dataType: 'json',             
-            data: {
-                RES_MEM:$('#send .btn_js').val(),
-                RES_MESSAGE_WORD:$('#send textarea').val()
-            },
-            success(data,Status){
-                console.log('success');
-            },
-            error(){
-                console.log('error');
-            },
-            complete(data,Status){
-                console.log(`complete-${data}`);
-                console.log(`${Status}`);
-                let nowtime = new Date();
-                let todate = String(nowtime.getDate());
-                let word = $('.single_messaging textarea').val();
-                let item = word.split('');
-                let img = $('.single_messaging img').attr('src');
+        if($('#spanLogin').text()=='登入'){
+            $('#login_box').css({'display':'flex'});
+        }else{
 
-                for(let i=0;i<=item.length-1;i+=1){
-                    if(item[i].charCodeAt()==10){
-                        item[i]='<br>';
+            $.ajax({
+                url: `singleInsertRLM.php`,
+                method: 'POST',               
+                dataType: 'json',             
+                data: {
+                    RES_MEM:$('#send .btn_js').val(),
+                    RES_MESSAGE_WORD:$('#send textarea').val()
+                },
+                success(data,Status){
+                    console.log('success');
+                },
+                error(){
+                    console.log('error');
+                },
+                complete(data,Status){
+                    console.log(`complete-${data}`);
+                    console.log(`${Status}`);
+                    let nowtime = new Date();
+                    let todate = String(nowtime.getDate());
+                    let word = $('.single_messaging textarea').val();
+                    let item = word.split('');
+                    let img = $('.single_messaging img').attr('src');
+
+                    for(let i=0;i<=item.length-1;i+=1){
+                        if(item[i].charCodeAt()==10){
+                            item[i]='<br>';
+                        }
+                        word = item.join('');
                     }
-                    word = item.join('');
-                }
-                console.log(word);
+                    console.log(word);
 
-                if(todate.length == 1){
-                    todate = `0${todate}`;
-                }
-                let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
+                    if(todate.length == 1){
+                        todate = `0${todate}`;
+                    }
+                    let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
 
-                $('#leavemessage').append(`
-                <div class="single_L">
-                    <img src="${img}" alt="">
-                    <p>${word}</p>
-                    <p class="time">${timetext}</p>
-                    <i class="fas fa-exclamation-triangle">檢舉</i>
-                </div>              
-                `);
-                $('.single_messaging textarea').val('');
-            },
-        });
-        return false; 
-
+                    $('#leavemessage').append(`
+                    <div class="single_L">
+                        <img src="${img}" alt="">
+                        <p>${word}</p>
+                        <p class="time">${timetext}</p>
+                        <i class="fas fa-exclamation-triangle">檢舉</i>
+                    </div>              
+                    `);
+                    $('.single_messaging textarea').val('');
+                },
+            });
+            return false; 
+        }
     });
 
     $('.single_reportback button').on('click',function(){

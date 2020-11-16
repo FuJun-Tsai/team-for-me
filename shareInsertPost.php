@@ -3,7 +3,7 @@ $ErrMsg='';
 // print_r($_FILES['moodPic']['type']);
 // JOIN member_management mm on(A.MEMBER_NO = mm.MEMBER_NO) 
 try{
-    require_once("./connetbook.php");
+    require_once("./connectbook.php");
     $sql = "SELECT MAX(ARTICLE_NO) 
             FROM article_sharing";
     $data = $pdo->prepare($sql);

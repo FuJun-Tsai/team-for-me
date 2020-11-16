@@ -1,7 +1,7 @@
-<?
+<?php
 $ErrMsg='';
 try{
-    require_once('./connetbook.php');
+    require_once('./connectbook.php');
     $sql = "select 
                 R.RES_NO as no,
                 R.RES_NAME as name,

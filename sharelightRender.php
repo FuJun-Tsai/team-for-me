@@ -2,7 +2,7 @@
 $ErrMsg='';
 // JOIN member_management mm on(A.MEMBER_NO = mm.MEMBER_NO) 
 try{
-    require_once("./connetbook.php");
+    require_once("./connectbook.php");
     $sql = 'SELECT 
                 A.ARTICLE_NO AS no,
                 mm.MEMBER_NAME AS name,

@@ -7461,7 +7461,6 @@ body .overlay .msg-right h3 {
 
 body .overlay .msg-right .msgin {
   margin: 0 5% 5% 0;
-  height: 350px;
   overflow: auto;
 }
 

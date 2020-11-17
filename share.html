@@ -68,7 +68,7 @@
     <header>
         <section>
             <div class="logo">
-                <a href="./index.html">
+                <a href="./home.html">
                     <img src="./image/logoHeader.svg" alt="">
                 </a>
             </div>
@@ -450,7 +450,7 @@
                                             </div>
 
                                             <div class="collect_sum">
-                                                <h5>999</h5>
+                                                <h5>${data[i].ac}</h5>
                                             </div>
                                         </div>
 
@@ -458,7 +458,7 @@
                                             <img src="image/comment-alt-solid.svg">
 
                                             <div class="msg_sum">
-                                                <h5>999</h5>
+                                                <h5>${data[i].am}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -492,7 +492,6 @@
                 },
             
             });
-
 
             $('#newMoodPostBtn').on('click',function(){
                 $.ajax({
@@ -608,6 +607,10 @@
             //     lightdetail(id);
             // });
 
+            $.ajax({
+                
+            });
+
             function lightdetail(e){
                 $.ajax({
                     url:'sharelightRender.php',
@@ -638,7 +641,7 @@
                                                 <h5>${data[i].name}：</h5>
                                             </div>
                                         </div>
-                                        <input type="button" value="檢舉">
+                                        <button value="">檢舉</button>
                                     </div>
                                     <p>${data[i].word}</p>
                                     <p>${data[i].time}</p>
@@ -650,10 +653,10 @@
                         }
 
                         $('.msg-right').append(`
-                        <form id="nuan_LeaveMessage" action="shareInsertMessage.php" method="GET">
+                        <div id="nuan_LeaveMessage">
                             <textarea name="word" id="" placeholder="留言"></textarea>
                             <button type="submit" name="no" value="${data[0].no}">送出</button>
-                        </form>
+                        </div>
                         `);
 
                         LM();
@@ -671,26 +674,30 @@
             function LM(){
 
                 $('#nuan_LeaveMessage button').on('click',function(){
-                    $.ajax({
-                        url:'shareInsertMessage.php',
-                        type:'GET',
-                        dataType:'json',
-                        data:{
-                            no:$(this).val(),
-                            word:$('#nuan_LeaveMessage textarea').val(),
-                        },
-                        complete(data){
+                    if($('#spanLogin').text()=='登入'){
+                        $('#login_box').css({'display':'flex'});
+                    }else{
 
-                        },
+                        $.ajax({
+                            url:'shareInsertMessage.php',
+                            type:'GET',
+                            dataType:'json',
+                            data:{
+                                no:$(this).val(),
+                                word:$('#nuan_LeaveMessage textarea').val(),
+                            },
+                            complete(data){
 
-                    });
-                    let lastindex = $('.msgpost').length -1;
-                    let message = $('#nuan_LeaveMessage textarea');
-                    let nowtime = new Date();
-                    let todate = String(nowtime.getDate());
-                    let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
+                            },
 
-                        $('.msgin').append(
+                        });
+                        let lastindex = $('.msgpost').length -1;
+                        let message = $('#nuan_LeaveMessage textarea');
+                        let nowtime = new Date();
+                        let todate = String(nowtime.getDate());
+                        let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
+
+                        $('.msgin').first().prepend(
                             `<div class="msgpost">
                                 <div class="right_info">
                                     <div class="user_block">
@@ -709,6 +716,9 @@
                         );
                         return false;
                         message.val('');
+
+                    }
+
                 });
 
             }
@@ -784,11 +794,10 @@
                 let uncollect = "image/heart-shape-outline.png";
                 let collected = "/image/heart-shape-silhouette.png";
                 $("img.fillicon").click(function(){
-                    if($(this).attr('src')==uncollect){
-                        $(this).attr("src",collected);
-                    }else{
-                        $(this).attr('src',uncollect);
+                    if($('#spanLogin').text()!='登出'){
+                        $('#login_box').css({'display':'flex'});
                     }
+
                 });
 
                 //條件篩選(揪團/美食)

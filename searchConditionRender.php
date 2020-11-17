@@ -23,7 +23,10 @@ try{
                 rk.KIND_NAME as kind,
                 rs.STYLE_NAME as style,
                 R.RES_IMAGE1 as img1,
-                R.RES_SUMMARY as summary
+                R.RES_SUMMARY as summary,
+                (SELECT COUNT(*) FROM restaurant_collection WHERE restaurant_collection.RES_NO = R.RES_NO) as rc ,
+                (SELECT COUNT(*) FROM restaurant_message WHERE restaurant_message.RES_NO = R.RES_NO) as rm ,
+                (SELECT COUNT(*) FROM food_group WHERE food_group.RES_NO = R.RES_NO) as fg 
 
             from `restaurant_management` R
                 JOIN restaurant_style rs on (R.RES_STYLE = rs.STYLE_NO)

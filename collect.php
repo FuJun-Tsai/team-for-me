@@ -5,7 +5,7 @@ $RES = $_REQUEST['RES'];
 $member = $_SESSION['MEMBER_NO'];
 echo $_REQUEST['do'];
 try{
-    require_once('connetbook.php');
+    require_once('connectbook.php');
     if($_REQUEST['do']=='true'){
         $sql = "INSERT restaurant_collection(MEMBER_NO,RES_NO)
                 VALUES($member,$RES)";

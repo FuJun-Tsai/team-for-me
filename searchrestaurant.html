@@ -84,7 +84,7 @@
     <header>
         <section>
             <div class="logo">
-                <a href="./index.html">
+                <a href="./home.html">
                     <img src="./image/logoHeader.svg" alt="">
                 </a>
             </div>
@@ -383,11 +383,22 @@
                                             <h2>${data[i].name}</h2>
                                             <div class="kind west">${data[i].kind}</div>
                                             <div class="style steak">${data[i].style}</div>
+
                                             <div class="record">
-                                                <div class="like"><i class="far fa-heart"></i><span>23</span></div>
-                                                <div class="mess"><i class="far fa-comment-dots"></i><span>45</span></div>
-                                                <div class="group"><i class="fas fa-users"></i><span>300</span></div>
+                                                <div class="like">
+                                                    <i class="far fa-heart"></i>
+                                                    <span> ${data[i].rc}</span>
+                                                </div>
+                                                <div class="mess">
+                                                    <i class="far fa-comment-dots"></i>
+                                                    <span> ${data[i].rm}</span>
+                                                </div>
+                                                <div class="group">
+                                                    <i class="fas fa-users"></i>
+                                                    <span> ${data[i].fg}</span>
+                                                </div>
                                             </div>
+
                                             <h3>餐廳介紹：</h3>
                                             <p id="rint">${data[i].summary}</p>
                                             <h3>網友留言：</h3>
@@ -412,6 +423,9 @@
                             },);
 
                         };
+
+
+
                         
                     },
                     error(data){
@@ -447,6 +461,17 @@
                                 let RES = ($(this).closest('.rest').attr('id').split('R')[1]);
                                 $(this).children('.like i').toggleClass('tored');
                                 collect($(this).children('.like i').hasClass('tored'),RES);
+
+                                let num = parseInt($(this).children('span').text());
+                                console.log(num);
+                                if($(this).children('i').hasClass('tored')==false){
+                                    num-=1;
+                                    $(this).children('span').text(num);
+                                }else{
+                                    num+=1;
+                                    $(this).children('span').text(num);
+                                }
+
                             }
                         }); 
                     }

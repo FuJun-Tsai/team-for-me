@@ -1,6 +1,6 @@
 <?php
 $ErrMsg='';
-// JOIN member_management mm on(A.MEMBER_NO = mm.MEMBER_NO) 
+
 try{
     require_once("./connectbook.php");
     $sql = 'select 
@@ -12,7 +12,9 @@ try{
                 ARTICLE_WORD as word,
                 ARTICLE_DATE as date,
                 ARTICLE_IMAGE1 as img,
-                ARTICLE_KIND as kind
+                ARTICLE_KIND as kind,
+                (SELECT COUNT(*) FROM article_collection WHERE article_collection.ARTICLE_NO = A.ARTICLE_NO) as ac,
+                (SELECT COUNT(*) FROM article_message WHERE article_message.ARTICLE_NO = A.ARTICLE_NO) as am 
 
             from `article_sharing` A
                 JOIN member_management mm on(A.MEMBER_NO = mm.MEMBER_NO) 
@@ -33,5 +35,4 @@ try{
     $ErrMsg.= '錯誤行數' . $e->getLine() . '<br>';
     echo $ErrMsg;
 }
-
 ?>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./sass/vender/other/hover-min.css">
     <!-- <link rel="stylesheet" href="./css/background.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="./js/header_fixed.js"></script>
     <title>share</title>
 </head>
@@ -257,13 +258,13 @@
                                         <!-- ------收藏------- -->
                                         <div class="collect_block">
                                             <div class="heartIcon">
-                                                <img src="image/heart-shape-outline.png" class="fillicon">
+                                                <i></i>
                                             </div>
                                             <div class="collect_sum">
                                                 <h5>999</h5>
                                             </div>
                                         </div>
-                                        <input type="button" value="檢舉">
+                                        <button name="report">檢舉</button>
                                     </div>
                                     <p>
                                     </p>
@@ -354,6 +355,24 @@
         </div>
     </div>
 
+    <section>
+        <div class="single_report">
+            <div class="single_reportback">
+                <i class="fas fa-times single_cancel"></i>
+                <h2>檢舉餐廳留言</h2>
+                    <h4 style="font-weight: bold;">檢舉原因：</h4>
+                    <textarea name="RES_MES_REPORT_REASON" id=""></textarea>
+                    <button type="submit" name="test" value="">送出檢舉</button>
+                <div class="single_thank">
+                    <p>感謝你的檢舉</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="jun_back"></div>
+
+
     <!-- ***************************** -->
     <footer>
         <div class="footer">
@@ -406,6 +425,7 @@
                 dataType:'json',
                 type:'GET',
                 success(data){
+                    console.log(data);
                     for(let i=0;i<data.length;i+=1){
                         if(data[i].kind==0){
                             data[i].kind='#美食分享';
@@ -424,7 +444,7 @@
                                     <div class="head">
 
                                         <div class="user_img_block">
-                                            <img src="image/${data[i].headimg}>
+                                            <img src="image/member/${data[i].headimg}">
                                         </div>
 
                                         <div class="user_name">
@@ -446,7 +466,7 @@
 
                                         <div class="collect_block">
                                             <div class="heartIcon">
-                                                <img src="image/heart-shape-outline.png" class="fillicon">
+                                                <i class="far fa-heart" style='font-size:24px'></i>
                                             </div>
 
                                             <div class="collect_sum">
@@ -462,33 +482,33 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="more ${data[i].id}" style="outline:none; border:none;"  value="${data[i].no}">more</button>
+                                    <button class="more ${data[i].id}" style="outline:none; border:none;" value="${data[i].no}&">more</button>
                                 </div>
                             </div>
                         `);
                         
                         $(`.${data[i].id}`).on('click',function(){
-
+                            let like = $(this).siblings('.foot').find('.collect_sum h5').text();
                             let id = $(this).val();
+                            let classType = $(this).siblings('.foot').find('.fa-heart').attr('class');
+                            // console.log(classType);
+                            
                             $(".msg-left h4").text(`${data[i].kind}`);
                             $(".msg-left h2").text(`${data[i].title}`);
                             $(".img_block img").attr('src',`image/article_sharing/${data[i].img}`);
                             $(".msg-left p").text(`${data[i].word}`);
+                            $("article .collect_sum").text(`${like}`);
+                            $('.msg-left i').attr('class',classType);
+                            $('.msg-left i').css({'font-size':'28px'});
+                            $('.left_info button').val(id);
                             lightdetail(id);
                         });
-                        
-                        // if(i==data.length-1){
-                        
-
-
-                            // htmljs();
-
-                        // };
 
                     };
 
                     htmljs();
-                
+                    membershare();
+
                 },
             
             });
@@ -502,17 +522,8 @@
                         moodContent :$('#moodContent').val(),
                         moodClass :$('#moodClass').val(),
                         img  :new FormData($('#inputImg')),
-                        // img  :$('#inputImg'),
 
                     },
-                    // data:{
-                    //     title:1,
-                    //     word :2,
-                    //     kind :0,
-                    //     // img  :new FormData($('#inputImg')),
-
-                    // },
-                    // data:`title=1&word=1&kind=0`,
                     dataType:'json',
                     complete(data){
                         let nowtime = new Date();
@@ -528,59 +539,59 @@
                         
                         console.log(data);
                         
-                        $('#cardshare').append(`
-                            <div class="col-md-4">
-                                <div class="content">
+                        // $('#cardshare').append(`
+                        //     <div class="col-md-4">
+                        //         <div class="content">
 
-                                    <div class="ord">
-                                        <h4>${title}</h4>
-                                        <h3>${$('#moodTitle').val()}</h3>
-                                    </div>
-                                    <div class="head">
+                        //             <div class="ord">
+                        //                 <h4>${title}</h4>
+                        //                 <h3>${$('#moodTitle').val()}</h3>
+                        //             </div>
+                        //             <div class="head">
 
-                                        <div class="user_img_block">
-                                            <img src="image/{{headimg}}>
-                                        </div>
+                        //                 <div class="user_img_block">
+                        //                     <img src="image/{{headimg}}>
+                        //                 </div>
 
-                                        <div class="user_name">
-                                            <h5>{{哈洽馬}}</h5>
-                                        </div>
+                        //                 <div class="user_name">
+                        //                     <h5>{{哈洽馬}}</h5>
+                        //                 </div>
 
-                                        <div class="time">
-                                            <h5>${timetext}</h5>
-                                        </div>
-                                    </div>
+                        //                 <div class="time">
+                        //                     <h5>${timetext}</h5>
+                        //                 </div>
+                        //             </div>
 
-                                    <div class="col-md-12">
-                                        <div class="btn_modal">
-                                            <img src="image/article_sharing/{{XX.img}}">
-                                        </div>
-                                    </div>
+                        //             <div class="col-md-12">
+                        //                 <div class="btn_modal">
+                        //                     <img src="image/article_sharing/{{XX.img}}">
+                        //                 </div>
+                        //             </div>
 
-                                    <div class="foot">
+                        //             <div class="foot">
 
-                                        <div class="collect_block">
-                                            <div class="heartIcon">
-                                                <img src="image/heart-shape-outline.png" class="fillicon">
-                                            </div>
+                        //                 <div class="collect_block">
+                        //                     <div class="heartIcon">
+                        //                         <i class="far fa-heart" style='font-size:24px'></i>
+                        //                     </div>
 
-                                            <div class="collect_sum">
-                                                <h5>999</h5>
-                                            </div>
-                                        </div>
+                        //                     <div class="collect_sum">
+                        //                         <h5>0</h5>
+                        //                     </div>
+                        //                 </div>
 
-                                        <div class="msg_block">
-                                            <img src="image/comment-alt-solid.svg">
+                        //                 <div class="msg_block">
+                        //                     <img src="image/comment-alt-solid.svg">
 
-                                            <div class="msg_sum">
-                                                <h5>999</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="more newpost" style="outline:none; border:none;"  value="">more</button>
-                                </div>
-                            </div>
-                        `);
+                        //                     <div class="msg_sum">
+                        //                         <h5>0</h5>
+                        //                     </div>
+                        //                 </div>
+                        //             </div>
+                        //             <button class="more newpost" style="outline:none; border:none;"  value="">more</button>
+                        //         </div>
+                        //     </div>
+                        // `);
 
                         $('.newpost').on('click',function(){
                             // let id = $(this).val();
@@ -597,7 +608,6 @@
 
                 });
 
-
             });
 
         
@@ -607,10 +617,6 @@
             //     lightdetail(id);
             // });
 
-            $.ajax({
-                
-            });
-
             function lightdetail(e){
                 $.ajax({
                     url:'sharelightRender.php',
@@ -619,8 +625,7 @@
                     data:{
                         no:e,
                     },
-                    success(data){
-                        console.log(data); 
+                    complete(data){
                         $(".overlay").addClass("-on");
                         $(".msg-right").empty();
 
@@ -628,23 +633,23 @@
                         <h3>留言區</h3>
                         `);
 
-                        for(let i=0;i<data.length;i+=1){
+                        for(let i=0;i<data.responseJSON.length;i+=1){
                             $(".msg-right").append(`
                             <div class="msgin">
                                 <div class="msgpost">
                                     <div class="right_info">
                                         <div class="user_block">
                                             <div class="user_img_block">
-                                                <img src="${data[i].headimg}">
+                                                <img src="image/member/${data.responseJSON[i].headimg}">
                                             </div>
                                             <div class="user_name">
-                                                <h5>${data[i].name}：</h5>
+                                                <h5>${data.responseJSON[i].name}：</h5>
                                             </div>
                                         </div>
-                                        <button value="">檢舉</button>
+                                        <button name="report" value="${data.responseJSON[i].id}&${data.responseJSON[i].no}">檢舉</button>
                                     </div>
-                                    <p>${data[i].word}</p>
-                                    <p>${data[i].time}</p>
+                                    <p>${data.responseJSON[i].word}</p>
+                                    <p>${data.responseJSON[i].time}</p>
                                 </div>
                             </div>
 
@@ -655,17 +660,26 @@
                         $('.msg-right').append(`
                         <div id="nuan_LeaveMessage">
                             <textarea name="word" id="" placeholder="留言"></textarea>
-                            <button type="submit" name="no" value="${data[0].no}">送出</button>
+                            <button type="submit" name="no" value="${e}">送出</button>
                         </div>
                         `);
 
                         LM();
+                        report();
+                        LBcollect();
 
                     },
 
-                    complete(){
+                    // complete(e){
+                    //     $('.msg-right').append(`
+                    //     <div id="nuan_LeaveMessage">
+                    //         <textarea name="word" id="" placeholder="留言"></textarea>
+                    //         <button type="submit" name="no" value="${e.responseJSON[0].no}">送出</button>
+                    //     </div>
+                    //     `);
 
-                    }
+                    //     LM();
+                    // }
 
                 });
 
@@ -676,46 +690,41 @@
                 $('#nuan_LeaveMessage button').on('click',function(){
                     if($('#spanLogin').text()=='登入'){
                         $('#login_box').css({'display':'flex'});
+
                     }else{
 
                         $.ajax({
                             url:'shareInsertMessage.php',
-                            type:'GET',
+                            type:'POST',
                             dataType:'json',
                             data:{
                                 no:$(this).val(),
                                 word:$('#nuan_LeaveMessage textarea').val(),
                             },
-                            complete(data){
-
+                            success(data){
+                                console.log(data);
+                                $('#nuan_LeaveMessage').before(
+                                    `<div class="msgin">
+                                        <div class="msgpost">
+                                            <div class="right_info">
+                                                <div class="user_block">
+                                                    <div class="user_img_block">
+                                                        <img src="./image/member/${data.img}" style="width:35px;">
+                                                    </div>
+                                                    <div class="user_name">
+                                                        <h5>${data.name}：</h5>
+                                                    </div>
+                                                </div>
+                                                <button name="report" value="${data.ano}&${data.mno}">檢舉</button>
+                                            </div>
+                                            <p>${data.word}</p>
+                                            <p>${data.time}</p>
+                                        </div>
+                                    </div>`
+                                );
                             },
 
                         });
-                        let lastindex = $('.msgpost').length -1;
-                        let message = $('#nuan_LeaveMessage textarea');
-                        let nowtime = new Date();
-                        let todate = String(nowtime.getDate());
-                        let timetext = `${nowtime.getFullYear()}-${nowtime.getMonth()+1}-${todate} ${nowtime.getHours()}:${nowtime.getMinutes()}:${nowtime.getSeconds()}`;
-
-                        $('.msgin').first().prepend(
-                            `<div class="msgpost">
-                                <div class="right_info">
-                                    <div class="user_block">
-                                        <div class="user_img_block">
-                                            <img src="{{會員大頭照}}">
-                                        </div>
-                                        <div class="user_name">
-                                            <h5>{{會員名稱}}：</h5>
-                                        </div>
-                                    </div>
-                                    <input type="button" value="檢舉">
-                                </div>
-                                <p>${message.val()}</p>
-                                <p>${timetext}</p>
-                            </div>`
-                        );
-                        return false;
-                        message.val('');
 
                     }
 
@@ -723,8 +732,157 @@
 
             }
 
+            function membershare(){
+                $.ajax({
+                    url:'SHAREcollection.php',
+                    type:'POST',
+                    dataType:'json',
+                    success(data){
+                        for(let i=0;i<=data.length-1;i+=1){
+                            $(`#${data[i].ID} i`).addClass('tored');
+                            $(`#${data[i].ID} i`).removeClass('far');
+                            $(`#${data[i].ID} i`).addClass('fas');
+                        };
+                    
+                    },
+                    complete(){
+                        collectshare();
+                    }
+
+                });
+
+            }
+
+            function collectshare(){
+                $('.col-md-4 .collect_block').on('click',function(){
+                    let bolin = $(this).find('i').hasClass('tored');
+                    let ID = $(this).closest('.col-md-4').attr('id').split('C')[1];
+                    let num = parseInt($(this).find('.collect_sum h5').text());
+
+                    console.log(ID);
+
+                    if($(this).find('i').hasClass('tored')==true){
+                        num-=1;
+                        $(this).find('i').removeClass('fas');
+                        $(this).find('i').addClass('far');
+                        $(this).find('.collect_sum h5').text(num);
+                    }else{
+                        num+=1;
+                        $(this).find('i').addClass('fas');
+                        $(this).find('i').removeClass('far');
+                        $(this).find('.collect_sum h5').text(num);
+                    }
+
+                    docollect(bolin,ID);
+
+                    $(this).find('i').toggleClass('tored');
+                    
+                });
+
+            }
+
+            function docollect(e,ID){
+                $.ajax({
+                    url:'collectshare.php',
+                    data:{
+                        share:ID,
+                        do:e
+                    },
+                    dataType:'json',
+                    type:'POST',
+                    success(e){
+                        // console.log(e);
+                    }
+                });
+            }
+
+            function report(){
+                
+                $("button[name='report']").on('click',function(){
+                    $('.single_report').css({'display':'inline-block'});
+                    $('.jun_back').css({'display':'inline-block'});
+                    
+
+                    $('.single_reportback i').on('click',function(){
+                        $('.single_report').css({'display':'none'});
+                        $('.jun_back').css({'display':'none'});
+                        $('.single_thank').css({'display':'none'});
+                        $('.single_reportback h4').css({'display':'block'});
+                        $('.single_reportback textarea').css({'display':'block'}).val('');
+                        $('.single_reportback button').css({'display':'block'});
+
+                    });
+
+                    $('.single_reportback button').val($(this).val());
+                    
+
+                    $('.single_reportback button').on('click',function(){
+                        $.ajax({
+                            url:'sharereport.php',
+                            type:'POST',
+                            data:{
+                                word:$(this).siblings('textarea').val(),
+                                val:$(this).val(),
+                            },
+                            dataType:'json',
+                            complete(e){
+                                conosle.log(e);
+
+                            }
+                        });
+
+                        $('.single_reportback h4').css({'display':'none'});
+                        $('.single_reportback textarea').css({'display':'none'});
+                        $('.single_reportback button').css({'display':'none'});
+                        $('.single_thank').css({'display':'block'});
+
+
+                    });
+                });
+
+            };
+
+            function LBcollect(){
+                $('.msg-left .collect_block').on('click',function(){
+                    let bolin = $(this).find('i').hasClass('tored');
+                    let ID = $(this).siblings("button[name='report']").val().split('&')[0];
+                    let num = parseInt($(this).find('.collect_sum').text());
+
+                    // console.log(ID);
+
+                    if($(this).find('i').hasClass('tored')==true){
+                        num-=1;
+                        $(this).find('i').removeClass('fas');
+                        $(this).find('i').addClass('far');
+                        $(this).find('.collect_sum').text(num);
+
+                        $(`#C${ID} .fa-heart`).removeClass('fas');
+                        $(`#C${ID} .fa-heart`).addClass('far');
+                        console.log($(`#C${ID} .collect_sum h5`).text());
+
+                    }else{
+                        num+=1;
+                        $(this).find('i').addClass('fas');
+                        $(this).find('i').removeClass('far');
+                        $(this).find('.collect_sum').text(num);
+
+                        $(`#C${ID} .fa-heart`).removeClass('far');
+                        $(`#C${ID} .fa-heart`).addClass('fas');
+                        console.log($(`#C${ID} .collect_sum h5`).text());
+                    }
+
+                    docollect(bolin,ID);
+
+                    $(this).find('i').toggleClass('tored'); 
+                    $(`#C${ID} .fa-heart`).toggleClass('tored');
+                    
+                
+                });
+
+            };
 
         });
+
     </script>
 
     <script>
@@ -806,28 +964,6 @@
                     filter(id);
                 });
                 
-                // $('#nuan_LeaveMessage').on('submit',function(){
-                //     let message = $('#nuan_LeaveMessage textarea');
-                //     let lastindex = $('.msgpost').length -1;
-                //     $('.msgin').append(
-                //         `<div class="msgpost">
-                //             <div class="right_info">
-                //                 <div class="user_block">
-                //                     <div class="user_img_block">
-                //                         <img>
-                //                     </div>
-                //                     <div class="user_name">
-                //                         <h5>董董：</h5>
-                //                     </div>
-                //                 </div>
-                //                 <input type="button" value="檢舉">
-                //             </div>
-                //             <p>${message.val()}</p>
-                //         </div>`
-                //     );
-                //     return false;
-                //     message.val('');
-                // });
 
             });
         };

@@ -501,5 +501,12 @@ window.addEventListener('load', function () {
     $('#newMoodLightBox').css({'display':'none',});
     $('#viewImg').attr('src','');
     $('#inputImg').val('');
-    })
+
+    });
+
+    //
+
+
+
+
 })

@@ -398,123 +398,150 @@
                     </div>
                     `);
 
-                    
+                    singleRenderRLM();
+
                 }
 
             });
 
-            $.ajax({
-                url:`singleRenderRLM.php${location.search}`,
-                type:'GET',
-                dataType:'json',
-                success(data){
+            function singleRenderRLM(){
 
-                    let items = data.length;
-                    for(let i=0;i<=items-1;i+=1){
+                $.ajax({
+                    url:`singleRenderRLM.php${location.search}`,
+                    type:'GET',
+                    dataType:'json',
+                    success(data){
 
-                        let item = data[i].word.split('');
-                        let content = '';
+                        let items = data.length;
+                        for(let i=0;i<=items-1;i+=1){
 
-                        for(let i=0;i<=item.length-1;i+=1){
-                            if(item[i].charCodeAt()==10){
-                                item[i]='<br>';
+                            let item = data[i].word.split('');
+                            let content = '';
+
+                            for(let i=0;i<=item.length-1;i+=1){
+                                if(item[i].charCodeAt()==10){
+                                    item[i]='<br>';
+                                }
+                                content = item.join('');
                             }
-                            content = item.join('');
+                            $('#leavemessage').append(`
+                            <div id="${data[i].id}" class="single_L">
+                                <img src="./image/member/${data[i].img}" alt="">
+                                <p>${content}</p>
+                                <p class="time">${data[i].time}</p>
+                                <i class="fas fa-exclamation-triangle">檢舉</i>
+                            </div>              
+                            `);
+                        
                         }
-                        $('#leavemessage').append(`
-                        <div id="${data[i].id}" class="single_L">
-                            <img src="./image/member/${data[i].img}" alt="">
-                            <p>${content}</p>
-                            <p class="time">${data[i].time}</p>
-                            <i class="fas fa-exclamation-triangle">檢舉</i>
-                        </div>              
-                        `);
-                    
+
+
+                    },
+                    complete(e){
+                        // itemfunction(); 
+                        GETUSER();
                     }
 
+                });
+            
+            };
 
-                },
-                complete(e){
-                    itemfunction(); 
-                }
+            function GETUSER(){
 
+                $.ajax({
+                    url:'GETUSER.php',
+                    type:'POST',
+                    dataType:'json',
+                    success(e){
 
-                
-            });
+                        console.log(e);
 
-            $.ajax({
-                url:'GETUSER.php',
-                type:'POST',
-                dataType:'json',
-                success(e){
-
-                    console.log(e);
-
-                    $('.single_messaging').append(`
-                    <img src="./image/member/${e.IMG}">
-                    <div id="send">
-                        <textarea name="RES_MESSAGE_WORD" cols="30" rows="10"></textarea>
-                        <button class="btn_6 btn_js" name="RES_MEM" value="${location.search.split('=')[1]},${e.NO}">送出
-                            <span></span>
-                        </button>
-                    </div>
-                    `);
-
-                    $('.single_report').append(`
-                    <div class="single_reportback">
-                        <i class="fas fa-times single_cancel"></i>
-                        <h2>檢舉餐廳留言</h2>
-                            <!--<label for="report">
-                                    選擇檢舉類型:
-                                    <select name="report">
-                                        <option value="1">惡意謾罵</option>
-                                        <option value="2">淫穢色情</option>
-                                        <option value="3">無關主題</option>
-                                        <option value="0">其他</option>
-                                    </select>
-                                </label> -->
-                            <h4 style="font-weight: bold;">檢舉原因：</h4>
-                            <textarea name="RES_MES_REPORT_REASON" id=""></textarea>
-                            <button type="submit" name="test" value="">送出檢舉</button>
-                        <div class="single_thank">
-                            <p>感謝你的檢舉</p>
+                        $('.single_messaging').append(`
+                        <img src="./image/member/${e.IMG}">
+                        <div id="send">
+                            <textarea name="RES_MESSAGE_WORD" cols="30" rows="10"></textarea>
+                            <button class="btn_6 btn_js" name="RES_MEM" value="${location.search.split('=')[1]},${e.NO}">送出
+                                <span></span>
+                            </button>
                         </div>
-                    </div>
-                    `);
+                        `);
 
-                },
+                        $('.single_report').append(`
+                        <div class="single_reportback">
+                            <i class="fas fa-times single_cancel"></i>
+                            <h2>檢舉餐廳留言</h2>
+                                <!--<label for="report">
+                                        選擇檢舉類型:
+                                        <select name="report">
+                                            <option value="1">惡意謾罵</option>
+                                            <option value="2">淫穢色情</option>
+                                            <option value="3">無關主題</option>
+                                            <option value="0">其他</option>
+                                        </select>
+                                    </label> -->
+                                <h4 style="font-weight: bold;">檢舉原因：</h4>
+                                <textarea name="RES_MES_REPORT_REASON" id=""></textarea>
+                                <button type="submit" name="test" value="">送出檢舉</button>
+                            <div class="single_thank">
+                                <p>感謝你的檢舉</p>
+                            </div>
+                        </div>
+                        `);
 
-                complete(e){
-                    itemfunction(); 
-                }
+                    },
 
-            });
+                    complete(e){
+                        itemfunction(); 
+                        singlecollection();
+                    }
 
-            $.ajax({
-                url:'singlecollection.php',
-                type:'POST',
-                dataType:'json',
-                data:{
-                    RES:location.search.split('=')[1],
-                },
-                success(data){
-                    console.log(data);
-                    $('.like i').addClass('tored');
-                },
-                complete(e){
-                    $('.like').on('click',function(){
-                        if($('#spanLogin').text()=='登入'){
-                                $('#login_box').css({'display':'flex'});
-                        }else{
-                            $('.like i').toggleClass('tored');
-                            collect($('.like i').hasClass('tored'));
-                        }
-                    }); 
-                }
-            });
+                });
+
+
+            };
+
+
+            function singlecollection(){
+
+
+                $.ajax({
+                    url:'singlecollection.php',
+                    type:'POST',
+                    dataType:'json',
+                    data:{
+                        RES:location.search.split('=')[1],
+                    },
+                    success(data){
+                        console.log(data);
+                        $(`.like i`).removeClass('far');
+                        $(`.like i`).addClass('tored');
+                        $(`.like i`).addClass('fas');
+
+                    },
+                    complete(e){
+                        $('.like').on('click',function(){
+                            if($('#spanLogin').text()=='登入'){
+                                    $('#login_box').css({'display':'flex'});
+                            }else{
+                                $('.like i').toggleClass('tored');
+                                collect($('.like i').hasClass('tored'));
+                                if($(this).children('i').hasClass('tored')==false){
+                                    $(this).children('i').removeClass('fas');
+                                    $(this).children('i').addClass('far');
+
+                                }else{
+                                    $(this).children('i').removeClass('far');
+                                    $(this).children('i').addClass('fas');
+                                }
+
+                            }
+                        }); 
+                    }
+                });
+
+            }
 
             function collect(e){
-            // console.log(e);
                 $.ajax({
                     url:'collect.php',
                     type:'POST',

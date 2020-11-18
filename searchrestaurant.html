@@ -173,10 +173,10 @@
 
                         <label for="kind" class="kind">餐廳種類：
                             <label for="k1"><input type="checkbox" name="kind" id="k1" value="1">日式</label>
-                            <label for="k2"><input type="checkbox" name="kind" id="k2" value="2">美式</label>
-                            <label for="k3"><input type="checkbox" name="kind" id="k3" value="3">西式</label>
+                            <label for="k2"><input type="checkbox" name="kind" id="k2" value="2">西式</label>
+                            <label for="k3"><input type="checkbox" name="kind" id="k3" value="3">中台</label>
                             <label for="k4"><input type="checkbox" name="kind" id="k4" value="4">韓式</label>
-                            <label for="k5"><input type="checkbox" name="kind" id="k5" value="5">中台</label>
+                            <label for="k5"><input type="checkbox" name="kind" id="k5" value="5">東南亞</label>
                         </label>
 
                         <label for="style[]" class="style">料理風格：
@@ -304,7 +304,7 @@
                         e:e.join(','),
                     },
                     success(data){
-                        console.log(data);
+                        // console.log(data);
                         for(let i=0 ; i<=data.length-1 ;i+=1){
                             $(`.${data[i].resno}`).append(`
                                 <div id="${data[i].id}" class="L">
@@ -313,6 +313,9 @@
                                 </div>
                             `);
                         };
+
+                        nomessage();
+
                     },
                     
                 });
@@ -360,7 +363,7 @@
                         search:search
                     },
                     success(data){
-                        console.log(data);
+                        // console.log(data);
                         result = [];
                         for(let i=0;i<data.length;i+=1){
                             result.push(data[i].no);
@@ -448,9 +451,11 @@
                     type:'POST',
                     dataType:'json',
                     success(data){
-                        console.log(data); 
+                        // console.log(data); 
                         for(let i=0;i<=data.length-1;i+=1){
+                            $(`#${data[i].ID} .like i`).removeClass('far');
                             $(`#${data[i].ID} .like i`).addClass('tored');
+                            $(`#${data[i].ID} .like i`).addClass('fas');
                         }
                     },
                     complete(){
@@ -466,9 +471,14 @@
                                 console.log(num);
                                 if($(this).children('i').hasClass('tored')==false){
                                     num-=1;
+                                    $(this).children('i').removeClass('fas');
+                                    $(this).children('i').addClass('far');
                                     $(this).children('span').text(num);
+
                                 }else{
                                     num+=1;
+                                    $(this).children('i').removeClass('far');
+                                    $(this).children('i').addClass('fas');
                                     $(this).children('span').text(num);
                                 }
 
@@ -493,6 +503,29 @@
                     },
                 
                 });
+            }
+
+            function nomessage(){
+                let array = [];
+                let num = $('.result').find('.rest').length;
+                
+                for(let i=0;i<=num-1;i+=1){
+                    array.push($('.result').find('.rest')[i].id);
+                }
+                
+                for(let i=0;i<=array.length-1;i+=1){
+                    // console.log(array[i]);
+                    if($(`.${array[i]}`).children().length==0){
+                        $(`.${array[i]}`).append(`
+                            <div style="text-align:center; height:140px; line-height:140px; font-size:36px;">
+                                尚無留言
+                            </div>
+                        `);
+
+                    }
+
+                }
+
             }
      
         }

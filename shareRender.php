@@ -3,7 +3,7 @@ $ErrMsg='';
 
 try{
     require_once("./connectbook.php");
-    $sql = 'select 
+    $sql = 'SELECT 
                 concat("R" , A.ARTICLE_NO) as id,
                 A.ARTICLE_NO as no,
                 mm.MEMBER_NAME as name,
@@ -16,8 +16,9 @@ try{
                 (SELECT COUNT(*) FROM article_collection WHERE article_collection.ARTICLE_NO = A.ARTICLE_NO) as ac,
                 (SELECT COUNT(*) FROM article_message WHERE article_message.ARTICLE_NO = A.ARTICLE_NO) as am 
 
-            from `article_sharing` A
+            FROM `article_sharing` A
                 JOIN member_management mm on(A.MEMBER_NO = mm.MEMBER_NO) 
+            ORDER BY A.ARTICLE_NO ASC
            ';
     $data = $pdo->prepare($sql);
 

@@ -5,12 +5,10 @@ $condition = $_SESSION['MEMBER_NO'];
 try{
     require_once('connectbook.php');
     $sql = "SELECT MEMBER_NO ,
-                   concat('R' , RES_NO) as ID
-            FROM `restaurant_collection` 
-            where ";
+                   concat('C' , ARTICLE_NO) as ID
+            FROM `article_collection` 
+            where MEMBER_NO = $condition;";
     
-    $sql.= ' ; ';
-
     $data = $pdo->prepare($sql);
     $data-> execute();
     

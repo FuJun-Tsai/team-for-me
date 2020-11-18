@@ -117,16 +117,23 @@ function itemfunction(){
     });
 
     $('.single_L i').on('click',function(){
-        let id = $(this).closest('.single_L').attr('id');
 
-        $('.single_reportback button').val(`${id.split('L')[1]}&${location.search}`);
+        if($('#spanLogin').text()=='登入'){
+            $('#login_box').css({'display':'flex'});
+        }else{
 
-        $('.single_report').css({'display':'inline-block'});
-        $('.jun_back').css({'display':'inline-block'});
-        $('.single_reportback form').css({'display':'block'});
-        $('.single_reportback button').css({'display':'block'});
-        $('.single_reportback .single_thank').css({'display':'none'});
-        $('.single_reportback form textarea').val('');
+            let id = $(this).closest('.single_L').attr('id');
+
+            $('.single_reportback button').val(`${id.split('L')[1]}&${location.search}`);
+
+            $('.single_report').css({'display':'inline-block'});
+            $('.jun_back').css({'display':'inline-block'});
+            $('.single_reportback form').css({'display':'block'});
+            $('.single_reportback button').css({'display':'block'});
+            $('.single_reportback .single_thank').css({'display':'none'});
+            $('.single_reportback form textarea').val('');
+
+        }
 
     });
 

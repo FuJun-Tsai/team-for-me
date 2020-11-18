@@ -1,10 +1,9 @@
 <?php
 $ErrMsg='';
-echo $_REQUEST['no'];
-echo '<br><br>';
-echo $_REQUEST['word'];
-echo '<br><br>';
-
+session_start();
+$no = $_SESSION["MEMBER_NO"];
+$word = $_REQUEST["word"];
+$NO = $_REQUEST["no"];
 try{
     require_once("./connectbook.php");
 
@@ -17,7 +16,7 @@ try{
 
             VALUES(
             :no,
-            1,
+            $no,
             now(),
             :word
             );";
@@ -27,13 +26,31 @@ try{
     $data-> bindValue(':word',$_REQUEST['word']);
     $data-> execute();
 
+    $sql = "SELECT 
+                A.ARTICLE_NO as ano,
+                A.MEMBER_NO as mno,
+                A.ART_MES_TIME as time,
+                A.ART_MESSAGE_WORD as word,
+                mm.MEMBER_NAME as name,
+                mm.MEMBER_IMAGE as img
+            FROM
+                article_message A
+                JOIN member_management mm ON(A.MEMBER_NO = mm.MEMBER_NO)
+            WHERE
+                A.ART_MESSAGE_WORD=$word AND
+                A.MEMBER_NO=$no AND
+                A.ARTICLE_NO=$NO 
+            ;";
+
+    $data = $pdo->prepare($sql);
+    $data-> execute();
+
     if($data->rowCount()==0){
-        echo 'PHP錯誤';
+        echo 'error';
     }else{
         $result = $data->fetch(PDO::FETCH_ASSOC);
-        echo JSON_encode($result);
+        echo json_encode($result);
     }
-    echo $_REQUEST['no'] , $_REQUEST['word'];
 
 }catch(PDOException $e){
     $ErrMsg.= '錯誤內容' . $e->getMessage() . '<br>';

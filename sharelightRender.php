@@ -4,6 +4,7 @@ $ErrMsg='';
 try{
     require_once("./connectbook.php");
     $sql = 'SELECT 
+                ART_MESSAGE_NO AS id,
                 A.ARTICLE_NO AS no,
                 mm.MEMBER_NAME AS name,
                 mm.MEMBER_IMAGE AS headimg,
@@ -18,13 +19,9 @@ try{
     $data = $pdo->prepare($sql);
     $data-> bindValue(':no',$_REQUEST['no']);
     $data-> execute();
-    // if($data->rowCount()==0){
-        // echo 'PHP錯誤';
-    // }else{
 
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($result);
-    // }
 
 }catch(PDOException $e){
     $ErrMsg.= '錯誤內容' . $e->getMessage() . '<br>';

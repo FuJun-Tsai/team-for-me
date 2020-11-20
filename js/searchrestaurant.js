@@ -187,7 +187,6 @@ $(document).ready(function(){
             for(let i=1;i<total;i+=1){
                 if($(`#R${i} h2`).text().indexOf($.trim(word)) != -1){
                     show.push($(`#R${i}`).attr('id'));
-                    console.log('key');
                 }
             }
         }
@@ -204,7 +203,6 @@ $(document).ready(function(){
             show.push($(`#R${i}`).attr('id'));
         }
 
-        console.log(show);
         createpage();
         showresult();
         
@@ -242,7 +240,6 @@ $(document).ready(function(){
         let imgwidth = $('.rep div').width();
         if($(window).width()<600){
             $('.rep div').height(imgwidth);
-            // console.log(imgwidth);
         }else{
             $('.rep div').height(500);
         }

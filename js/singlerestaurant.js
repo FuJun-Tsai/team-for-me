@@ -161,15 +161,7 @@ function itemfunction(){
                     RES_MEM:$('#send .btn_js').val(),
                     RES_MESSAGE_WORD:$('#send textarea').val()
                 },
-                success(data,Status){
-                    console.log('success');
-                },
-                error(){
-                    console.log('error');
-                },
                 complete(data,Status){
-                    console.log(`complete-${data}`);
-                    console.log(`${Status}`);
                     let nowtime = new Date();
                     let todate = String(nowtime.getDate());
                     let word = $('.single_messaging textarea').val();
@@ -182,7 +174,6 @@ function itemfunction(){
                         }
                         word = item.join('');
                     }
-                    console.log(word);
 
                     if(todate.length == 1){
                         todate = `0${todate}`;
@@ -205,7 +196,6 @@ function itemfunction(){
     });
 
     $('.single_reportback button').on('click',function(){
-        console.log('here');
         $.ajax({
             url: `singleInsertRP.php`,
             method: 'POST',               
@@ -216,7 +206,6 @@ function itemfunction(){
                 
             },
             complete(e){
-                console.log(e);
             }
 
         });

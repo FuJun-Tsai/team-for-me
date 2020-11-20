@@ -1,0 +1,288 @@
+@mixin borderT {
+    border: 1px solid black;
+}
+
+@mixin img($h, $url) {
+    height: $h;
+    background-image: url(#{$url});
+    background-position: center center;
+    background-repeat: no-repeat;
+    // background-size: cover;
+}
+
+* {
+    box-sizing: border-box;
+    p {
+        line-height: 20px;
+    }
+    .tored{
+        color:red;
+    }
+}
+
+p::-webkit-scrollbar-track {
+    background-color: #FFE1A4;
+}
+//捲軸寬度
+p::-webkit-scrollbar {
+    width: 6px;
+    background-color: black;
+}
+//捲軸本體顏色
+p::-webkit-scrollbar-thumb {
+    background-color: #bb6573;
+}
+.insearch::-webkit-scrollbar-track {
+    background-color: #FFE1A4 !important;
+}
+//捲軸寬度
+.insearch::-webkit-scrollbar {
+    width: 6px !important;
+    background-color: black !important;
+}
+//捲軸本體顏色
+.insearch::-webkit-scrollbar-thumb {
+    background-color: #bb6573 !important;
+}
+
+body {
+    // font-size: $fontSize!important;
+    .banner_rest{
+        .banner_bg{
+        background-image: url("../image/21.jpg");
+        background-repeat: no-repeat;
+        height: 500px;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 5%;
+        background-attachment: fixed;
+            .txt{
+                width: 90%;
+                height: 400px;
+                margin-top: 50px;
+                margin-left: 5%;
+                display: inline-block;
+                // letter-spacing: 50px;
+                color: rgb(95, 95, 95);
+                text-decoration: none;
+                text-align: center;
+                // opacity: 0.75;
+                padding-top: 160px;
+                // padding: 20px;
+                outline: 5px solid white;
+                outline-offset: -13px;
+                background-color: rgba(223, 114, 25, 0.1);
+                h1{
+                    font-weight: 900;
+                    background-color: white;
+                    display: inline-block;
+                    padding-right: 28px;
+                    padding: 30px 0;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+    section {
+        .content {
+            @include box(1200px, 0);
+            .selection {
+                // @include borderT;
+                input[type="text"] {
+                    width: calc(100% - 100px);
+                    margin-bottom: 12px !important;
+                    font-size: 16px!important;
+                }
+                .kind {
+                    display: block;
+                    margin-bottom: 12px !important;
+                }
+                .sort {
+                    display: flex;
+                    flex-direction: row;
+                }
+                .like,
+                .mess,
+                .group {
+                    cursor: pointer;
+                }
+                button {
+                    font-size: $fontSize;
+                }
+            }
+            .error{
+                font-size: 30px;
+                height: 300px;
+                line-height: 300px;
+                display: none;
+            }
+            // label {}
+            .result {
+                margin-top: 20px;
+                .rest {
+                    border-radius: 24px;
+                    @include lineGradient(50%,345deg,#F2AB39,transparent);
+                    margin: 80px auto;
+                    .rep{
+                        // padding-left: 0;
+                        margin: 0px;
+                        border-radius: 16px;
+                        text-align: center;
+                        img{
+                            display: inline-block;
+                            width: 487.5px;
+                            height: 500px;
+                            // width: 100%;
+                            // height: 100%;
+                            font-size: 0;
+                            margin-left: -15px;
+                            border-radius: 24px 0px 0px 24px;
+                            @media screen and (max-width:1200px){
+                                border-radius: 24px;
+                                margin: 0 auto;
+
+                            }   
+                        }
+                    }
+                    .detail {
+                        position: relative;
+                        padding-bottom: 80px;
+
+                        #rint{
+                            line-height: 36px !important;
+                        }
+                        h2 {
+                            margin-top: 24px;
+                            border-left: 8px solid #9B1E23;
+                            padding-left: 8px;
+                            @media screen and (max-width:600px){
+                                margin-bottom: 24px;
+                            }
+                        }
+                        h3 {
+                            margin-top: 8px !important;
+                        }
+                        > p {
+                            display: inline-block;
+                            // margin-left: 20px;
+                            padding-left: 20px;
+                            width: 100%;
+                            // max-width: ;
+                            line-height: 2rem !important;
+                            font-size: $fontSize;
+                            height: 100px;
+                            overflow: auto;
+                        }
+                        .kind {
+                            @include box(70px, 8px);
+                            // @include borderT;
+                            text-align: center;
+                            display: inline-block;
+                            margin: 12px;
+                            padding: 5px 10px;
+                            font-size: 14px;
+                            background-color: #FFE1A4;
+                            border: 0.1px solid;
+                        }
+                        .style {
+                            @include box(70px, 8px);
+                            // @include borderT;
+                            text-align: center;
+                            display: inline-block;
+                            margin: 12px;
+                            padding: 5px 10px;
+                            font-size: 14px;
+                            background-color: #FFE1A4;
+                            border: 0.1px solid;
+                        }
+                        .record {
+                            position: absolute;
+                            display: flex;
+                            flex-direction: row;
+                            right: 12px;
+                            top: 24px;
+                            @media screen and(max-width:600px){
+                                top: 40px;
+                                left: 32px;
+                            }
+                            div{
+                                margin-right: 20px;
+                                align-items: center;
+                                i {
+                                    font-size: 36px;
+                                    @media screen and (max-width:600px){
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                        .insearch {
+                            height: 140px !important;
+                            // border: 6px solid #FFE1A4 !important;
+                            // border-right: none !important;
+                            border: none !important;
+                            overflow: auto !important;
+                            background: none !important;
+                            //important複寫在單一餐廳頁的屬性
+                            .L {
+                                @include box(90%, 24px);
+                                background-color: white;
+                                margin: 20px;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                align-items: center;
+                                position: relative;
+                                img {
+                                    border-radius: 50%;
+                                    width: 60px;
+                                    height: 60px;
+                                    margin: 20px;
+                                }   
+                            }
+                        }
+                        .go {
+                            position: absolute;
+                            bottom: 8px;
+                            right: 24px;
+                            
+                            a:first-child button{
+                                // position: absolute;
+                                width: 100px;
+                                height: 40px;
+                                // bottom: 0;
+                                // transform: translate(-100%,-100%);
+                            }
+                            a:last-child button{
+                                // position: absolute;
+                                width: 100px;
+                                height: 40px;
+                                // bottom: 0;
+                                // transform: translate(-225%,-100%);
+                            }
+                        }
+                        .btnsingle{
+                            position: absolute;
+                            margin-bottom: 24px !important;
+                            margin-top: 30px;
+                            left: 36px;
+                        }
+                    }
+                }
+            }
+            .page {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                li {
+                    padding: 20px 20px;
+                    cursor: pointer;
+                    font-size: $fontSize;
+                    color: cornflowerblue;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

@@ -480,7 +480,6 @@
                                 collect($(this).children('.like i').hasClass('tored'),RES);
 
                                 let num = parseInt($(this).children('span').text());
-                                console.log(num);
                                 if($(this).children('i').hasClass('tored')==false){
                                     num-=1;
                                     $(this).children('i').removeClass('fas');
@@ -518,15 +517,12 @@
             }
 
             function nomessage(e){
-                console.log(e);
                 let array = [];
                 let num = $('.result').find('.rest').length;
                 
                 for(let i=0;i<=num-1;i+=1){
                     array.push($('.result').find('.rest')[i].id);
                 }
-                console.log(array);
-                console.log(num);
 
                 for(let i=0;i<=array.length-1;i+=1){
 

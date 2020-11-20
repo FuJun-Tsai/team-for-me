@@ -444,9 +444,6 @@ window.addEventListener('load', function () {
             quacard+=1;
 
             let today = new Date();
-            console.log(today.getFullYear(today));
-            console.log(today.getMonth(today));
-            console.log(today.getDate(today));
 
             let dateword = `${today.getFullYear(today)}.${today.getMonth(today)+1}.${today.getDate(today)}`;
             

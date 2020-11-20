@@ -1,5 +1,14 @@
 /*全局设定*/
-                                                                
+
+.game_background {
+    background-color: rgba(240, 248, 255, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 section {
     position: relative;
     width: 100%;
@@ -31,7 +40,43 @@ body {
     background-size: cover;
     background-position: center;
 }
+
+
+/*燈箱*/
+
+.purchasebox_content_left .main_img {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    text-align: center;
+    margin: auto;
+}
+
+.purchasebox_content_left .main_img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.purchasebox_content_left .vice_img {
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+.purchasebox_content_left .vice_img img {
+    position: relative;
+    width: 23%;
+    height: 100px;
+    margin-top: 5px;
+}
+
+
 /*设置选项*/
+
+
 /* 
 .setting {
 position: absolute;
@@ -42,6 +87,8 @@ top: 0;
 background: rgba(0, 0, 0, .8);
 z-index: 9999;
 } */
+
+
 /*人数*/
 
 .choosebox {
@@ -95,6 +142,8 @@ z-index: 9999;
 .choosebox li:nth-of-type(4) {
     border-bottom-right-radius: 13px
 }
+
+
 /*选角*/
 
 .choosechr {
@@ -138,6 +187,10 @@ z-index: 9999;
     position: relative;
 }
 
+.choosechr li:hover {
+    background-color: rgba(253, 245, 171, .8);
+}
+
 .choosechr li h1 {
     padding: 10px 5px;
 }
@@ -166,6 +219,8 @@ z-index: 9999;
     /* visibility: hidden; */
     z-index: 99;
 }
+
+
 /*地图*/
 
 .game_background {
@@ -217,26 +272,42 @@ z-index: 9999;
     text-align: center;
     /* border-radius: 13px; */
     cursor: pointer;
+    /* opacity: .6; */
 }
 
-.box:hover {
-    filter: brightness(.5);
+.box:hover img {
+    /* filter: brightness(.5); */
     transform: scale(1.01);
+    opacity: 1;
 }
 
 .box h3 {
-    font-weight: 100;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 16px!important;
+    width: 100%;
+    height: 40px;
+    z-index: 2;
+    background: rgba(253, 245, 171, .8);
+    color: #222222;
+    line-height: 40px;
+}
+
+.box.b0 h3 {
+    font-weight: 700;
     position: absolute;
     bottom: 0;
     left: 0;
     font-size: 16px;
     width: 100%;
-    height: 30px;
+    height: 50px;
     z-index: 2;
     /* border-top-right-radius: 13px;*/
     background: rgba(253, 245, 171, .8);
     color: #222222;
-    line-height: 30px;
+    line-height: 10px;
 }
 
 .box img:nth-child(2) {
@@ -246,19 +317,23 @@ z-index: 9999;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* position: center; */
+    opacity: .4;
 }
 
-.box img:nth-child(3) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 80%;
-    object-fit: cover;
-    z-index: 99;
-    /* position: center; */
+.box img:nth-child(2):hover {
+    opacity: 1;
 }
+
+
+/* 
+.box img:nth-child(3) {
+  
+    /* position: center; */
+
+
+/* } */
+
+
 /*掷骰子区*/
 
 .control {
@@ -334,6 +409,8 @@ z-index: 9999;
     border-radius: 25%;
     transform: translate(-50%, -50%);
 }
+
+
 /*定义角色位置*/
 
 .character {
@@ -353,32 +430,33 @@ z-index: 9999;
 .chr {
     width: 85%;
     position: absolute;
-    /* bottom: 5%; */
-    /* left:50%; */
-    /* transform: translateX(-50%); */
-    /* animation: moving .8s; */
     z-index: 99;
-    /* transform: translate(-80px, -30px); */
     width: 140px!important;
     height: 140px!important;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 50%;
+    height: 80%;
+    object-fit: cover;
+    z-index: 99;
 }
+
+
 /*弹窗*/
 
 .purchasebox,
 .upgradebox {
-    /* width: 90vw;
-height: 80vh; */
-    /* border-radius: 13px; */
-    width: 90%;
-    height: 80%;
+    height: auto;
     position: absolute;
     background: #fff;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* border: 3px solid #454545; */
     box-shadow: 8px 8px 10px #222222;
     visibility: hidden;
+    z-index: 999;
+    width: 60%;
 }
 
 .purchasebox #no0 {
@@ -391,10 +469,11 @@ height: 80vh; */
 
 .purchasebox #no1,
 #no2,
-#no3 {
+#no3,
+#no4 {
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border: 1px solid #ccc;
 }
 
@@ -427,56 +506,65 @@ height: 80vh; */
     padding: 10px;
 }
 
+.btnAll {
+    text-align: right;
+}
+
 .btn1 {
-    background: #ff7272;
+    background: #C9528E;
     width: 50%;
-    height: 10%;
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
+    position: relative;
     text-align: center;
-    /* border-bottom-left-radius: 8px; */
-    line-height: 80px;
+    line-height: 50px;
     font-size: 24px;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .btn2 {
-    background: #ff7272;
-    width: 50%;
-    height: 10%;
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
+    background: #76AFAF;
+    width: 49%;
+    position: relative;
     text-align: center;
-    /* border-bottom-right-radius: 8px; */
-    line-height: 80px;
+    line-height: 50px;
     font-size: 24px;
+    cursor: pointer;
+    display: inline-block;
 }
 
-.btn1:hover,
+.btn1:hover {
+    opacity: 0.8;
+}
+
 .btn2:hover {
-    background: silver;
-    cursor: pointer;
+    opacity: 0.8;
 }
 
 .bar {
     position: relative;
-    /* top: 0; */
-    /* width: 100%; */
     height: 10%;
-    /* border-top-left-radius: 8px;
-border-top-right-radius: 8px; */
-    background: #e7e1e1;
+    background: #FFE1A4;
+    opacity: 0.8;
 }
 
 .bar h2 {
-    position: absolute;
-    top: 50%;
-    left: 8%;
+    position: relative;
     color: rgb(0, 0, 0);
     font-size: 20px;
     letter-spacing: 13px;
-    transform: translateY(-50%);
+    padding: 10px;
+    display: inline-block;
+}
+
+.bar .close {
+    float: right;
+    cursor: pointer;
+    margin: 1%;
+}
+
+.bar .close img {
+    display: inline-block;
+    width: 30px;
 }
 
 .purchasebox h1,
@@ -493,46 +581,49 @@ border-top-right-radius: 8px; */
 
 .purchasebox_content {
     position: relative;
-    /* border: 3px solid green; */
-    /* width: 100%; */
-    height: 80%;
     display: flex;
     align-items: center;
+    padding: 20px;
 }
 
 .purchasebox_content_left {
     flex: 1 1 50%;
-    /* border: 1px solid red; */
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
     text-align: center;
+    padding-top: 30px;
 }
 
-.purchasebox_content_left img {
-    margin: 5px;
-}
+.purchasebox_content_left img {}
 
 .purchasebox_content_right {
     flex: 1 1 50%;
-    padding: 10px;
+    padding: 30px;
     overflow: auto;
     max-height: 500px;
-    /* border: 1px solid blue; */
 }
 
 .purchasebox_content_right h2 {
-    margin: 5px 0px;
+    margin-bottom: 30px;
     letter-spacing: 10px;
 }
 
 .purchasebox_content_right h3 {
-    margin: 5px 0px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.purchasebox_content_right h4 {
+    margin-bottom: 30px;
+    display: inline-block;
+    padding-left: 25px;
+    font-weight: 700;
 }
 
 .purchasebox_content_right p {
     margin: 5px 0px;
     line-height: 35px;
+    padding: 15px;
+    background-color: bisque;
+    border-radius: 15px;
 }
 
 .msgbox {
@@ -558,6 +649,8 @@ border-top-right-radius: 8px; */
     background: #f1f1f1;
     white-space: nowrap;
 }
+
+
 /*显示信息*/
 
 .p1info {
@@ -695,6 +788,8 @@ border-top-right-radius: 8px; */
     transform: none;
     bottom: calc(3% + 2em + 60px);
 }
+
+
 /*施工*/
 
 .construct img {
@@ -738,6 +833,8 @@ border-top-right-radius: 8px; */
     left: -30%;
     animation: c5 2s;
 }
+
+
 /*房子*/
 
 .box img.house {
@@ -747,11 +844,15 @@ border-top-right-radius: 8px; */
     transform: translateX(-50%);
     width: 90%;
 }
+
+
 /*隐藏*/
 
 .hide {
     display: none;
 }
+
+
 /*动画都在这里*/
 
 @keyframes arrow {
@@ -857,6 +958,8 @@ border-top-right-radius: 8px; */
         opacity: 0;
     }
 }
+
+
 /* 
 .controller {
 position: absolute;
@@ -883,16 +986,17 @@ position: absolute;
     75% {
         -webkit-transform: translate(-50%, -60%);
     }
-    @keyframes bounce-down {
-        25% {
-            transform: translate(-50%, -60%);
-        }
-        50%,
-        100% {
-            transform: translate(-50%, -50%);
-        }
-        75% {
-            transform: translate(-50%, -60%);
-        }
+}
+
+@keyframes bounce-down {
+    25% {
+        -webkit-transform: translate(-50%, -60%);
+    }
+    50%,
+    100% {
+        -webkit-transform: translate(-50%, -50%);
+    }
+    75% {
+        -webkit-transform: translate(-50%, -60%);
     }
 }

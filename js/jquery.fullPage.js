@@ -1238,7 +1238,6 @@
 			var index = $(this).parent().index();
 			scrollPage($('.fp-section').eq(index));
 		});
-
 		/**
 		* Scrolls the slider to the given slide destination for the given section
 		*/
@@ -2034,3 +2033,4 @@
 		}
 	};
 })(jQuery);
+

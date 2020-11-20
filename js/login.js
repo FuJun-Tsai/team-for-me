@@ -17,7 +17,9 @@ let member;
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
           $id("headshot_icon").setAttribute("src","./image/icon.svg");
+          $id("mobileheadshot_icon").setAttribute("src","./image/icon.svg");
           $id('spanLogin').innerHTML = '登入';          
+          $id('mobilespanLogin').innerHTML = '登入';          
         }
         xhr.open("post", "php/logout.php", true);
         xhr.send(null);
@@ -32,10 +34,12 @@ let member;
       let xhr = new XMLHttpRequest();
       xhr.onload = function(){
         member = JSON.parse(xhr.responseText);
-        console.log("====",member);
+        // console.log("====",member);
         if(member.MEMBER_ID!=undefined){
           $id("headshot_icon").setAttribute("src",`./image/member/${member.MEMBER_IMAGE}`);
+          $id("mobileheadshot_icon").setAttribute("src",`./image/member/${member.MEMBER_IMAGE}`);
           $id('spanLogin').innerHTML = '登出';
+          $id('mobilespanLogin').innerHTML = '登出';
           // document.getElementsByClassName('username')[0].innerText(`${member.MEMBERR_NO}`);
           $('.username').text(`${member.MEMBER_NO}`);
           //將登入表單上的資料清空，並隱藏起來
@@ -75,7 +79,9 @@ let member;
           member = JSON.parse(xhr.responseText);
           if(member.MEMBER_ID){
             $id("headshot_icon").setAttribute("src",`./image/member/${member.MEMBER_IMAGE}`);
+            $id("mobileheadshot_icon").setAttribute("src",`./image/member/${member.MEMBER_IMAGE}`);
             $id('spanLogin').innerHTML = '登出';
+            $id('mobilespanLogin').innerHTML = '登出';
             $('.username').text(`${member.MEMBER_NO}`);  
           }
 
@@ -102,6 +108,7 @@ let member;
       //===設定spanLogin.onclick 事件處理程序是 showLoginForm
 
       $id('spanLogin').onclick = showLoginForm;
+      $id('mobilespanLogin').onclick = showLoginForm;
 
       //===設定btnLogin.onclick 事件處理程序是 sendForm
       $id('btnLogin').onclick = sendForm;

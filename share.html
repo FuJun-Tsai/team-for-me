@@ -14,6 +14,7 @@
     <!-- <link rel="stylesheet" href="./css/background.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="./js/header_fixed.js"></script>
+    <script src="./js/btn_hover.js"></script>
     <title>share</title>
 </head>
 
@@ -93,12 +94,10 @@
                 </ul>
             </div>
             <div class="member" id="login">
-                <div class="icon" >
+                <a class="icon" href="./member.php">
                     <img src="./image/icon.svg" id="headshot_icon">
-                    <span class="username" style="display: none;"></span>
-                </div>
-                <div id="nametest"></div>
-                <!-- <span id="memName">&nbsp;</span> -->
+                </a>
+                <span style="display: none;" class="memberNoNum"></span>
                 <span id="spanLogin">登入</span>
             </div>
             <div id="menu-bar">
@@ -109,12 +108,11 @@
                 </div>
                 <ul class="nav1" id="nav1">
                     <div class="member">
-                        <div class="icon">
-                            <a href="./login.html">
-                                <img src="./image/icon.svg" alt="">
-                            </a>
-                        </div>
-                        <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                        <a class="icon" href="./member.php">
+                            <img src="./image/icon.svg" id="mobileheadshot_icon">
+                        </a>
+                        <span style="display: none;" class="memberNoNum"></span>
+                        <span id="mobilespanLogin">登入</span>
                     </div>
                     <li>
                         <a href="./game.html">吃吃配對</a>
@@ -142,7 +140,7 @@
      <div class="banner_share">
         <div class="banner_bg">
             <div class="text">
-                <h1>　　吃　貨　分　享　　</h1>
+                <h1>吃貨分享</h1>
             </div>
         </div>    
     </div>
@@ -155,7 +153,7 @@
     <!-- 分類排序 -->
     <section>
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12">
                     <div class="tool_btn">
                         <button type="button" id="showall">全部分享</button>
@@ -169,7 +167,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row" id="cardshare">
                 <!-- -------------------卡片1--------------------- -->
                 <!-- <div class="col-md-4" id="C1">
@@ -238,12 +236,12 @@
                             <img src="./image/XX.svg" alt="">
                         </div>
                         <div class="row">
-                            <div class="col-md-6 order-1">
+                            <div class="col-md-6 order-1" style="margin-top: 32px;">
                                 <!-- ------內圖------- -->
                                 <div class="msg-left">
                                     <h4></h4>
                                     <h2></h2>
-                                    <div class="img_block">
+                                    <div class="img_block22">
                                         <img>
                                     </div>
                                     <div class="left_info">
@@ -264,7 +262,7 @@
                                                 <h5>999</h5>
                                             </div>
                                         </div>
-                                        <button name="report">檢舉</button>
+                                        <button name="report">▲ 檢舉</button>
                                     </div>
                                     <p>
                                     </p>
@@ -274,25 +272,24 @@
                             <div class="col-md-6 order-2">
                                 <div class="msg-right">
                                     <!-- <h3>留言區</h3> -->
-                                    <div class="msgin">
-                                        <!-- <div class="msgpost">
-                                            <div class="right_info">
-                                                <div class="user_block">
-                                                    <div class="user_img_block">
-                                                        <img>
+                                        <div class="msgin">
+                                            <!-- <div class="msgpost">
+                                                <div class="right_info">
+                                                    <div class="user_block">
+                                                        <div class="user_img_block">
+                                                            <img>
+                                                        </div>
+                                                        <div class="user_name">
+                                                            <h5>董董：</h5>
+                                                        </div>
                                                     </div>
-                                                    <div class="user_name">
-                                                        <h5>董董：</h5>
-                                                    </div>
+                                                    <input type="button" value="檢舉">
                                                 </div>
-                                                <input type="button" value="檢舉">
-                                            </div>
-                                            <p>真的很讚<br>
-                                                第一次在台灣吃到那麼好吃的和牛燒烤店<br>
-                                                好像回到日本的時候～～～～和牛超級棒</p>
-                                        </div> -->
-                                    </div>
-
+                                                <p>真的很讚<br>
+                                                    第一次在台灣吃到那麼好吃的和牛燒烤店<br>
+                                                    好像回到日本的時候～～～～和牛超級棒</p>
+                                            </div> -->
+                                        </div>
                                     <!-- <form action="" id="nuan_LeaveMessage">
                                         <textarea name="" id="" placeholder="留言"></textarea>
                                         <input type="submit" value="送 出">
@@ -482,7 +479,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="more ${data[i].id}" style="outline:none; border:none;" value="${data[i].no}&">more</button>
+                                    <button class="more ${data[i].id}" style="outline:none; border:none;" value="${data[i].no}">more</button>
                                 </div>
                             </div>
                         `);
@@ -492,15 +489,18 @@
                             let id = $(this).val();
                             let classType = $(this).siblings('.foot').find('.fa-heart').attr('class');
                             // console.log(classType);
-                            
+                            console.log(data);
                             $(".msg-left h4").text(`${data[i].kind}`);
                             $(".msg-left h2").text(`${data[i].title}`);
-                            $(".img_block img").attr('src',`image/article_sharing/${data[i].img}`);
+                            $(".img_block22 img").attr('src',`image/article_sharing/${data[i].img}`);
                             $(".msg-left p").text(`${data[i].word}`);
                             $("article .collect_sum").text(`${like}`);
                             $('.msg-left i').attr('class',classType);
                             $('.msg-left i').css({'font-size':'28px'});
                             $('.left_info button').val(id);
+                            $('.msg-left .user_img_block img').attr('src',`${$(this).siblings('.head').find('img').attr('src')}`);
+                            $('.msg-left .user_name h5').text(`${$(this).siblings('.head').find('.user_name h5').text()}`);
+
                             lightdetail(id);
                         });
 
@@ -514,6 +514,8 @@
             });
 
             $('#newMoodPostBtn').on('click',function(){
+
+                
                 $.ajax({
                     url:'shareInsertPost.php',
                     type:'GET',
@@ -646,7 +648,7 @@
                                                 <h5>${data.responseJSON[i].name}：</h5>
                                             </div>
                                         </div>
-                                        <button name="report" value="${data.responseJSON[i].id}&${data.responseJSON[i].no}">檢舉</button>
+                                        <button name="report" value="${data.responseJSON[i].id}&${data.responseJSON[i].no}">▲ 檢舉</button>
                                     </div>
                                     <p>${data.responseJSON[i].word}</p>
                                     <p>${data.responseJSON[i].time}</p>
@@ -688,6 +690,7 @@
             function LM(){
 
                 $('#nuan_LeaveMessage button').on('click',function(){
+
                     if($('#spanLogin').text()=='登入'){
                         $('#login_box').css({'display':'flex'});
 
@@ -715,14 +718,18 @@
                                                         <h5>${data.name}：</h5>
                                                     </div>
                                                 </div>
-                                                <button name="report" value="${data.ano}&${data.mno}">檢舉</button>
+                                                <button name="report" value="${data.ano}&${data.mno}">▲ 檢舉</button>
                                             </div>
                                             <p>${data.word}</p>
                                             <p>${data.time}</p>
                                         </div>
                                     </div>`
                                 );
+
+                                $('#nuan_LeaveMessage textarea').val('');
+
                             },
+                 
 
                         });
 
@@ -754,33 +761,41 @@
             }
 
             function collectshare(){
+
                 $('.col-md-4 .collect_block').on('click',function(){
-                    let bolin = $(this).find('i').hasClass('tored');
-                    let ID = $(this).closest('.col-md-4').attr('id').split('C')[1];
-                    let num = parseInt($(this).find('.collect_sum h5').text());
 
-                    console.log(ID);
-
-                    if($(this).find('i').hasClass('tored')==true){
-                        num-=1;
-                        $(this).find('i').removeClass('fas');
-                        $(this).find('i').addClass('far');
-                        $(this).find('.collect_sum h5').text(num);
+                    if($('#spanLogin').text()=='登入'){
+                        $('#login_box').css({'display':'flex'});
                     }else{
-                        num+=1;
-                        $(this).find('i').addClass('fas');
-                        $(this).find('i').removeClass('far');
-                        $(this).find('.collect_sum h5').text(num);
+
+                        let bolin = $(this).find('i').hasClass('tored');
+                        let ID = $(this).closest('.col-md-4').attr('id').split('C')[1];
+                        let num = parseInt($(this).find('.collect_sum h5').text());
+                        
+                        console.log(ID);
+                        
+                        if($(this).find('i').hasClass('tored')==true){
+                            num-=1;
+                            $(this).find('i').removeClass('fas');
+                            $(this).find('i').addClass('far');
+                            $(this).find('.collect_sum h5').text(num);
+                        }else{
+                            num+=1;
+                            $(this).find('i').addClass('fas');
+                            $(this).find('i').removeClass('far');
+                            $(this).find('.collect_sum h5').text(num);
+                        }
+                        
+                        docollect(bolin,ID);
+                        
+                        $(this).find('i').toggleClass('tored');
+                          
                     }
-
-                    docollect(bolin,ID);
-
-                    $(this).find('i').toggleClass('tored');
-                    
+                        
                 });
-
+                
             }
-
+            
             function docollect(e,ID){
                 $.ajax({
                     url:'collectshare.php',
@@ -798,84 +813,98 @@
 
             function report(){
                 
+                
                 $("button[name='report']").on('click',function(){
-                    $('.single_report').css({'display':'inline-block'});
-                    $('.jun_back').css({'display':'inline-block'});
+
+                    if($('#spanLogin').text()=='登入'){
+                        $('#login_box').css({'display':'flex'});
+                    }else{
+
+                        $('.single_report').css({'display':'inline-block'});
+                        $('.jun_back').css({'display':'inline-block'});
                     
-
-                    $('.single_reportback i').on('click',function(){
-                        $('.single_report').css({'display':'none'});
-                        $('.jun_back').css({'display':'none'});
-                        $('.single_thank').css({'display':'none'});
-                        $('.single_reportback h4').css({'display':'block'});
-                        $('.single_reportback textarea').css({'display':'block'}).val('');
-                        $('.single_reportback button').css({'display':'block'});
-
-                    });
-
-                    $('.single_reportback button').val($(this).val());
                     
-
-                    $('.single_reportback button').on('click',function(){
-                        $.ajax({
-                            url:'sharereport.php',
-                            type:'POST',
-                            data:{
-                                word:$(this).siblings('textarea').val(),
-                                val:$(this).val(),
-                            },
-                            dataType:'json',
-                            complete(e){
-                                conosle.log(e);
-
-                            }
+                        $('.single_reportback i').on('click',function(){
+                            $('.single_report').css({'display':'none'});
+                            $('.jun_back').css({'display':'none'});
+                            $('.single_thank').css({'display':'none'});
+                            $('.single_reportback h4').css({'display':'block'});
+                            $('.single_reportback textarea').css({'display':'block'}).val('');
+                            $('.single_reportback button').css({'display':'block'});
+                            
+                        });
+                        
+                        $('.single_reportback button').val($(this).val());
+                        
+                        
+                        $('.single_reportback button').on('click',function(){
+                            $.ajax({
+                                url:'sharereport.php',
+                                type:'POST',
+                                data:{
+                                    word:$(this).siblings('textarea').val(),
+                                    val:$(this).val(),
+                                },
+                                dataType:'json',
+                                complete(e){
+                                    conosle.log(e);
+                                    
+                                }
+                            });
+                            
+                            $('.single_reportback h4').css({'display':'none'});
+                            $('.single_reportback textarea').css({'display':'none'});
+                            $('.single_reportback button').css({'display':'none'});
+                            $('.single_thank').css({'display':'block'});
+                             
                         });
 
-                        $('.single_reportback h4').css({'display':'none'});
-                        $('.single_reportback textarea').css({'display':'none'});
-                        $('.single_reportback button').css({'display':'none'});
-                        $('.single_thank').css({'display':'block'});
+                    }
 
-
-                    });
                 });
 
             };
 
             function LBcollect(){
                 $('.msg-left .collect_block').on('click',function(){
-                    let bolin = $(this).find('i').hasClass('tored');
-                    let ID = $(this).siblings("button[name='report']").val().split('&')[0];
-                    let num = parseInt($(this).find('.collect_sum').text());
 
-                    // console.log(ID);
-
-                    if($(this).find('i').hasClass('tored')==true){
-                        num-=1;
-                        $(this).find('i').removeClass('fas');
-                        $(this).find('i').addClass('far');
-                        $(this).find('.collect_sum').text(num);
-
-                        $(`#C${ID} .fa-heart`).removeClass('fas');
-                        $(`#C${ID} .fa-heart`).addClass('far');
-                        console.log($(`#C${ID} .collect_sum h5`).text());
-
+                    if($('#spanLogin').text()=='登入'){
+                        $('#login_box').css({'display':'flex'});
                     }else{
-                        num+=1;
-                        $(this).find('i').addClass('fas');
-                        $(this).find('i').removeClass('far');
-                        $(this).find('.collect_sum').text(num);
 
-                        $(`#C${ID} .fa-heart`).removeClass('far');
-                        $(`#C${ID} .fa-heart`).addClass('fas');
-                        console.log($(`#C${ID} .collect_sum h5`).text());
-                    }
+                        let bolin = $(this).find('i').hasClass('tored');
+                        let ID = $(this).siblings("button[name='report']").val().split('&')[0];
+                        let num = parseInt($(this).find('.collect_sum').text());
 
-                    docollect(bolin,ID);
+                        // console.log(ID);
 
-                    $(this).find('i').toggleClass('tored'); 
-                    $(`#C${ID} .fa-heart`).toggleClass('tored');
-                    
+                        if($(this).find('i').hasClass('tored')==true){
+                            num-=1;
+                            $(this).find('i').removeClass('fas');
+                            $(this).find('i').addClass('far');
+                            $(this).find('.collect_sum').text(num);
+
+                            $(`#C${ID} .fa-heart`).removeClass('fas');
+                            $(`#C${ID} .fa-heart`).addClass('far');
+                            console.log($(`#C${ID} .collect_sum h5`).text());
+
+                        }else{
+                            num+=1;
+                            $(this).find('i').addClass('fas');
+                            $(this).find('i').removeClass('far');
+                            $(this).find('.collect_sum').text(num);
+
+                            $(`#C${ID} .fa-heart`).removeClass('far');
+                            $(`#C${ID} .fa-heart`).addClass('fas');
+                            console.log($(`#C${ID} .collect_sum h5`).text());
+                        }
+
+                        docollect(bolin,ID);
+
+                        $(this).find('i').toggleClass('tored'); 
+                        $(`#C${ID} .fa-heart`).toggleClass('tored');
+                        
+                    }    
                 
                 });
 

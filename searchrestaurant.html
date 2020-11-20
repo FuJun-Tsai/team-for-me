@@ -108,12 +108,10 @@
                 </ul>
             </div>
             <div class="member" id="login">
-                <div class="icon" >
+                <a class="icon" href="./member.php">
                     <img src="./image/icon.svg" id="headshot_icon">
-                    <span class="username" style="display: none;"></span>
-                </div>
-                <div id="nametest"></div>
-                <!-- <span id="memName">&nbsp;</span> -->
+                </a>
+                <span style="display: none;" class="memberNoNum"></span>
                 <span id="spanLogin">登入</span>
             </div>
             <div id="menu-bar">
@@ -124,12 +122,11 @@
                 </div>
                 <ul class="nav1" id="nav1">
                     <div class="member">
-                        <div class="icon">
-                            <a href="./login.html">
-                                <img src="./image/icon.svg" alt="">
-                            </a>
-                        </div>
-                        <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                        <a class="icon" href="./member.php">
+                            <img src="./image/icon.svg" id="mobileheadshot_icon">
+                        </a>
+                        <span style="display: none;" class="memberNoNum"></span>
+                        <span id="mobilespanLogin">登入</span>
                     </div>
                     <li>
                         <a href="./game.html">吃吃配對</a>
@@ -158,7 +155,7 @@
         <div class="banner_rest_sear">
             <div class="banner_bg">
                 <div class="txt">
-                    <h1>　　餐　廳　介　紹　　</h1>
+                    <h1>餐廳介紹</h1>
                 </div>
             </div>    
         </div>
@@ -168,24 +165,36 @@
                 <div class="row">
                     <div class="selection col-lg-8" id="condition" method="POST" action="searchConditionRender.php">
 
-                        <input id="searchword" type="text" placeholder="美食快搜" name="searchbar">
-                        <button id="searchwordbtn" value="" name="condition">搜尋</button>
+                        <!-- <input id="searchword" type="text" placeholder="美食快搜" name="searchbar">
+                        <button id="searchwordbtn" value="" name="condition">搜尋</button> -->
 
-                        <label for="kind" class="kind">餐廳種類：
+                        <label for="kind" class="kind">
+                            <h3>
+                                餐廳種類
+                            </h3>
+                           <br>
+                        <div>
                             <label for="k1"><input type="checkbox" name="kind" id="k1" value="1">日式</label>
                             <label for="k2"><input type="checkbox" name="kind" id="k2" value="2">西式</label>
                             <label for="k3"><input type="checkbox" name="kind" id="k3" value="3">中台</label>
                             <label for="k4"><input type="checkbox" name="kind" id="k4" value="4">韓式</label>
                             <label for="k5"><input type="checkbox" name="kind" id="k5" value="5">東南亞</label>
+                        </div>
                         </label>
 
-                        <label for="style[]" class="style">料理風格：
+                        <label for="style[]" class="style">
+                            <h3>
+                                料理風格
+                            </h3>
+                            <br>
+                        <div>
                             <label for="s1"><input type="checkbox" name="style[]" id="s1" value="1">火鍋</label>
                             <label for="s2"><input type="checkbox" name="style[]" id="s2" value="2">燒烤</label>
                             <label for="s3"><input type="checkbox" name="style[]" id="s3" value="3">炸物</label>
                             <label for="s4"><input type="checkbox" name="style[]" id="s4" value="4">快炒</label>
                             <label for="s5"><input type="checkbox" name="style[]" id="s5" value="5">簡餐</label>
                             <label for="s6"><input type="checkbox" name="style[]" id="s6" value="6">排餐</label>
+                        </div>
                         </label>
 
                     </div>
@@ -287,12 +296,11 @@
         function searchJS(){
 
             $('.result').empty();
-
             K = '';
             S = [];
             result = [];
             search = '';
-            ConditionSearch(K,S.join(','),result,search);
+            ConditionSearch(K,S.join(','),result,search,page=0);
             // MessageRender(result);
 
             function MessageRender(e){
@@ -334,82 +342,72 @@
                     }).get();
                 }
                 
-                ConditionSearch(K,S.join(','),search);
+                ConditionSearch(K,S.join(','),search,page);
             });
 
 
-            $('#searchwordbtn').on('click',function(){
-                $(this).val(`${$('#searchword').val()}`);
-                search = $('#searchword').val();
-                console.log(search);
-                console.log($('#searchword').val());
-                // console.log(K);
-                // console.log(S);
+            function ConditionSearch(K,S,result,search='',page=0){
+                console.log(K);
+                console.log(S);
 
-                ConditionSearch(K,S.join(','),search);
-                return false;
-            });
-
-
-            function ConditionSearch(K,S,result,search=''){
                 let condition = `${K}&${S}`;
-                // console.log("----????????---",search); 
                 $.ajax({
                     url:'searchConditionRender.php',
                     type:'GET',
                     dataType:'json',
                     data:{
                         condition:condition,
-                        search:search
+                        search:search,
+                        page:page
                     },
                     success(data){
                         // console.log(data);
                         result = [];
-                        for(let i=0;i<data.length;i+=1){
-                            result.push(data[i].no);
-                            if(data[i].collectRES == null){
-                                data[i].collectRES = 'style="color:black;"';
+                        for(let i=0;i<data[1].length;i+=1){
+                            result.push(data[1][i].no);
+                            if(data[1][i].collectRES == null){
+                                data[1][i].collectRES = 'style="color:black;"';
                             }else{
-                                data[i].collectRES = 'style="color:red;"';
+                                data[1][i].collectRES = 'style="color:red;"';
                             }
                         };
                         $('.error').css({'display': 'none'});
                         $('.result').empty();
-                        for(let i=0;i<data.length;i+=1){
+                        for(let i=0;i<data[1].length;i+=1){
                             $('.result').append(`
-                                <div id="${data[i].id}" class="rest container">
+                                <div id="${data[1][i].id}" class="rest container">
                                     <div class="row">
                                         <div class="rep col-lg-5">
-                                            <img src="./image/restaurant_management_img/${data[i].img1}" alt="">
+                                            <img src="./image/restaurant_management_img/${data[1][i].img1}" alt="">
                                         </div>
                                         <div class="detail col-lg-7">
-                                            <h2>${data[i].name}</h2>
-                                            <div class="kind west">${data[i].kind}</div>
-                                            <div class="style steak">${data[i].style}</div>
+                                            <h2>${data[1][i].name}</h2>
+                                            <div class="kind west">${data[1][i].kind}</div>
+                                            <div class="style steak">${data[1][i].style}</div>
 
                                             <div class="record">
                                                 <div class="like">
                                                     <i class="far fa-heart"></i>
-                                                    <span> ${data[i].rc}</span>
+                                                    <span> ${data[1][i].rc}</span>
                                                 </div>
                                                 <div class="mess">
                                                     <i class="far fa-comment-dots"></i>
-                                                    <span> ${data[i].rm}</span>
+                                                    <span> ${data[1][i].rm}</span>
                                                 </div>
                                                 <div class="group">
                                                     <i class="fas fa-users"></i>
-                                                    <span> ${data[i].fg}</span>
+                                                    <span> ${data[1][i].fg}</span>
                                                 </div>
                                             </div>
 
                                             <h3>餐廳介紹：</h3>
-                                            <p id="rint">${data[i].summary}</p>
+                                            <p id="rint">${data[1][i].summary}</p>
                                             <h3>網友留言：</h3>
-                                            <div id="leavemessage" class="insearch ${data[i].id}">
+                                            <div id="leavemessage" class="insearch ${data[1][i].id}">
 
                                             </div>
                                             <form action="singlerestaurant.html" method="GET">
-                                                <button name="RES_NO" value="${data[i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
+                                                <button name="RES_NO" value="${data[1][i].no}" class="btnsingle btn_10 btn_js">詳細<span></span></button>
                                             </form>
                                             <div class="go">
                                                 <a href="./open_group.html"><button class="btnRed btn_3 btn_js">開團<span></span></button></a>
@@ -420,16 +418,34 @@
                                 </div>
                             `);
 
-                            TweenLite.from(`#${data[i].id}`,0.5,{
+                            TweenLite.from(`#${data[1][i].id}`,0.5,{
                                 opacity:-2,
                                 y:-300,
                             },);
 
                         };
 
+                        $('.page').empty();
+                        let num = Math.ceil(data[0].length/4);
+                        for(let i=1;i<=num;i+=1){
+                            $('.page').append(`
+                                <li data-page='${i-1}'>${i}</li>
+                            `);
+                        };
 
+                        $('.page li').on('click',function(){
+                            let x = $(this).attr('data-page');
+                            $("html , body").animate({scrollTop:0},"slow","linear");
+                            ConditionSearch(K,S,result,search='',x);
+          
+                        });
 
-                        
+                        $(`.page li:nth-child(${parseInt(page)+1})`).
+                        css({
+                            'color':'black',
+                            'text-decoration':'none'
+                        });
+
                     },
                     error(data){
                         $('.result').empty();
@@ -558,6 +574,40 @@
     <script src="js/login.js"></script>
     <!-- <script src="./js/searchrestaurant.js"></script> -->
     <!-- <script src="./js/searchAnimate.js"></script> -->
+
+    <script>
+        $('.kind label input').on('click', function() {
+            // $('.kind label').css('background', 'rgba(255, 255, 255, 0)');
+            // $('.kind label').css('box-shadow', '0px 0px 0px 0px rgba(223, 114, 25, 0)');
+
+            // $(this).parent().css('background', 'rgba(223, 114, 25, 0.6)');
+            // $(this).parent().css('box-shadow', '0px 0px 0px 0px rgba(223, 114, 25, 0.8)');
+            $('.kind label').toggleClass('kindlabel');
+            $(this).parent().toggleClass('kindlabelinput');
+
+        });
+
+        $(".style label input").click(function() {
+            var checkis = $(this).is(":checked");
+            if (checkis == true) {
+                $(this).parent().css('background', 'rgba(223, 114, 25, 0.6)');
+            } else {
+                $(this).parent().css('background', 'rgba(223, 114, 25, 0)');
+            }
+        });
+    </script>
+
+    <style>
+        .kindlabel{
+            background: rgba(255,255,255,0);
+            box-shadow: 0px 0px 0px 0px rgba(223, 114, 25, 0);
+        }
+        .kindlabelinput{
+            background: rgba(223,114,25,0.6);
+            box-shadow: 0px 0px 0px 0px rgba(223, 114, 25, 0.8);
+        }
+
+    </style>
 
 </body>
 

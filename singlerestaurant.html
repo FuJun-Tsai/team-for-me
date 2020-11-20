@@ -110,17 +110,15 @@
                         <a href="./about_us.html">關於我們</a>
                     </li>
                     <li>
-                        <a href="./open_group.html" class="hvr-pulse-grow"><button>揪團去!</button></a>
+                        <a href="./open_group.html" class="hvr-pulse-grow"><button style="padding: 10px 20px;">揪團去!</button></a>
                     </li>
                 </ul>
             </div>
             <div class="member" id="login">
-                <div class="icon" >
+                <a class="icon" href="./member.php">
                     <img src="./image/icon.svg" id="headshot_icon">
-                    <span class="username" style="display: none;"></span>
-                </div>
-                <div id="nametest"></div>
-                <!-- <span id="memName">&nbsp;</span> -->
+                </a>
+                <span style="display: none;" class="memberNoNum"></span>
                 <span id="spanLogin">登入</span>
             </div>
             <div id="menu-bar">
@@ -131,12 +129,11 @@
                 </div>
                 <ul class="nav1" id="nav1">
                     <div class="member">
-                        <div class="icon">
-                            <a href="./login.html">
-                                <img src="./image/icon.svg" alt="">
-                            </a>
-                        </div>
-                        <a href="./login.html" class="hvr-pulse-grow"><span style="color: black;">登入</span></a>
+                        <a class="icon" href="./member.php">
+                            <img src="./image/icon.svg" id="mobileheadshot_icon">
+                        </a>
+                        <span style="display: none;" class="memberNoNum"></span>
+                        <span id="mobilespanLogin">登入</span>
                     </div>
                     <li>
                         <a href="./game.html">吃吃配對</a>
@@ -165,7 +162,7 @@
         <div class="banner_rest">
             <div class="banner_bg">
                 <div class="txt">
-                    <h1>　　餐　廳　介　紹　　</h1>
+                    <h1>餐廳介紹</h1>
                 </div>
             </div>    
         </div>
@@ -372,7 +369,7 @@
                                         <p class="single_tel">電話：<span>${data.tel}</span></p>
                                     <div class="single_togroup">
                                         <button class="btnRed btn_3 btn_js">開團<span></span></button>
-                                        <button class="btnBlue btn_4 btn_js">餐團<span></span></button>
+                                        <button class="btnBlue btn_4 btn_js">參團<span></span></button>
                                     </div>
                                 </aside>
                             </div>

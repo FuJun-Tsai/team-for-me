@@ -78,8 +78,10 @@ body {
                     background-color: white;
                     display: inline-block;
                     padding-right: 28px;
-                    padding: 30px 0;
+                    padding: 30px 20px 30px 40px;
+                    letter-spacing: 20px;
                     margin-top: 0;
+                    color: black;
                 }
             }
         }
@@ -97,6 +99,54 @@ body {
                 .kind {
                     display: block;
                     margin-bottom: 12px !important;
+                    >div{
+                        background-color: rgba(245,222,179,.3);
+                        display: inline-block;
+                        margin: 5px 0;
+
+                    }
+                    h3{
+                        padding: 10px 15px;
+                        font-weight: 600;
+                        display: inline-block;
+                        background-color: #FFE1A4;
+                        margin-bottom: 10px;
+                    }
+                    label{
+                        font-size: 22px!important;
+                        padding: 10px 20px;
+                        margin: 5px;
+                        border-radius: 10px!important;
+                        cursor: pointer;
+                    }
+                    input{
+                        display: none;
+                    }
+                }
+                .style{
+                    >div{
+                        background-color: rgba(245,222,179,.3);
+                        display: inline-block;
+                        margin: 5px 0;
+                    }
+                    h3{
+                        padding: 10px 15px;
+                        font-weight: 600;
+                        display: inline-block;
+                        background-color: #FFE1A4;
+                        margin-bottom: 10px;
+
+                    }
+                    label{
+                        border-radius: 10px!important;
+                        font-size: 22px!important;
+                        padding: 10px 20px;
+                        margin: 5px;
+                        cursor: pointer;
+                        input{
+                            display: none;
+                        }
+                    }
                 }
                 .sort {
                     display: flex;
@@ -195,6 +245,7 @@ body {
                             font-size: 14px;
                             background-color: #FFE1A4;
                             border: 0.1px solid;
+                          
                         }
                         .record {
                             position: absolute;
@@ -286,3 +337,85 @@ body {
         }
     }
 }
+
+
+
+// .fures_container {
+//     display: flex;
+//     .fures_row {
+//         // border: 1px solid red;
+//         flex: 0 0 15%;
+//         .fures_selection {
+//             background-color: rgba(245, 222, 179, 0.3);
+//             // >h3 {
+//             //     padding: 25px;
+//             //     display: inline-block;
+//             //     padding-right: 15px;
+//             //     background-color: white;
+//             // }
+//             .kind {
+//                 padding: 20px 15%;
+//                 h3 {
+//                     background-color: $bgColor-style2;
+//                     display: inline-block;
+//                     padding: 15px 20px;
+//                     margin-bottom: 20px;
+//                     font-weight: $fontWeight_600;
+//                 }
+//                 label {
+//                     margin: 5px 0px;
+//                     text-align: center;
+//                     // width: 80%;
+//                     padding: 10px;
+//                     cursor: pointer;
+//                     // border: 0.1px solid white;
+//                     border-radius: 10px;
+//                     input {
+//                         width: 20px;
+//                         height: 25px;
+//                         vertical-align: bottom;
+//                         display: none;
+//                         &:checked {
+//                             background-color: rgba(245, 222, 179, 0.5);
+//                         }
+//                     }
+//                     &:hover {
+//                         border: 0.1px solid white!important;
+//                         box-shadow: 3px 3px 10px rgba(22, 22, 22, .3)!important;
+//                         label {
+//                             transform: scale(1.2);
+//                         }
+//                     }
+//                 }
+//             }
+//             .den_cooking_style {
+//                 padding: 20px 15%;
+//                 h3 {
+//                     background-color: $bgColor-style2;
+//                     display: inline-block;
+//                     padding: 15px 20px;
+//                     margin-bottom: 20px;
+//                     font-weight: $fontWeight_600;
+//                 }
+//                 div {
+//                     margin: 5px 0px;
+//                     width: 80%;
+//                     padding: 10px;
+//                     text-align: center;
+//                     cursor: pointer;
+//                     // border: 0.1px solid white;
+//                     input {
+//                         width: 20px;
+//                         height: 25px;
+//                         vertical-align: bottom;
+//                         display: none;
+//                     }
+//                     &:hover {
+//                         border: 0.1px solid white;
+//                         box-shadow: 3px 3px 10px rgba(22, 22, 22, .3);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

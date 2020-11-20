@@ -1338,7 +1338,7 @@ body .container .row .col-md-6 .content_block p {
   margin-bottom: 5%;
   line-height: 25px;
   vertical-align: middle;
-  width: 90%;
+  width: 92%;
   text-align: justify;
   font-size: 16px;
   letter-spacing: 3px;
@@ -1405,15 +1405,46 @@ body .container .row .col-md-12 .para a {
   color: blue;
 }
 
+@media screen and (max-width: 992px) {
+  body .container .row .col-md-12 .img_block_t {
+    margin-left: 0%;
+    margin-top: 0;
+    width: 100%;
+    display: inline-block;
+  }
+  body .container .row .col-md-12 .img_block_t img {
+    max-width: 100%;
+  }
+  body .container .row .col-md-12 .para {
+    background-color: #d1d1d1;
+    padding: 5% 5%;
+    display: inline-block;
+    width: 100%;
+    height: 300px;
+    vertical-align: middle;
+    line-height: 30px;
+  }
+  body .container .row .col-md-12 .para h2 {
+    margin: 0 0 10% 0;
+  }
+  body .container .row .col-md-12 .para p {
+    margin-bottom: 10%;
+    font-size: 16px;
+    line-height: 30px;
+  }
+  body .container .row .col-md-12 .para a {
+    font-size: 20px;
+    color: blue;
+  }
+}
+
 body .container .row .col-md-12.-u .sec2 {
-  width: 1200px;
   margin: 0 auto;
-  margin-bottom: 5%;
   display: inline-block;
 }
 
 body .container .row .col-md-12.-u .sec2 .img_block_t2 {
-  width: 10%;
+  width: 100%;
   display: inline-block;
 }
 
@@ -1423,12 +1454,37 @@ body .container .row .col-md-12.-u .sec2 .img_block_t2 img {
 
 body .container .row .col-md-12.-u .sec2 p {
   text-align: center;
-  margin: 10% 0 0 0;
+  margin: 18% 0 0 0;
   font-size: 24px;
   font-weight: 900;
   color: orangered;
   line-height: 30px;
   display: inline-block;
+}
+
+@media screen and (max-width: 992px) {
+  body .container .row .col-md-12.-u .sec2 {
+    margin: 0 auto;
+    display: inline-block;
+  }
+  body .container .row .col-md-12.-u .sec2 .col-md-2 {
+    display: inline-block;
+    width: 20%;
+  }
+  body .container .row .col-md-12.-u .sec2 .col-md-2 .img_block_t2 {
+    width: 100%;
+    display: inline-block;
+  }
+  body .container .row .col-md-12.-u .sec2 .col-md-2 .img_block_t2 img {
+    max-width: 100%;
+  }
+  body .container .row .col-md-12.-u .sec2 .col-md-8 {
+    display: inline-block;
+    width: 55%;
+  }
+  body .container .row .col-md-12.-u .sec2 .col-md-8 p {
+    font-size: 16px;
+  }
 }
 
 body .container .row .col-md-12.-qa h3 {
@@ -7286,6 +7342,8 @@ body section .container .col-md-4 .content .ord h4 {
 body section .container .col-md-4 .content .ord h3 {
   margin: 0 3% 5% 5%;
   font-weight: 900;
+  width: 290px;
+  text-overflow: ellipsis;
   color: orangered;
 }
 
@@ -7712,7 +7770,7 @@ body .overlay .msg-right #nuan_LeaveMessage button:hover {
 body .newMoodLightBox {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -7771,11 +7829,6 @@ body .newMoodLightBox .newMoodBlock #closeNewMoodBtn span.line1 {
 body .newMoodLightBox .newMoodBlock #closeNewMoodBtn span.line2 {
   -webkit-transform: translate(-50%, -50%) rotate(-45deg);
           transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-body .newMoodLightBox .newMoodBlock #closeNewMoodBtn:hover {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
 }
 
 body .newMoodLightBox .newMoodBlock h2 {
@@ -7880,12 +7933,16 @@ body .newMoodLightBox .newMoodBlock .btnPink:hover {
   /* filter: brightness(1.05); */
 }
 
-@media screen and (max-width: 480px) {
-  body .newMoodLightBox .col-md-12 {
-    margin-top: 15%;
-  }
-  body .newMoodLightBox .col-md-12 .newMoodBlock h2 {
+@media screen and (max-width: 992px) {
+  body .newMoodLightBox .newMoodBlock h2 {
     font-size: 24px !important;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  body .newMoodLightBox .newMoodBlock {
+    height: 500px;
+    overflow: auto;
   }
 }
 

@@ -312,7 +312,6 @@
                         e:e.join(','),
                     },
                     success(data){
-                        // console.log(data);
                         for(let i=0 ; i<=data.length-1 ;i+=1){
                             $(`.${data[i].resno}`).append(`
                                 <div id="${data[i].id}" class="L">
@@ -322,12 +321,12 @@
                             `);
                         };
 
-                        nomessage();
 
                     },
                     
                 });
                 imgcube();
+                nomessage(e);
                 
             }
 
@@ -347,8 +346,6 @@
 
 
             function ConditionSearch(K,S,result,search='',page=0){
-                console.log(K);
-                console.log(S);
 
                 let condition = `${K}&${S}`;
                 $.ajax({
@@ -361,7 +358,6 @@
                         page:page
                     },
                     success(data){
-                        // console.log(data);
                         result = [];
                         for(let i=0;i<data[1].length;i+=1){
                             result.push(data[1][i].no);
@@ -447,12 +443,12 @@
                         });
 
                     },
-                    error(data){
+                    error(){
                         $('.result').empty();
                         $('.error').css({'display': 'block'});
 
                     },
-                    complete(){
+                    complete(e){
                         MessageRender(result);
                         collection();
                     },
@@ -521,16 +517,19 @@
                 });
             }
 
-            function nomessage(){
+            function nomessage(e){
+                console.log(e);
                 let array = [];
                 let num = $('.result').find('.rest').length;
                 
                 for(let i=0;i<=num-1;i+=1){
                     array.push($('.result').find('.rest')[i].id);
                 }
-                
+                console.log(array);
+                console.log(num);
+
                 for(let i=0;i<=array.length-1;i+=1){
-                    // console.log(array[i]);
+
                     if($(`.${array[i]}`).children().length==0){
                         $(`.${array[i]}`).append(`
                             <div style="text-align:center; height:140px; line-height:140px; font-size:36px;">
